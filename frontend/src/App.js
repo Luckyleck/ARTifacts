@@ -1,6 +1,19 @@
-function App() {
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import HomePage from './components/HomePage/HomePage';
+import './index.css';
+
+const App = () => {
   return (
-    <h1>Hello from App</h1>
+    <>
+    <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
