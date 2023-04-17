@@ -67,6 +67,12 @@
     height: 45%;
 }
 
+.image-container img:nth-child(10) {
+    animation: slide 20s linear infinite;
+    transform: translateY(10%) translateX(-400%);
+    height: 45%;
+}
+
 @keyframes slide {
     0% {
         left: -1000px;

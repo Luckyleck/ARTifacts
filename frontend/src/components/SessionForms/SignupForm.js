@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 
-const SignupForm = () => {
+const SignupForm = ({onClose}) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -49,6 +49,7 @@ const SignupForm = () => {
     };
 
     dispatch(signup(user)); 
+    onClose();
   }
 
   return (

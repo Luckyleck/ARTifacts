@@ -7,15 +7,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SignupForm from '../SessionForms/SignupForm';
 import LoginForm from '../SessionForms/LoginForm';
+import { logout } from '../../store/session';
 
 const NavBar = () => {
 
     const [showMenu, setShowMenu] = useState(false);
-    // const history = useHistory();
     const location = useLocation();
     const sessionUser = useSelector(state => state.session.user);
     const [signUp, setSignUp] = useState(false);
     const [signIn, setSignIn] = useState(false);
+    const history = useHistory();
     const dispatch = useDispatch();
     
     const handleMenuOpen = () => {
@@ -31,8 +32,9 @@ const NavBar = () => {
         setSignIn(false);
     }
 
-    const logout = () => {
-        dispatch(logout);
+    const logoutUser = () => {
+        dispatch(logout());
+        history.push('/')
     }
 
     return (
@@ -59,12 +61,12 @@ const NavBar = () => {
                     <ul className='dropdown-items'>
                         <li>Your profile</li>
                         <li>Favorite</li>
-                        <li onClick={logout}>Sign out</li>
+                        <li onClick={logoutUser}>Sign out</li>
                     </ul>
                     )}
 
                     { !sessionUser && location.pathname !== '/' &&
-                        <div className='profile-drop-button'>
+                        <div className='profile-drop-button' id='session-buttons'>
                             <button className='about' onClick={() => setSignUp(true)}>
                                 Sign up
                             </button>
@@ -77,13 +79,13 @@ const NavBar = () => {
 
                     { signUp && (
                         <Modal onClose={onClose}>
-                            <SignupForm />
+                            <SignupForm onClose={onClose} />
                         </Modal>
                     )}
 
                     { signIn && (
                         <Modal onClose={onClose}>
-                            <LoginForm />
+                            <LoginForm onClose={onClose} />
                         </Modal>
                     )}
                 </div>

@@ -1,3 +1,7 @@
+body {
+    background-color: #939598;
+}
+
 #navbar {
     /* position: fixed; */
     top: 0;
@@ -26,6 +30,11 @@
 .profile-drop-button {
     cursor: pointer;
     padding: 18px;
+    margin-top: 10px;
+}
+
+#session-buttons {
+    margin-top: 0;
 }
 
 #logo-button {
@@ -58,6 +67,7 @@
     font-size: 100%;
     display: block;
     z-index: 1;
+    margin-top: 16px;
 }
 
 .dropdown-items li {
