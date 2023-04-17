@@ -14,6 +14,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <MainPage />
+        </Route>
+        
+        <Route exact path="/explore">
           <Map />
         </Route>
 
