@@ -35,7 +35,7 @@ const NavBar = () => {
                 {showMenu && (
                 <ul className='dropdown-items'>
                     <li>Your profile</li>
-                    <li>Favourite</li>
+                    <li>Favorite</li>
                     <li>Sign out</li>
                 </ul>
                 )}
