@@ -15,7 +15,7 @@ import { getCurrentUser } from './store/session';
 
 import './index.css';
 
-export default function App() {
+const App = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -39,3 +39,5 @@ export default function App() {
     </>
   );
 }
+
+export default App;

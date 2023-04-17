@@ -3,12 +3,21 @@ import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
 import { useState } from 'react';
 import logo from './assets/ART.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { Modal } from '../context/Modal';
+import SignupForm from '../SessionForms/SignupForm';
+import LoginForm from '../SessionForms/LoginForm';
+import { logout } from '../../store/session';
 
 const NavBar = () => {
 
     const [showMenu, setShowMenu] = useState(false);
-    // const history = useHistory();
     const location = useLocation();
+    const sessionUser = useSelector(state => state.session.user);
+    const [signUp, setSignUp] = useState(false);
+    const [signIn, setSignIn] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch();
     
     const handleMenuOpen = () => {
         setShowMenu(true);
@@ -17,6 +26,16 @@ const NavBar = () => {
     const handleMenuClose = () => {
         setShowMenu(false);
     };
+
+    const onClose = () => {
+        setSignUp(false);
+        setSignIn(false);
+    }
+
+    const logoutUser = () => {
+        dispatch(logout());
+        history.push('/')
+    }
 
     return (
         <header id='navbar'>
@@ -27,27 +46,48 @@ const NavBar = () => {
                     </NavLink>
                 </div>
                 <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
-                    {/* if not sign in
-                    { location.pathname === '/' && (
+                    { location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>
-                            <div>About Artifacts</div>
-                            <div>Contact Us</div>
+                            <button className='about'>About Artifacts</button>
+                            <button className='about'>Contact Us</button>
                         </div>
-                    )} */}
+                    )}
 
-                    {/* if sign in
-                    <div className='profile-drop-button'>ProfilePic</div>
-                    {showMenu && (
+                    { sessionUser && (
+                    <div className='profile-drop-button'>
+                        ProfilePic
+                    </div>)}
+                    { showMenu && sessionUser && (
                     <ul className='dropdown-items'>
                         <li>Your profile</li>
                         <li>Favorite</li>
-                        <li>Sign out</li>
+                        <li onClick={logoutUser}>Sign out</li>
                     </ul>
-                    )} */}
+                    )}
 
-                    <div className='profile-drop-button'>
-                        Sign in
-                    </div>
+                    { !sessionUser && location.pathname !== '/' &&
+                        <div className='profile-drop-button' id='session-buttons'>
+                            <button className='about' onClick={() => setSignUp(true)}>
+                                Sign up
+                            </button>
+
+                            <button className='about' onClick={() => setSignIn(true)}>
+                                Sign in
+                            </button>
+                        </div>
+                    }
+
+                    { signUp && (
+                        <Modal onClose={onClose}>
+                            <SignupForm onClose={onClose} />
+                        </Modal>
+                    )}
+
+                    { signIn && (
+                        <Modal onClose={onClose}>
+                            <LoginForm onClose={onClose} />
+                        </Modal>
+                    )}
                 </div>
             </div>
 
