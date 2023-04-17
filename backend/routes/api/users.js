@@ -5,6 +5,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const { loginUser, restoreUser } = require('../../config/passport');
+const { getUsers, getUser, updateUser, deleteUser, follow, unfollow } = require('../../controllers/usersController')
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -91,21 +92,13 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
   })(req, res, next);
 });
 
-router.get('/', (req, res) => {
-  res.send('User List');
-});
+router.get('/', getUsers);
 
 router
   .route('/:id')
-  .get((req, res) => {
-    res.send(`Get User With ID ${req.params.id}`);
-  })
-  .put((req, res) => {
-    res.send(`Update User With ID ${req.params.id}`);
-  })
-  .delete((req, res) => {
-    res.send(`Delete User With ID ${req.params.id}`);
-  })
+  .get(getUser)
+  .put(updateUser)
+  .delete(deleteUser)
 ;
 
 router.param('id', (req, res, next, id) => {
