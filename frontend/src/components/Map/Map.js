@@ -17,9 +17,9 @@
 //             skip: 0,
 //             limit: 50,
 //             has_image: 1,
-//             creation_date: timePeriod
+//             creation_date_earliest: timePeriod
 //         };
-        
+
 //         fetch(`${url}?${new URLSearchParams(params)}`)
 //         .then(response => response.json())
 //         .then(data => {
@@ -42,7 +42,7 @@
 //             const centuryEnd = centuryStart + 99;
 //             return year >= centuryStart && year <= centuryEnd;
 //         }
-        
+
 //         // console.log(artworks)
 //     return (
 //         <>
@@ -94,14 +94,14 @@ function Map() {
     let params = {
       q: option,
       skip: 0,
-      limit: 50,
+      limit: 500,
       has_image: 1,
     };
     if (timePeriod) {
-        params = {
-          ...params,
-          creation_date: timePeriod,
-        };
+      params = {
+        ...params,
+        creation_date_earliest: timePeriod,
+      };
     }
 
     fetch(`${url}?${new URLSearchParams(params)}`)
@@ -110,16 +110,25 @@ function Map() {
         const filtered = [];
         data.data.forEach((artwork) => {
           console.log(artwork);
-          if (
-            artwork.culture[0].toLowerCase().includes(option.toLowerCase()) &&
-            timePeriod &&
-            isWithinCentury(parseInt(artwork.creation_date), parseInt(timePeriod))
-          ) {
-            filtered.push(artwork);
+          if (timePeriod) {
+            if (
+              artwork.culture[0].toLowerCase().includes(option.toLowerCase()) &&
+              timePeriod &&
+              isWithinCentury(parseInt(artwork.creation_date_earliest), parseInt(timePeriod))
+            ) {
+              filtered.push(artwork);
+            }
+          } else {
+            if (
+              artwork.culture[0].toLowerCase().includes(option.toLowerCase())
+            ) {
+              filtered.push(artwork)
+            }
           }
         });
         setArtworks(filtered);
         setClicked(true);
+        console.log(artworks.length)
       })
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
