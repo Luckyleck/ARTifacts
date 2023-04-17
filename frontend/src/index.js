@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import configureStore from './store/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import configureStore from './store';
 
-const store = configureStore();
+const store = configureStore({});
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
@@ -14,11 +15,11 @@ if (process.env.NODE_ENV !== 'production') {
 const Root = () => {
   return (
     // <ModalProvider>
-    //   <Provider store={store}>
+      <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-    //   {/* </Provider>
+      </Provider>
     // </ModalProvider> */}
   );
 }
