@@ -16,21 +16,21 @@ function MainPage() {
 
     return (
       <>
-        <div class="image-container">
-          <img src={cafe} alt="cafe" class="animated-image" />
-          <img src={girl} alt="girl" class="animated-image" />
-          <img src={guernica} alt="guernica" class="animated-image" />
-          <img src={mona} alt="mona" class="animated-image" />
-          <img src={starry} alt="starry" class="animated-image" />
-          <img src={adam} alt="adam" class="animated-image" />
-          <img src={supper} alt="supper" class="animated-image" />
-          <img src={memory} alt="memory" class="animated-image" />
-          <img src={scream} alt="scream" class="animated-image" />
+        <div className="image-container">
+          <img src={cafe} alt="cafe" className="animated-image" />
+          <img src={girl} alt="girl" className="animated-image" />
+          <img src={guernica} alt="guernica" className="animated-image" />
+          <img src={mona} alt="mona" className="animated-image" />
+          <img src={starry} alt="starry" className="animated-image" />
+          <img src={adam} alt="adam" className="animated-image" />
+          <img src={supper} alt="supper" className="animated-image" />
+          <img src={memory} alt="memory" className="animated-image" />
+          <img src={scream} alt="scream" className="animated-image" />
         </div>
 
         <div className='explore'>
           <img src={logo} alt='logo' />
-          <p>CLICK HERE TO ENTER</p>
+          <p>CLICK LOGO TO ENTER</p>
         </div>
       </>
     );
