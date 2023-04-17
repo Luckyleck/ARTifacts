@@ -42,10 +42,10 @@ app.use(
 );
 
 // Attach Express routers
-const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
-app.use('/api/users', usersRouter);
+const usersRouter = require('./routes/api/users');
 app.use('/api/csrf', csrfRouter);
+app.use('/api/users', usersRouter);
 
 // Serve static React build files statically in production
 if (isProduction) {
