@@ -1,0 +1,18 @@
+#navbar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    /* justify-content: space-around; */
+    justify-content: space-between;
+    width: 100vw;
+    background-color: rgb(44, 160, 139);
+    padding: 15px;
+}
+
+#profile-drop {
+    margin-right: 50px;
+}
+
+#logo-button {
+    margin-left: 20px;
+}
