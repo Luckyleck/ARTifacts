@@ -1,18 +1,72 @@
 #navbar {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     display: flex;
-    /* justify-content: space-around; */
     justify-content: space-between;
     width: 100vw;
-    background-color: rgb(44, 160, 139);
-    padding: 15px;
+    background-color: #F7F7F7;
+    border-bottom: 1px solid rgba(0,0,0,0.6);
+    box-sizing: border-box;
+    align-items: center;
 }
 
 #profile-drop {
-    margin-right: 50px;
+    /* margin-right: 20px; */
+    padding-right: 10px;
+    position: relative;
+    display: block;
 }
 
-#logo-button {
+.profile-drop-button {
+    cursor: pointer;
+    padding: 15px;
+}
+
+/* #logo-button {
     margin-left: 20px;
+} */
+
+#logo-button img {
+    height: 40px;
+}
+
+/* #logo-button img:last-child {
+    opacity: 0;
+    position: relative;
+    right: -50px;
+    transition: opacity 0.5s ease-in-out, right 0.5s ease-in-out;
+} */
+
+#logo-button:hover img:last-child {
+    opacity: 1;
+    right: 0;
+}
+
+.dropdown-items {
+    position: absolute;
+    background-color: #F3DEBA;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    right: 10px;
+    width: 170px;
+    font-size: 100%;
+    display: block;
+    z-index: 1;
+}
+
+.dropdown-items li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer;
+    /* width: 100%; */
+    padding-left: 15px;
+}
+
+.dropdown-items li:last-child {
+    border-top: 1px solid #A9907E;
+}
+
+.dropdown-items li:hover {
+    background-color: #A9907E;
+    text-decoration: underline;
 }

@@ -1,7 +1,8 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
-import './NavBar.css'
+import './NavBar.css';
 import { useState } from 'react';
+import logo from './assets/ART.png'
 
 const NavBar = () => {
 
@@ -16,43 +17,27 @@ const NavBar = () => {
         setShowMenu(false);
     };
 
-    const dropdownItems = [
-        {
-            label: 'Sign In',
-            // onClick: () => history.push('/signin')
-        },
-        {
-            label: 'Sign Up',
-            // onClick: () => history.push('/signup')
-        }
-    ];
-
     return (
         <header id='navbar'>
             <div className='nav-buttons' id='logo-button'>
-                <NavLink exact to="/">Logo</NavLink>
+                <NavLink exact to="/">
+                    <img src={logo} alt='logo'/>
+                </NavLink>
             </div>
 
-            <div className='nav-buttons'>
+            <div className='nav-buttons' id='test'>
                 <div>Test</div>
             </div>
 
-            <div
-                className='nav-buttons'
-                id='profile-drop'
-                onMouseEnter={handleMenuOpen}
-                onMouseLeave={handleMenuClose}
-            >
-                <div>Dropdown</div>
+            <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
+                {/* if sign in */}
+                <div className='profile-drop-button'>ProfilePic</div>
                 {showMenu && (
-                
-                <div className='dropdown'>
-                    { dropdownItems.map((item, index) => (
-                    <button key={index} style={{ transitionDelay: `${index * 10}ms` }} onClick={item.onClick}>
-                        {item.label}
-                    </button>
-                    )) }
-                </div>
+                <ul className='dropdown-items'>
+                    <li>Your profile</li>
+                    <li>Favorite</li>
+                    <li>Sign out</li>
+                </ul>
                 )}
             </div>
         </header>

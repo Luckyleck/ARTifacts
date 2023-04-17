@@ -1,0 +1,111 @@
+.image-container {
+    background: #939598;
+    position: relative;
+    height: 100vh;
+    filter: brightness(70%);
+}
+
+.image-container img {
+    position: absolute;
+}
+
+.image-container img:nth-child(1) {
+    animation: slide 20s linear infinite;
+    left: -400px;
+    top: 30%;
+    transform: translateY(-60%) translateX(50%);
+    height: 50%;
+}
+
+.image-container img:nth-child(2) {
+    animation: slide 20s linear infinite;
+    left: -400px;
+    transform: translateX(-60%) translateY(-80%);
+    top: 50%;
+    height: 50%;
+}
+
+.image-container img:nth-child(3) {
+    animation: slide 20s linear infinite;
+    transform: translateY(210%) translateX(-20%);
+    height: 30%;
+}
+
+.image-container img:nth-child(4) {
+    animation: slide 20s linear infinite;
+    transform: translateY(70%) translateX(120%);
+    height: 50%;
+}
+
+.image-container img:nth-child(5) {
+    animation: slide 20s linear infinite;
+    transform: translateY(10%) translateX(-200%);
+    height: 30%;
+}
+
+.image-container img:nth-child(6) {
+    animation: slide 20s linear infinite;
+    transform: translateY(120%) translateX(-150%);
+    height: 30%;
+}
+
+.image-container img:nth-child(7) {
+    animation: slide 20s linear infinite;
+    transform: translateY(10%) translateX(120%);
+    height: 30%;
+}
+
+.image-container img:nth-child(8) {
+    animation: slide 20s linear infinite;
+    transform: translateY(130%) translateX(-260%);
+    height: 40%;
+}
+
+.image-container img:nth-child(9) {
+    animation: slide 20s linear infinite;
+    transform: translateY(10%) translateX(-350%);
+    height: 45%;
+}
+
+@keyframes slide {
+    0% {
+        left: -1000px;
+    }
+    100% {
+        left: calc(100% + 400px);
+    }
+}
+
+.explore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    top: 35%;
+    right: 45%;
+}
+.explore p{
+    color: #F7F7F7;
+}
+
+.explore img {
+    height: 200px;
+}
+
+/* .explore {
+    position: absolute;
+    background-color: #A9907E;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    top: 40%;
+    right: 35%;
+    width: 400px;
+    height: 200px;
+    font-size: 100%;
+    display: flex;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} */
