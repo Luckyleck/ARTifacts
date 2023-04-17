@@ -15,9 +15,9 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  following: [ mongoose.SchemaTypes.ObjectId ],
-	followers: [ mongoose.SchemaTypes.ObjectId ],
-	favorites: [ artworkSchema ]
+  // following: [ mongoose.SchemaTypes.ObjectId ],
+	// followers: [ mongoose.SchemaTypes.ObjectId ],
+	// favorites: [ artworkSchema ]
 }, {
   timestamps: true
 });
