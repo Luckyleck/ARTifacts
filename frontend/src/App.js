@@ -5,6 +5,7 @@ import MainPage from './components/MainPage/MainPage';
 import './index.css';
 import SignupForm from './components/SessionForms/SignupForm';
 import LoginForm from './components/SessionForms/LoginForm';
+import Map from './components/Map/Map'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <MainPage />
+          <Map />
         </Route>
 
         <Route path="/signup">
