@@ -86,7 +86,8 @@ function Map() {
   const [clicked, setClicked] = useState(false);
   const [artworks, setArtworks] = useState([]);
   const [country, setCountry] = useState("");
-  const [timePeriod, setTimePeriod] = useState("");
+  const [createdAfter, setCreatedAfter] = useState("");
+  const [createdBefore, setCreatedBefore] = useState("");
 
   function handleClick(option) {
     console.log(country);
@@ -97,10 +98,11 @@ function Map() {
       limit: 500,
       has_image: 1,
     };
-    if (timePeriod) {
+    if (createdAfter) {
       params = {
         ...params,
-        creation_date_earliest: timePeriod,
+        created_after: createdAfter,
+        created_before: parseInt(createdAfter + 99).toString().slice(0, 2) + "99",
       };
     }
 
@@ -109,12 +111,12 @@ function Map() {
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
+          debugger
           console.log(artwork);
-          if (timePeriod) {
+          if (createdAfter) {
             if (
-              artwork.culture[0].toLowerCase().includes(option.toLowerCase()) &&
-              timePeriod &&
-              isWithinCentury(parseInt(artwork.creation_date_earliest), parseInt(timePeriod))
+              artwork.culture[0]?.toLowerCase().includes(option.toLowerCase()) &&
+              createdAfter
             ) {
               filtered.push(artwork);
             }
@@ -135,16 +137,14 @@ function Map() {
       });
   }
 
-  function isWithinCentury(year, centuryStart) {
-    const centuryEnd = centuryStart + 99;
-    return year >= centuryStart && year <= centuryEnd;
-  }
-
   return (
     <>
       <div className="test-wrapper">
         <input type="text" onChange={(e) => setCountry(e.target.value)} />
-        <select onChange={(e) => setTimePeriod(e.target.value)}>
+        <select onChange={(e) => 
+          {setCreatedAfter(e.target.value);
+          setCreatedBefore(parseInt(e.target.value + 99))}
+        }>
           <option value="">Select a time period</option>
           <option value="1300">1300s</option>
           <option value="1400">1400s</option>
