@@ -1,93 +1,92 @@
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
-import { logout } from '../../store/session';
+import { useState } from 'react';
+import logo from './assets/ART.png'
 
-export default function NavBar() {
-  const dispatch = useDispatch();
-  const loggedIn = useSelector(state => !!state.session.user);
+const NavBar = () => {
 
-  const logoutUser = e => {
-      e.preventDefault();
-      dispatch(logout());
-  }
+    const [showMenu, setShowMenu] = useState(false);
+    // const history = useHistory();
+    
+    const handleMenuOpen = () => {
+        setShowMenu(true);
+    };
 
-  const getLinks = () => {
-    if (loggedIn) {
-      return (
-        <div className="links-nav">
-          {/* <Link to={'/tweets'}>All Tweets</Link> */}
-          {/* <Link to={'/profile'}>Profile</Link> */}
-          {/* <Link to={'/tweets/new'}>Write a Tweet</Link> */}
-          <button onClick={logoutUser}>Logout</button>
-        </div>
-      );
-    } else {
-      return (
-        <div className="links-auth">
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
-        </div>
-      );
-    }
-  }
+    const handleMenuClose = () => {
+        setShowMenu(false);
+    };
 
-  return (
-    <>
-      {/* <h1>ARTiFacts</h1> */}
-      { getLinks() }
-    </>
-  );
+    return (
+        <header id='navbar'>
+            <div className='nav-buttons' id='logo-button'>
+                <NavLink exact to="/">
+                    <img src={logo} alt='logo'/>
+                </NavLink>
+            </div>
+
+            <div className='nav-buttons' id='test'>
+                <div>Test</div>
+            </div>
+
+            <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
+                {/* if sign in */}
+                <div className='profile-drop-button'>ProfilePic</div>
+                {showMenu && (
+                <ul className='dropdown-items'>
+                    <li>Your profile</li>
+                    <li>Favorite</li>
+                    <li>Sign out</li>
+                </ul>
+                )}
+            </div>
+        </header>
+    )
 }
 
+export default NavBar;
 
 
 
 
-// import { NavLink, useHistory } from 'react-router-dom';
-// import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
+// import { Link } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
 // import './NavBar.css';
-// import { useState } from 'react';
-// import logo from './assets/ART.png'
+// import { logout } from '../../store/session';
 
-// const NavBar = () => {
+// export default function NavBar() {
+//   const dispatch = useDispatch();
+//   const loggedIn = useSelector(state => !!state.session.user);
 
-//     const [showMenu, setShowMenu] = useState(false);
-//     // const history = useHistory();
-    
-//     const handleMenuOpen = () => {
-//         setShowMenu(true);
-//     };
+//   const logoutUser = e => {
+//       e.preventDefault();
+//       dispatch(logout());
+//   }
 
-//     const handleMenuClose = () => {
-//         setShowMenu(false);
-//     };
+//   const getLinks = () => {
+//     if (loggedIn) {
+//       return (
+//         <div className="links-nav">
+//           {/* <Link to={'/tweets'}>All Tweets</Link> */}
+//           {/* <Link to={'/profile'}>Profile</Link> */}
+//           {/* <Link to={'/tweets/new'}>Write a Tweet</Link> */}
+//           <button onClick={logoutUser}>Logout</button>
+//         </div>
+//       );
+//     } else {
+//       return (
+//         <div className="links-auth">
+//           <Link to={'/signup'}>Signup</Link>
+//           <Link to={'/login'}>Login</Link>
+//         </div>
+//       );
+//     }
+//   }
 
-//     return (
-//         <header id='navbar'>
-//             <div className='nav-buttons' id='logo-button'>
-//                 <NavLink exact to="/">
-//                     <img src={logo} alt='logo'/>
-//                 </NavLink>
-//             </div>
-
-//             <div className='nav-buttons' id='test'>
-//                 <div>Test</div>
-//             </div>
-
-//             <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
-//                 {/* if sign in */}
-//                 <div className='profile-drop-button'>ProfilePic</div>
-//                 {showMenu && (
-//                 <ul className='dropdown-items'>
-//                     <li>Your profile</li>
-//                     <li>Favorite</li>
-//                     <li>Sign out</li>
-//                 </ul>
-//                 )}
-//             </div>
-//         </header>
-//     )
+//   return (
+//     <>
+//       {/* <h1>ARTiFacts</h1> */}
+//       { getLinks() }
+//     </>
+//   );
 // }
-
-// export default NavBar;
