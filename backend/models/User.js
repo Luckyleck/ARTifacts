@@ -15,9 +15,18 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  // following: [ mongoose.SchemaTypes.ObjectId ],
-	// followers: [ mongoose.SchemaTypes.ObjectId ],
-	// favorites: [ artworkSchema ]
+  following: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  followers: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  // favorites: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Artwork'
+  // }]
 }, {
   timestamps: true
 });
@@ -38,4 +47,4 @@ userSchema.methods.removeFavorite = function() {
   console.log('remove favorite function');
 }
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);
