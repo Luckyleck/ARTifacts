@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "short_name": "React Template",
   "name": "Create React App Template",
@@ -7,13 +6,3 @@
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
-=======
-{
-  "short_name": "React Template",
-  "name": "Create React App Template",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
->>>>>>> auth
