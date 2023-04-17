@@ -9,7 +9,7 @@ import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
-import Map from './components/Map/Map';
+import Map from './components/Map';
 
 import { getCurrentUser } from './store/session';
 
