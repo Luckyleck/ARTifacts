@@ -14,7 +14,7 @@ function Map() {
         const url = "https://openaccess-api.clevelandart.org/api/artworks";
         const params = {
             q: option,
-            skip: 150,
+            skip: 0,
             limit: 50,
             has_image: 1,
         };
