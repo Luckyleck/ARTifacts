@@ -67,6 +67,12 @@
     height: 45%;
 }
 
+.image-container img:nth-child(10) {
+    animation: slide 20s linear infinite;
+    transform: translateY(10%) translateX(-400%);
+    height: 45%;
+}
+
 @keyframes slide {
     0% {
         left: -1000px;
@@ -112,20 +118,3 @@
     align-items: center;
     justify-content: center;
 }
-
-/* .explore {
-    position: absolute;
-    background-color: #A9907E;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    top: 40%;
-    right: 35%;
-    width: 400px;
-    height: 200px;
-    font-size: 100%;
-    display: flex;
-    z-index: 1;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-} */

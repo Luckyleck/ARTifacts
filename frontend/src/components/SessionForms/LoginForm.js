@@ -4,7 +4,7 @@ import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
 
-export default function LoginForm() {
+const LoginForm = ({onClose}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
@@ -24,6 +24,7 @@ export default function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })); 
+    onClose();
   }
 
   return (
@@ -55,3 +56,5 @@ export default function LoginForm() {
     </form>
   );
 }
+
+export default LoginForm;

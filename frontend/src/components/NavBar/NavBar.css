@@ -1,3 +1,7 @@
+body {
+    background-color: #939598;
+}
+
 #navbar {
     /* position: fixed; */
     top: 0;
@@ -26,6 +30,11 @@
 .profile-drop-button {
     cursor: pointer;
     padding: 18px;
+    margin-top: 10px;
+}
+
+#session-buttons {
+    margin-top: 0;
 }
 
 #logo-button {
@@ -58,6 +67,7 @@
     font-size: 100%;
     display: block;
     z-index: 1;
+    margin-top: 16px;
 }
 
 .dropdown-items li {
@@ -82,9 +92,28 @@
     left: 49.2%;
 }
 
-/* .about-us {
+.about-us, .profile-drop-button {
     display: flex;
     flex-direction: row;
-    padding-top: 15px;
-    display: block;
-} */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.about-us button:first-child, .profile-drop-button button:first-child{
+    margin-right: 20px;
+    border: none;
+}
+
+.about {
+    border: 2px solid #939598;
+    padding: 13px 18px;
+    border-radius: 50px;
+    background-color: #F7F7F7;
+    font-weight: 550;
+    cursor: pointer;
+    color: #5d6164;
+}
+
+.about:hover {
+    color: #939598;
+}
