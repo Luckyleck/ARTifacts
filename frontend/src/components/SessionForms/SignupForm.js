@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 
-function SignupForm () {
+export default function SignupForm () {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -100,5 +100,3 @@ function SignupForm () {
     </form>
   );
 }
-
-export default SignupForm;
