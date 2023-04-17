@@ -1,7 +1,9 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
-import './NavBar.css'
+import './NavBar.css';
 import { useState } from 'react';
+import art from './assets/ART.jpg';
+import ifacts from './assets/ifacts.jpg';
 
 const NavBar = () => {
 
@@ -19,10 +21,13 @@ const NavBar = () => {
     return (
         <header id='navbar'>
             <div className='nav-buttons' id='logo-button'>
-                <NavLink exact to="/">Logo</NavLink>
+                <NavLink exact to="/">
+                    <img src={art} alt='art'/>
+                    <img src={ifacts} alt='ifacts' />
+                </NavLink>
             </div>
 
-            <div className='nav-buttons'>
+            <div className='nav-buttons' id='test'>
                 <div>Test</div>
             </div>
 
