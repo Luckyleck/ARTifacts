@@ -30,7 +30,7 @@ function MainPage() {
 
         <div className='explore'>
           <img src={logo} alt='logo' />
-          <p>CLICK HERE TO ENTER</p>
+          <p>CLICK LOGO TO ENTER</p>
         </div>
       </>
     );

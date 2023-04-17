@@ -28,6 +28,9 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <MainPage />
+        </Route>
+        
+        <Route exact path="/explore">
           <Map />
         </Route>
         <AuthRoute exact path="/login" component={LoginForm} />

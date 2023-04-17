@@ -2,12 +2,18 @@
     /* position: fixed; */
     top: 0;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 100vw;
     background-color: #F7F7F7;
     border-bottom: 1px solid rgba(0,0,0,0.6);
     box-sizing: border-box;
     align-items: center;
+}
+
+#nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #profile-drop {
@@ -19,15 +25,15 @@
 
 .profile-drop-button {
     cursor: pointer;
-    padding: 15px;
+    padding: 18px;
 }
 
-/* #logo-button {
+#logo-button {
     margin-left: 20px;
-} */
+}
 
 #logo-button img {
-    height: 40px;
+    height: 50px;
 }
 
 /* #logo-button img:last-child {
@@ -70,3 +76,15 @@
     background-color: #A9907E;
     text-decoration: underline;
 }
+
+#test {
+    position: absolute;
+    left: 49.2%;
+}
+
+/* .about-us {
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    display: block;
+} */
