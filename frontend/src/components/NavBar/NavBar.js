@@ -4,6 +4,7 @@ import './NavBar.css';
 import { useState } from 'react';
 import art from './assets/ART.jpg';
 import ifacts from './assets/ifacts.jpg';
+import logo from './assets/ART.png'
 
 const NavBar = () => {
 
@@ -22,8 +23,8 @@ const NavBar = () => {
         <header id='navbar'>
             <div className='nav-buttons' id='logo-button'>
                 <NavLink exact to="/">
-                    <img src={art} alt='art'/>
-                    <img src={ifacts} alt='ifacts' />
+                    <img src={logo} alt='logo'/>
+                    {/* <img src={ifacts} alt='ifacts' /> */}
                 </NavLink>
             </div>
 

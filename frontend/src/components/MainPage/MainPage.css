@@ -1,5 +1,5 @@
 .image-container {
-    background: #ccc;
+    background: #939598;
     position: relative;
     height: 100vh;
     filter: brightness(70%);
@@ -76,7 +76,7 @@
     }
 }
 
-.explore {
+/* .explore {
     position: absolute;
     background-color: #A9907E;
     border-radius: 8px;
@@ -91,4 +91,4 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */

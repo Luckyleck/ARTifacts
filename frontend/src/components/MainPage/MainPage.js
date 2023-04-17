@@ -1,4 +1,5 @@
 import './MainPage.css';
+import logo from './assets/ART_white.png';
 import cafe from './assets/Cafe_Terrace_at_Night.webp';
 import girl from './assets/Girl_with_a_Pearl_Earring.jpeg';
 import guernica from './assets/Guernica.jpeg';
@@ -28,9 +29,7 @@ function MainPage() {
         </div>
 
         <div className='explore'>
-          <p>ARTifacts</p>
-          <button>explore</button>
-          {/* press the button then go to the home page with map */}
+          
         </div>
       </>
     );

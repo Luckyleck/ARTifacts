@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     width: 100vw;
-    background-color: #A9907E;
+    background-color: #F7F7F7;
+    border-bottom: 1px solid rgba(0,0,0,0.6);
     box-sizing: border-box;
     align-items: center;
 }
@@ -21,20 +22,20 @@
     padding: 15px;
 }
 
-#logo-button {
+/* #logo-button {
     margin-left: 20px;
-}
+} */
 
 #logo-button img {
     height: 40px;
 }
 
-#logo-button img:last-child {
+/* #logo-button img:last-child {
     opacity: 0;
     position: relative;
     right: -50px;
     transition: opacity 0.5s ease-in-out, right 0.5s ease-in-out;
-}
+} */
 
 #logo-button:hover img:last-child {
     opacity: 1;
