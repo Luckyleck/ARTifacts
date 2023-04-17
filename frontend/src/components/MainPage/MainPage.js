@@ -29,7 +29,7 @@ function MainPage() {
         </div>
 
         <div className='explore'>
-          
+          <img src={logo} alt='logo' />
         </div>
       </>
     );

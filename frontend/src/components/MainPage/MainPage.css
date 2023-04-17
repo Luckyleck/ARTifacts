@@ -76,6 +76,13 @@
     }
 }
 
+.explore {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
 /* .explore {
     position: absolute;
     background-color: #A9907E;

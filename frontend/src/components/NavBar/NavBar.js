@@ -2,8 +2,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
 import { useState } from 'react';
-import art from './assets/ART.jpg';
-import ifacts from './assets/ifacts.jpg';
 import logo from './assets/ART.png'
 
 const NavBar = () => {
@@ -24,7 +22,6 @@ const NavBar = () => {
             <div className='nav-buttons' id='logo-button'>
                 <NavLink exact to="/">
                     <img src={logo} alt='logo'/>
-                    {/* <img src={ifacts} alt='ifacts' /> */}
                 </NavLink>
             </div>
 
