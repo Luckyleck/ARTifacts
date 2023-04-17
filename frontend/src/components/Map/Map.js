@@ -111,7 +111,6 @@ function Map() {
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          debugger
           console.log(artwork);
           if (createdAfter) {
             if (
