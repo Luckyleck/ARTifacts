@@ -10,6 +10,7 @@ import MainPage from './components/MainPage/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Map from './components/Map/Map';
+import MapTest from './components/World Map';
 
 import { fetchCurrentUser } from './store/session';
 
@@ -32,6 +33,10 @@ const App = () => {
         
         <Route exact path="/explore">
           <Map />
+        </Route>
+
+        <Route exact path="/maptest">
+          <MapTest/>
         </Route>
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
