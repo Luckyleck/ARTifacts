@@ -38,7 +38,7 @@
 
 .welcome p {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .welcome img {
@@ -101,6 +101,10 @@
   padding-bottom: 2px;
 }
 
+.session-input::placeholder {
+  color: #b1b3b6;
+}
+
 .session-input:focus {
   box-shadow: 0 1px 0 #939598;
 }
@@ -126,4 +130,9 @@
   font-weight: 550;
   color: #5d6164;
   cursor: pointer;
+}
+
+.submit-form:hover {
+  color: #939598;
+  background-color: #d9d6d6;
 }

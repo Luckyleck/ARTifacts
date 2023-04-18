@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
+import logo from '../MainPage/assets/ART_white.png'
 
 import { login, clearSessionErrors } from '../../store/session';
 
@@ -28,32 +29,49 @@ const LoginForm = ({onClose}) => {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
+    <div className='session-modal'>
+    <div className='welcome'>
+        <img src={logo}></img>
+        <p>Welcome to ARTifacts!</p>
+    </div>
+        <form className="session-form" onSubmit={handleSubmit}>
+        <buttun className='closeForm' onClick={onClose}>
+            <i className="fa-solid fa-xmark"></i>
+        </buttun>
+        
+        <label>
+            Email
+        </label>
+
+            <input type="text"
+            value={email}
+            onChange={update('email')}
+            placeholder="Email"
+            className='session-input'
+            />
+
+        <div className="errors">{errors?.email}</div>
+        
+        <label>
+            Password
+        </label>
+            <input type="password"
+            value={password}
+            onChange={update('password')}
+            placeholder="Password"
+            className='session-input'
+            />
+        
+        <div className="errors">{errors?.password}</div>
+
+        <input
+            type="submit"
+            value="Log In"
+            disabled={!email || !password}
+            className='submit-form'
         />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-    </form>
+        </form>
+    </div>
   );
 }
 
