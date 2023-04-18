@@ -30,13 +30,13 @@ const updateUser = async (req, res) => {
   res.status(200).json(user);
 }
 
-// const deleteUser = async (req, res) => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
-//   const user = await User.findOneAndDelete({ _id: id });
-//   if (!user) return res.status(400).json({ error: 'No such user' });
-//   res.status(200).json(user);
-// }
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
+  const user = await User.findOneAndDelete({ _id: id });
+  if (!user) return res.status(400).json({ error: 'No such user' });
+  res.status(200).json(user);
+}
 
 // const follow = async (req, res) => {
 //   try {
@@ -81,8 +81,8 @@ const updateUser = async (req, res) => {
 module.exports = {
   getUsers,
   getUser,
-  updateUser
-  // deleteUser,
+  updateUser,
+  deleteUser
   // follow,
   // unfollow
 }

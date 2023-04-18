@@ -3,7 +3,7 @@ import jwtFetch from './jwt';
 
 const RECEIVE_USERS = 'users/RECEIVE_USERS';
 const RECEIVE_USER = 'users/RECEIVE_USER';
-// const REMOVE_USER = 'users/REMOVE_USER';
+const REMOVE_USER = 'users/REMOVE_USER';
 
 function receiveUsers(users) {
   return ({
@@ -19,12 +19,12 @@ function receiveUser(user) {
   });
 }
 
-// function removeUser(userId) {
-//   return ({
-//     type: REMOVE_USER,
-//     userId
-//   });
-// }
+function removeUser(userId) {
+  return ({
+    type: REMOVE_USER,
+    userId
+  });
+}
 
 
 export function getUsers(state) {
@@ -66,33 +66,33 @@ export function fetchUser(user) {
   });
 }
 
-// export function updateUser(user) {
-//   return (async (dispatch) => {
-//     const response = await jwtFetch(`/api/user/${user._id}`, {
-//       method: 'PUT',
-//       body: JSON.stringify(user)
-//     });
+export function updateUser(user) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/user/${user._id}`, {
+      method: 'PUT',
+      body: JSON.stringify(user)
+    });
 
-//     if (response.ok) {
-//       const data = await response.json();
-//       dispatch(receiveUser(data));
-//     }
-//   });
-// }
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveUser(data));
+    }
+  });
+}
 
-// export function deleteUser(userId) {
-//   return (async (dispatch) => {
-//     const response = await jwtFetch(`/api/user/${userId}`, {
-//       method: 'DELETE',
-//       body: JSON.stringify(userId)
-//     });
+export function deleteUser(userId) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/user/${userId}`, {
+      method: 'DELETE',
+      body: JSON.stringify(userId)
+    });
 
-//     if (response.ok) {
-//       const data = await response.json();
-//       dispatch(removeUser(data));
-//     }
-//   });
-// }
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(removeUser(data));
+    }
+  });
+}
 
 
 export default function usersReducer() {
