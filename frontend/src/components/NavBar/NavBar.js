@@ -1,12 +1,10 @@
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
 import { useState } from 'react';
 import logo from './assets/ART.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
-import LoginForm from '../SessionForms/LoginForm';
 import { logout } from '../../store/session';
 import profile from './assets/pikachu.png';
 
