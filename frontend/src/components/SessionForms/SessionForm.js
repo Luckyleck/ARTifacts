@@ -116,7 +116,7 @@ const SessionForm = ({onClose, formType}) => {
       </div>
 
       {form === 'signup' ? (
-      <form className="session-form" onSubmit={handleSignupSubmit}>
+      <form className="session-form">
       <button className='closeForm' onClick={onClose}>
         <i className="fa-solid fa-xmark"></i>
       </button>
@@ -187,20 +187,20 @@ const SessionForm = ({onClose, formType}) => {
         /> */}
 
         { !email || !username || !password || password !== password2 ?
-        <input
+        <button
         type="submit"
-        value="Sign Up"
         className='submit-form'
-        /> :
-        <input
+        onClick={handleSignupSubmit}
+        >Sign Up</button> :
+        <button
         type="submit"
-        value="Sign Up"
         className='submit-form'
         id='allow-submit'
-        />
+        onClick={handleSignupSubmit}
+        >Sign Up</button>
         }
       </form>) : (
-               <form className="session-form" onSubmit={handleLoginSubmit}>
+               <form className="session-form">
                <button className='closeForm' onClick={onClose}>
                    <i className="fa-solid fa-xmark"></i>
                </button>
@@ -231,17 +231,18 @@ const SessionForm = ({onClose, formType}) => {
                <div className="errors">{errors?.password}</div>
        
                { !email || !password ?
-               <input
+               <button
                    type="submit"
                    value="Log In"
                    className='submit-form'
-               /> : 
-               <input
+                   onClick={handleLoginSubmit}
+                >Log In</button> : 
+               <button
                    type="submit"
-                   value="Log In"
                    className='submit-form'
                    id='allow-submit'
-               />}
+                   onClick={handleLoginSubmit}
+               >Log In</button>}
        
                </form>
       )}

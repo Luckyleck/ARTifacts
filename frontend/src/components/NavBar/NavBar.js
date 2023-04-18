@@ -8,6 +8,7 @@ import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
 import LoginForm from '../SessionForms/LoginForm';
 import { logout } from '../../store/session';
+import profile from './assets/pikachu.png';
 
 const NavBar = () => {
 
@@ -53,8 +54,8 @@ const NavBar = () => {
                     )}
 
                     { sessionUser && (
-                    <div className='profile-drop-button'>
-                        ProfilePic
+                    <div className='profile-drop-button' id='profile-pic-button'>
+                        <div className='pic'><img src={profile} alt='profile' /></div>
                     </div>)}
                     { showMenu && sessionUser && (
                     <ul className='dropdown-items'>
