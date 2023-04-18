@@ -1,5 +1,4 @@
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
 import { useState } from 'react';
 import logo from './assets/ART.png'

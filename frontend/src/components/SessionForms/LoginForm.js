@@ -31,7 +31,7 @@ const LoginForm = ({onClose}) => {
   return (
     <div className='session-modal'>
     <div className='welcome'>
-        <img src={logo}></img>
+        <img src={logo} alt=''></img>
         <p>Welcome to ARTifacts!</p>
     </div>
         <form className="session-form" onSubmit={handleSubmit}>
