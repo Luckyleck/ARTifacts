@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import logo from '../MainPage/assets/ART_white.png';
+import { Modal } from '../context/Modal';
+import LoginForm from './LoginForm';
 
 
 const SignupForm = ({onClose}) => {
@@ -10,17 +12,21 @@ const SignupForm = ({onClose}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
-  const [passwordType, setPasswordType] = useState('password')
-  const [confirmType, setConfirmType] = useState('password')
+  const [passwordType, setPasswordType] = useState('password');
+  const [confirmType, setConfirmType] = useState('password');
+  const [showModal, setShowModal] = useState(false);
   const errors = useSelector(state => state.errors.session);
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (sessionUser) {
+      onClose();
+    }
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [dispatch]);
+  }, [onClose, dispatch]);
 
   const update = field => {
     let setState;
@@ -73,17 +79,30 @@ const SignupForm = ({onClose}) => {
     setConfirmType('password');
   }
 
+  const openModal = () => {
+    onClose();
+    setShowModal(true);
+  }
+
+
   return (
     <div className='session-modal'>
       <div className='welcome'>
-          <img src={logo}></img>
+          <img src={logo} alt='logo' />
           <p>Welcome to ARTifacts!</p>
+          <h3 className='switch'>Already have an account? <button onClick={openModal}>log in</button></h3>
       </div>
 
+      {showModal && (
+        <Modal onClose={onClose}>
+          <LoginForm onClose={onClose} />
+        </Modal>
+      )}
+
       <form className="session-form" onSubmit={handleSubmit}>
-      <buttun className='closeForm' onClick={onClose}>
+      <button className='closeForm' onClick={onClose}>
         <i className="fa-solid fa-xmark"></i>
-      </buttun>
+      </button>
 
         <label>
           Email
@@ -149,12 +168,19 @@ const SignupForm = ({onClose}) => {
           disabled={!email || !username || !password || password !== password2}
         /> */}
 
+        { !email || !username || !password || password !== password2 ?
         <input
         type="submit"
         value="Sign Up"
         className='submit-form'
-        // disabled
+        /> :
+        <input
+        type="submit"
+        value="Sign Up"
+        className='submit-form'
+        id='allow-submit'
         />
+        }
       </form>
     </div>
   );
