@@ -15,6 +15,7 @@ import MapTest from './components/World Map';
 import { fetchCurrentUser } from './store/session';
 
 import './index.css';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,11 @@ const App = () => {
         <Route exact path="/maptest">
           <MapTest/>
         </Route>
+
+        <Route exact path="/profile">
+          <ProfilePage/>
+        </Route>
+
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
       </Switch>

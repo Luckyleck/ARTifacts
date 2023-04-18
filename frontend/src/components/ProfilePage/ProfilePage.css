@@ -1,0 +1,14 @@
+.test-profile {
+    width: 200px;
+    /* height: 100%; */
+    height: 200px;
+    background-color: brown;
+    animation: test 5s ;
+    position: absolute;
+}
+
+@keyframes test {
+    0% { top: -500px }
+    /* 50% {top: 0} */
+    100% { top: 100%}
+}
