@@ -101,6 +101,58 @@ router
   .delete(deleteUser)
 ;
 
+router.put('/:id/follow', (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No current user' });
+  const currentUser = User.findById(id);
+  if (!currentUser) return res.status(400).json({ error: 'No current user' });
+  
+  User.updateMany(
+    {
+      _id: {
+        $in: [req.body.followId, currentUser._id]
+      }
+    },
+    {
+      $addToSet: {
+        following: req.body.followId,
+        followers: currentUser._id
+      }
+    },
+    {
+      new: true
+    },
+    (error, result) => {
+      if (error) return res.status(422).json({ error: error });
+      res.status(200).json(result);
+    });
+  }
+);
+
+router.put('/:id/unfollow', (req, res) => {
+  const unfollowId = req.body.unfollowId;
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No current user' });
+  const currentUser = User.findById(id);
+  if (!currentUser) return res.status(400).json({ error: 'No current user' });
+
+  User.findByIdAndUpdate(currentUser._id, 
+    { $pull: { following: unfollowId } },
+    { new: true },
+    (error, result) => {
+      if (error) return res.status(422).json({ error: error });
+      User.findByIdAndUpdate(unfollowId,
+        { $pull: { followers: currentUser._id } },
+        { new: true },
+        (error, result) => {
+          if (error) return res.status(422).json({ error: error });
+          res.status(200).json(result);
+        }
+      );
+    }
+  );
+});
+
 router.param('id', (req, res, next, id) => {
   console.log(id);
   next();
