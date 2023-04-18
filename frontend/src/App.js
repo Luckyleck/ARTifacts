@@ -8,7 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
-import SignupForm from './components/SessionForms/SignupForm';
+import SignupForm from './components/SessionForms/SessionForm';
 import Map from './components/Map/Map';
 import MapTest from './components/World Map';
 

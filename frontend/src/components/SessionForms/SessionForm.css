@@ -129,10 +129,35 @@
   background-color: #F7F7F7;
   font-weight: 550;
   color: #5d6164;
-  cursor: pointer;
+  cursor: not-allowed;
 }
 
 .submit-form:hover {
   color: #939598;
   background-color: #d9d6d6;
+}
+
+#allow-submit {
+  cursor: pointer;
+}
+
+.switch {
+  font-size: 12px;
+  /* position: absolute; */
+  /* width: 100%; */
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.switch button {
+  padding-top: 40px;
+  font-size: 12px;
+  color:#F7F7F7;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.switch button:hover {
+  text-decoration: underline;
 }
