@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import logo from '../MainPage/assets/ART_white.png';
+
 
 const SignupForm = ({onClose}) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [passwordType, setPasswordType] = useState('password')
+  const [confirmType, setConfirmType] = useState('password')
   const errors = useSelector(state => state.errors.session);
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -53,52 +57,103 @@ const SignupForm = ({onClose}) => {
     if (sessionUser) onClose();
   }
 
+  const changePasswordType = () => {
+    if (passwordType === 'password') {
+      setPasswordType('text');
+      return
+    }
+    setPasswordType('password');
+  }
+
+  const changeConfirmType = () => {
+    if (confirmType === 'password') {
+      setConfirmType('text');
+      return
+    }
+    setConfirmType('password');
+  }
+
   return (
     <div className='session-modal'>
+      <div className='welcome'>
+          <img src={logo}></img>
+          <p>Welcome to ARTifacts!</p>
+      </div>
+
       <form className="session-form" onSubmit={handleSubmit}>
-        <h2>Sign Up Form</h2>
-        <div className="errors">{errors?.email}</div>
+      <buttun className='closeForm' onClick={onClose}>
+        <i className="fa-solid fa-xmark"></i>
+      </buttun>
+
         <label>
-          <span>Email</span>
+          Email
+        </label>
           <input type="text"
             value={email}
             onChange={update('email')}
-            placeholder="Email"
+            placeholder="example@user.io"
+            className='session-input'
           />
-        </label>
-        <div className="errors">{errors?.username}</div>
+
+        <div className="errors">{errors?.email}</div>
+        
         <label>
-          <span>Username</span>
+          Username
+        </label>
           <input type="text"
             value={username}
             onChange={update('username')}
-            placeholder="Username"
+            placeholder="example"
+            className='session-input'
           />
-        </label>
-        <div className="errors">{errors?.password}</div>
+        <div className="errors">{errors?.username}</div>
+        
+        <div className='input'>
         <label>
-          <span>Password</span>
-          <input type="password"
+          Password
+        </label>
+          <input type={passwordType}
             value={password}
             onChange={update('password')}
-            placeholder="Password"
+            placeholder="******"
+            className='session-input'
           />
-        </label>
-        <div className="errors">
-          {password !== password2 && 'Confirm Password field must match'}
+          {passwordType === 'password' ?
+          <i className="fa-solid fa-eye" onClick={changePasswordType}></i> :
+          <i className="fa-solid fa-eye-slash" onClick={changePasswordType}></i>}
         </div>
+        <div className="errors">{errors?.password}</div>
+        
+        <div className='input'>
         <label>
-          <span>Confirm Password</span>
-          <input type="password"
+          Confirm Password
+        </label>
+          <input type={confirmType}
             value={password2}
             onChange={update('password2')}
-            placeholder="Confirm Password"
+            placeholder="******"
+            className='session-input'
           />
-        </label>
-        <input
+        {confirmType === 'password' ?
+        <i className="fa-solid fa-eye" onClick={changeConfirmType}></i> :
+        <i className="fa-solid fa-eye-slash" onClick={changeConfirmType}></i>}
+        </div>
+        <div className="errors" id='confirm-error'>
+          {password !== password2 && 'Confirm Password field must match'}
+        </div>
+        
+        {/* <input
           type="submit"
           value="Sign Up"
+          className='submit-form'
           disabled={!email || !username || !password || password !== password2}
+        /> */}
+
+        <input
+        type="submit"
+        value="Sign Up"
+        className='submit-form'
+        // disabled
         />
       </form>
     </div>

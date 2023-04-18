@@ -78,7 +78,7 @@ const NavBar = () => {
                     }
 
                     { signUp && (
-                        <Modal onClose={onClose} className='nodisplay'>
+                        <Modal onClose={onClose}>
                             <SignupForm onClose={onClose} />
                         </Modal>
                     )}

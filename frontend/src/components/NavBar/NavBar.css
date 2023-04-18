@@ -1,9 +1,6 @@
 body {
     background-color: #939598;
-}
-
-.nodisplay {
-    display: none;
+    font-family: 'Lora', serif;
 }
 
 #navbar {
