@@ -11,7 +11,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Map from './components/Map/Map';
 
-import { getCurrentUser } from './store/session';
+import { fetchCurrentUser } from './store/session';
 
 import './index.css';
 
@@ -19,7 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    dispatch(getCurrentUser()).then(() => setLoaded(true));
+    dispatch(fetchCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
   return loaded && (
