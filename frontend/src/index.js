@@ -7,10 +7,13 @@ import { ModalProvider } from './components/context/Modal';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import * as userActions from './store/users';
+
 const store = configureStore({});
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
+  window.userActions = userActions;
 }
 
 const Root = () => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getArtworks, getArtwork, createArtwork, updateArtwork, deleteArtwork } = require('../../controllers/artworksController')
+const { getArtworks, getArtwork, createArtwork, updateArtwork, deleteArtwork } = require('../../controllers/api/artworksController')
 
 router.get('/', getArtworks);
 

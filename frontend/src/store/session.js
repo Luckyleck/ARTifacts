@@ -6,7 +6,7 @@ const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 
 // Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
@@ -26,12 +26,6 @@ const receiveErrors = errors => ({
 export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS
 });
-
-
-export function getCurrentUser(state) {
-  return state?.session?.user ? state.session.user : null;
-}
-
 
 export const fetchCurrentUser = () => async dispatch => {
   const res = await jwtFetch('/api/users/current');
