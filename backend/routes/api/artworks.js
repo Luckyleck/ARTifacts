@@ -8,7 +8,7 @@ router.get('/', getArtworks);
 router
   .route('/:id')
   .get(getArtwork)
-  .update(updateArtwork)
+  .put(updateArtwork)
   .delete(deleteArtwork)
 ;
 
