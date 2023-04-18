@@ -14,6 +14,12 @@ const getArtwork = async (req, res) => {
   res.status(200).json(artwork);
 }
 
+const createArtwork = async (req, res) => {
+  const artwork = await Artwork.create({ ...req.body });
+  if (!artwork) return res.status(400).json({ error: "Couldn't create artwork" });
+  res.status(200).json(artwork);
+}
+
 const updateArtwork = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such artwork' });
@@ -33,6 +39,7 @@ const deleteArtwork = async (req, res) => {
 module.exports = {
   getArtworks,
   getArtwork,
+  createArtwork,
   updateArtwork,
   deleteArtwork
 }

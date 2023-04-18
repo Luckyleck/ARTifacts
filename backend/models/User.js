@@ -23,10 +23,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],
-  favorites: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Artwork'
-  }]
+  favorites: [{}]
 }, {
   timestamps: true
 });
