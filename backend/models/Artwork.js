@@ -6,7 +6,15 @@ const artworkSchema = new Schema({
     type: String,
     required: true
   },
+  artist: {
+    type: String,
+    required: true
+  },
   description: {
+    type: String,
+    required: true
+  },
+  culture: {
     type: String,
     required: true
   },
