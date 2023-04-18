@@ -9,6 +9,7 @@ const SignupForm = ({onClose}) => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,56 +50,58 @@ const SignupForm = ({onClose}) => {
     };
 
     dispatch(signup(user)); 
-    onClose();
+    if (sessionUser) onClose();
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Sign Up Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
+    <div className='session-modal'>
+      <form className="session-form" onSubmit={handleSubmit}>
+        <h2>Sign Up Form</h2>
+        <div className="errors">{errors?.email}</div>
+        <label>
+          <span>Email</span>
+          <input type="text"
+            value={email}
+            onChange={update('email')}
+            placeholder="Email"
+          />
+        </label>
+        <div className="errors">{errors?.username}</div>
+        <label>
+          <span>Username</span>
+          <input type="text"
+            value={username}
+            onChange={update('username')}
+            placeholder="Username"
+          />
+        </label>
+        <div className="errors">{errors?.password}</div>
+        <label>
+          <span>Password</span>
+          <input type="password"
+            value={password}
+            onChange={update('password')}
+            placeholder="Password"
+          />
+        </label>
+        <div className="errors">
+          {password !== password2 && 'Confirm Password field must match'}
+        </div>
+        <label>
+          <span>Confirm Password</span>
+          <input type="password"
+            value={password2}
+            onChange={update('password2')}
+            placeholder="Confirm Password"
+          />
+        </label>
+        <input
+          type="submit"
+          value="Sign Up"
+          disabled={!email || !username || !password || password !== password2}
         />
-      </label>
-      <div className="errors">{errors?.username}</div>
-      <label>
-        <span>Username</span>
-        <input type="text"
-          value={username}
-          onChange={update('username')}
-          placeholder="Username"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
-      </div>
-      <label>
-        <span>Confirm Password</span>
-        <input type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Sign Up"
-        disabled={!email || !username || !password || password !== password2}
-      />
-    </form>
+      </form>
+    </div>
   );
 }
 

@@ -2,6 +2,10 @@ body {
     background-color: #939598;
 }
 
+.nodisplay {
+    display: none;
+}
+
 #navbar {
     /* position: fixed; */
     top: 0;
