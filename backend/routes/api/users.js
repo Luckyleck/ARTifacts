@@ -5,7 +5,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const { loginUser, restoreUser } = require('../../config/passport');
-const { getUsers, getUser, updateUser, deleteUser, follow, unfollow } = require('../../controllers/usersController')
+const { getUsers, getUser, updateUser, deleteUser } = require('../../controllers/usersController')
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
