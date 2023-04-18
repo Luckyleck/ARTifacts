@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
-import { signup, clearSessionErrors } from '../../store/session';
+import { signup, clearSessionErrors, login } from '../../store/session';
 import logo from '../MainPage/assets/ART_white.png';
 import { Modal } from '../context/Modal';
 import LoginForm from './LoginForm';
 
 
-const SignupForm = ({onClose}) => {
+const SessionForm = ({onClose, formType}) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [passwordType, setPasswordType] = useState('password');
   const [confirmType, setConfirmType] = useState('password');
-  const [showModal, setShowModal] = useState(false);
   const errors = useSelector(state => state.errors.session);
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const [form, setForm] = useState(formType)
 
   useEffect(() => {
     if (sessionUser) {
@@ -26,7 +26,7 @@ const SignupForm = ({onClose}) => {
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [onClose, dispatch]);
+  }, [onClose, dispatch, form]);
 
   const update = field => {
     let setState;
@@ -51,7 +51,7 @@ const SignupForm = ({onClose}) => {
     return e => setState(e.currentTarget.value);
   }
 
-  const handleSubmit = e => {
+  const handleSignupSubmit = e => {
     e.preventDefault();
     const user = {
       email,
@@ -60,6 +60,12 @@ const SignupForm = ({onClose}) => {
     };
 
     dispatch(signup(user)); 
+    if (sessionUser) onClose();
+  }
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password })); 
     if (sessionUser) onClose();
   }
 
@@ -79,31 +85,43 @@ const SignupForm = ({onClose}) => {
     setConfirmType('password');
   }
 
-  const openModal = () => {
-    onClose();
-    setShowModal(true);
+  const switchSignInForm = () => {
+    setForm('signin');
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setPassword2('');
+    setPasswordType('password');
+    setConfirmType('password');
   }
 
+  const switchSignUpForm = () => {
+    setForm('signup');
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setPassword2('');
+    setPasswordType('password');
+    setConfirmType('password');
+  }
 
   return (
     <div className='session-modal'>
       <div className='welcome'>
           <img src={logo} alt='logo' />
           <p>Welcome to ARTifacts!</p>
-          <h3 className='switch'>Already have an account? <button onClick={openModal}>log in</button></h3>
+          { form === 'signup' ? (
+          <h3 className='switch'>Already have an account? <button onClick={switchSignInForm}>Log in</button></h3>):
+          <h3 className='switch'>Don't have an account yet? <button onClick={switchSignUpForm}>Sign up</button></h3>}
       </div>
 
-      {showModal && (
-        <Modal onClose={onClose}>
-          <LoginForm onClose={onClose} />
-        </Modal>
-      )}
-
-      <form className="session-form" onSubmit={handleSubmit}>
+      {form === 'signup' ? (
+      <form className="session-form" onSubmit={handleSignupSubmit}>
       <button className='closeForm' onClick={onClose}>
         <i className="fa-solid fa-xmark"></i>
       </button>
 
+        
         <label>
           Email
         </label>
@@ -181,9 +199,54 @@ const SignupForm = ({onClose}) => {
         id='allow-submit'
         />
         }
-      </form>
+      </form>) : (
+               <form className="session-form" onSubmit={handleLoginSubmit}>
+               <button className='closeForm' onClick={onClose}>
+                   <i className="fa-solid fa-xmark"></i>
+               </button>
+               
+               <label>
+                   Email
+               </label>
+       
+                   <input type="text"
+                   value={email}
+                   onChange={update('email')}
+                   placeholder="Email"
+                   className='session-input'
+                   />
+       
+               <div className="errors">{errors?.email}</div>
+               
+               <label>
+                   Password
+               </label>
+                   <input type="password"
+                   value={password}
+                   onChange={update('password')}
+                   placeholder="Password"
+                   className='session-input'
+                   />
+               
+               <div className="errors">{errors?.password}</div>
+       
+               { !email || !password ?
+               <input
+                   type="submit"
+                   value="Log In"
+                   className='submit-form'
+               /> : 
+               <input
+                   type="submit"
+                   value="Log In"
+                   className='submit-form'
+                   id='allow-submit'
+               />}
+       
+               </form>
+      )}
     </div>
   );
 }
 
-export default SignupForm;
+export default SessionForm;

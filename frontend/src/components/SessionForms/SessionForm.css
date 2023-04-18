@@ -149,10 +149,15 @@
 }
 
 .switch button {
-  padding-top: 15px;
+  padding-top: 40px;
   font-size: 12px;
   color:#F7F7F7;
   outline: none;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.switch button:hover {
+  text-decoration: underline;
 }
