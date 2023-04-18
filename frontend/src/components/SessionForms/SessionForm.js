@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors, login } from '../../store/session';
 import logo from '../MainPage/assets/ART_white.png';
-import { Modal } from '../context/Modal';
-import LoginForm from './LoginForm';
 
 
 const SessionForm = ({onClose, formType}) => {

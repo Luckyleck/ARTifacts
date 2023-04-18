@@ -1,4 +1,5 @@
 import jwtFetch from './jwt';
+import { receiveCurrentUser } from './session';
 
 
 const RECEIVE_USERS = 'users/RECEIVE_USERS';
@@ -27,6 +28,10 @@ function removeUser(userId) {
 }
 
 
+export function getCurrentUser(state) {
+  return state?.session?.user ? state.session.user : null;
+}
+
 export function getUsers(state) {
   return state?.users ? Object.values(state.users) : [];
 }
@@ -43,6 +48,10 @@ export function getFollowers(userId) {
   return state => state?.users?.[userId] ? state.users[userId].followers : [];
 }
 
+export function getFavorites(userId) {
+  return state => state?.users?.[userId] ? state.users[userId].favorites: [];
+}
+
 
 export function fetchUsers() {
   return (async (dispatch) => {
@@ -55,9 +64,77 @@ export function fetchUsers() {
   });
 }
 
-export function fetchUser(user) {
+export function fetchRandomUsers(num) {
   return (async (dispatch) => {
-    const response = await jwtFetch(`/api/user/${user._id}`);
+    const response = await jwtFetch(`/api/users/random/${num}`);
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveUsers(data));
+    }
+  });
+}
+
+export function follow(currentUser, targetUser) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/users/follow`, {
+      method: 'POST',
+      body: JSON.stringify({ currentUser, targetUser, action: 'follow' })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveCurrentUser(data.currentUser));
+      dispatch(receiveUser(data.targetUser));
+    }
+  });
+}
+
+export function unfollow(currentUser, targetUser) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/users/follow`, {
+      method: 'POST',
+      body: JSON.stringify({ currentUser, targetUser, action: 'unfollow' })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveCurrentUser(data.currentUser));
+      dispatch(receiveUser(data.targetUser));    }
+  });
+}
+
+export function favorite(currentUser, artwork) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/users/favorite`, {
+      method: 'POST',
+      body: JSON.stringify({ currentUser, artwork, action: 'favorite' })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveCurrentUser(data));
+    }
+  });
+}
+
+export function unfavorite(currentUser, artwork) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/users/favorite`, {
+      method: 'POST',
+      body: JSON.stringify({ currentUser, artwork, action: 'unfavorite' })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveCurrentUser(data));
+    }
+  });
+}
+
+export function fetchUser(userId) {
+  return (async (dispatch) => {
+    const response = await jwtFetch(`/api/user/${userId}`);
 
     if (response.ok) {
       const data = await response.json();
