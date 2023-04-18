@@ -95,7 +95,7 @@ export function deleteUser(userId) {
 }
 
 
-export default function usersReducer() {
+export default function usersReducer(slice = {}, action) {
   switch (action.type) {
     case RECEIVE_USERS:
       return { ...action.users };
