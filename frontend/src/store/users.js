@@ -79,7 +79,7 @@ export function follow(currentUser, targetUser) {
   return (async (dispatch) => {
     const response = await jwtFetch(`/api/users/follow`, {
       method: 'POST',
-      body: JSON.stringify(currentUser, targetUser, 'follow')
+      body: JSON.stringify({ currentUser, targetUser, action: 'follow' })
     });
 
     if (response.ok) {
@@ -94,7 +94,7 @@ export function unfollow(currentUser, targetUser) {
   return (async (dispatch) => {
     const response = await jwtFetch(`/api/users/follow`, {
       method: 'POST',
-      body: JSON.stringify(currentUser, targetUser, 'unfollow')
+      body: JSON.stringify({ currentUser, targetUser, action: 'unfollow' })
     });
 
     if (response.ok) {
@@ -108,7 +108,7 @@ export function favorite(currentUser, artwork) {
   return (async (dispatch) => {
     const response = await jwtFetch(`/api/users/favorite`, {
       method: 'POST',
-      body: JSON.stringify(currentUser, artwork, 'favorite')
+      body: JSON.stringify({ currentUser, artwork, action: 'favorite' })
     });
 
     if (response.ok) {
@@ -122,7 +122,7 @@ export function unfavorite(currentUser, artwork) {
   return (async (dispatch) => {
     const response = await jwtFetch(`/api/users/favorite`, {
       method: 'POST',
-      body: JSON.stringify(currentUser, artwork, 'unfavorite')
+      body: JSON.stringify({ currentUser, artwork, action: 'unfavorite' })
     });
 
     if (response.ok) {
