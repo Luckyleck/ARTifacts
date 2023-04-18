@@ -1,21 +1,19 @@
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import ProfileDropdown from './ProfileDropdown/ProfileDropdown';
 import './NavBar.css';
 import { useState } from 'react';
 import logo from './assets/ART.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
-import SignupForm from '../SessionForms/SignupForm';
-import LoginForm from '../SessionForms/LoginForm';
+import SessionForm from '../SessionForms/SessionForm';
 import { logout } from '../../store/session';
+import profile from './assets/pikachu.png';
 
 const NavBar = () => {
 
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation();
     const sessionUser = useSelector(state => state.session.user);
-    const [signUp, setSignUp] = useState(false);
-    const [signIn, setSignIn] = useState(false);
+    const [sessionForm, setSessionForm] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
     
@@ -28,8 +26,8 @@ const NavBar = () => {
     };
 
     const onClose = () => {
-        setSignUp(false);
-        setSignIn(false);
+        setSessionForm(false);
+        // setSignIn(false);
     }
 
     const logoutUser = () => {
@@ -54,8 +52,8 @@ const NavBar = () => {
                     )}
 
                     { sessionUser && (
-                    <div className='profile-drop-button'>
-                        ProfilePic
+                    <div className='profile-drop-button' id='profile-pic-button'>
+                        <div className='pic'><img src={profile} alt='profile' /></div>
                     </div>)}
                     { showMenu && sessionUser && (
                     <ul className='dropdown-items'>
@@ -67,27 +65,27 @@ const NavBar = () => {
 
                     { !sessionUser && location.pathname !== '/' &&
                         <div className='profile-drop-button' id='session-buttons'>
-                            <button className='about' onClick={() => setSignUp(true)}>
+                            <button className='about' onClick={() => setSessionForm('signup')}>
                                 Sign up
                             </button>
 
-                            <button className='about' onClick={() => setSignIn(true)}>
+                            <button className='about' onClick={() => setSessionForm('signin')}>
                                 Sign in
                             </button>
                         </div>
                     }
 
-                    { signUp && (
+                    { (sessionForm === 'signup' || sessionForm === 'signin') && (
                         <Modal onClose={onClose}>
-                            <SignupForm onClose={onClose} />
+                            <SessionForm onClose={onClose} formType={sessionForm}/>
                         </Modal>
                     )}
 
-                    { signIn && (
+                    {/* { signIn && (
                         <Modal onClose={onClose}>
                             <LoginForm onClose={onClose} />
                         </Modal>
-                    )}
+                    )} */}
                 </div>
             </div>
 
@@ -100,45 +98,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-
-
-
-// import { Link } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import './NavBar.css';
-// import { logout } from '../../store/session';
-
-// export default function NavBar() {
-//   const dispatch = useDispatch();
-//   const loggedIn = useSelector(state => !!state.session.user);
-
-//   const logoutUser = e => {
-//       e.preventDefault();
-//       dispatch(logout());
-//   }
-
-//   const getLinks = () => {
-//     if (loggedIn) {
-//       return (
-//         <div className="links-nav">
-//           <button onClick={logoutUser}>Logout</button>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div className="links-auth">
-//           <Link to={'/signup'}>Signup</Link>
-//           <Link to={'/login'}>Login</Link>
-//         </div>
-//       );
-//     }
-//   }
-
-//   return (
-//     <>
-//       {/* <h1>ARTiFacts</h1> */}
-//       { getLinks() }
-//     </>
-//   );
-// }

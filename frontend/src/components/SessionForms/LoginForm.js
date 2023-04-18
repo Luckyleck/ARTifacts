@@ -9,13 +9,17 @@ const LoginForm = ({onClose}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (sessionUser) {
+        onClose();
+    }
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [dispatch]);
+  }, [onClose, dispatch]);
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -25,19 +29,19 @@ const LoginForm = ({onClose}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })); 
-    onClose();
+    if (!sessionUser) onClose();
   }
 
   return (
     <div className='session-modal'>
     <div className='welcome'>
-        <img src={logo}></img>
+        <img src={logo} alt='logo' />
         <p>Welcome to ARTifacts!</p>
     </div>
         <form className="session-form" onSubmit={handleSubmit}>
-        <buttun className='closeForm' onClick={onClose}>
+        <button className='closeForm' onClick={onClose}>
             <i className="fa-solid fa-xmark"></i>
-        </buttun>
+        </button>
         
         <label>
             Email
@@ -64,12 +68,19 @@ const LoginForm = ({onClose}) => {
         
         <div className="errors">{errors?.password}</div>
 
+        { !email || !password ?
         <input
             type="submit"
             value="Log In"
-            disabled={!email || !password}
             className='submit-form'
-        />
+        /> : 
+        <input
+            type="submit"
+            value="Log In"
+            className='submit-form'
+            id='allow-submit'
+        />}
+
         </form>
     </div>
   );
