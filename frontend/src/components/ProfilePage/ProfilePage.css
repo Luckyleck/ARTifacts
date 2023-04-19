@@ -57,7 +57,7 @@
 }
 
 .move-left {
-    animation: move-left 1s;
+    animation: move-left 2s;
     transform: translateX(-520px);
 }
 
@@ -146,8 +146,13 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    right: -40%;
+    right: -48%;
     animation: blink 2s linear infinite;
+}
+
+.expand-favorite p {
+    color: #F7F7F7;
+    font-size: 20px;
 }
 
 
