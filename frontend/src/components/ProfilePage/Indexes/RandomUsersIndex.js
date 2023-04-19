@@ -7,8 +7,11 @@ import RandomUsersIndexItem from "../IndexItems/RandomUsersIndexItem";
 export default function RandomUsersIndex() {
   const dispatch = useDispatch();
   const { userId } = useParams();
-  useEffect(() => {dispatch(fetchRandomUsers(5))}, [dispatch, userId]);
   const randomUsers = useSelector(getUsers);
+
+  useEffect(() => {
+    dispatch(fetchRandomUsers(5))
+  }, [dispatch, userId]);
 
   return (
     <div>
