@@ -78,7 +78,7 @@ function Map() {
       <div className="art-display-container">
         <FavoriteButton artwork={randomArtwork} />
         <h2>{randomArtwork?.culture}</h2>
-        <button onClick={() => setClicked(false )}>&times;</button> 
+        <button onClick={() => setClicked(false)}>&times;</button> 
         <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
         {console.log(randomArtwork)}
       </div>

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { getUser } from '../../../store/users';
-import FollowsIndexItem from "../IndexItems/FollowsIndexItem";
+import FollowsIndexItem from '../IndexItems/FollowsIndexItem';
 
 export default function FollowsIndex() {
   const { userId } = useParams();
@@ -9,7 +9,7 @@ export default function FollowsIndex() {
 
   return (
     <div>
-      {`${user?.username}'s Follows`}
+      {`${user?.username}'s follows`}
       <ul>
         {user?.follows.map((follow) => (
           <FollowsIndexItem

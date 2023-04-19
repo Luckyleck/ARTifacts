@@ -7,6 +7,7 @@ import FollowersIndex from './Indexes/FollowersIndex';
 import FollowsIndex from './Indexes/FollowsIndex';
 import RandomUsersIndex from './Indexes/RandomUsersIndex';
 import FollowButton from './Buttons/FollowButton';
+import FavoritesIndex from './Indexes/FavoritesIndex';
 
 import './ProfilePage.css'
 
@@ -45,7 +46,7 @@ export default function ProfilePage() {
     
     return (
         <>
-            <div>
+            {/* <div>
                 <FollowButton />
                 <br />
                 <RandomUsersIndex />
@@ -53,7 +54,9 @@ export default function ProfilePage() {
                 <FollowsIndex />
                 <br />
                 <FollowersIndex />
-            </div>
+                <br />
+                <FavoritesIndex />
+            </div> */}
             
             <div className='profile-container'>
                 <div className='profile-card'>
