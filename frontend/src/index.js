@@ -4,19 +4,16 @@ import './index.css';
 import App from './App';
 import configureStore from './store/store';
 import { ModalProvider } from './components/context/Modal';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import * as userActions from './store/users';
-
-const store = configureStore({});
+const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
-  window.userActions = userActions;
 }
 
-const Root = () => {
+function Root() {
   return (
     <ModalProvider>
       <Provider store={store}>
@@ -30,8 +27,9 @@ const Root = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-  root.render(
-    <React.StrictMode>
-      <Root />
-    </React.StrictMode>
-  );
+root.render(
+  <Root />
+    // <React.StrictMode>
+    //   <Root />
+    // </React.StrictMode>
+);

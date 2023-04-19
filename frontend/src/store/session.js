@@ -33,44 +33,34 @@ export const fetchCurrentUser = () => async dispatch => {
   return dispatch(receiveCurrentUser(user));
 };
 
-export function updateCurrentUser(user) {
-  return (async (dispatch) => {
-    const response = await jwtFetch(`/api/user/${user._id}`, {
-      method: 'PUT',
-      body: JSON.stringify(user)
-    });
+export const signup = user => startSession(user, 'api/users/register');
+export const login = user => startSession(user, 'api/users/login');
 
-    if (response.ok) {
-      const data = await response.json();
-      dispatch(receiveCurrentUser(data))
+function startSession(userInfo, route) {
+  return (async (dispatch) => {
+    try {  
+      const res = await jwtFetch(route, {
+        method: "POST",
+        body: JSON.stringify(userInfo)
+      });
+      const { user, token } = await res.json();
+      localStorage.setItem('jwtToken', token);
+      return dispatch(receiveCurrentUser(user));
+    } catch(err) {
+      const res = await err.json();
+      if (res.statusCode === 400) {
+        return dispatch(receiveErrors(res.errors));
+      }
     }
   });
 }
 
-export const signup = user => startSession(user, 'api/users/register');
-export const login = user => startSession(user, 'api/users/login');
-
-const startSession = (userInfo, route) => async dispatch => {
-  try {  
-    const res = await jwtFetch(route, {
-      method: "POST",
-      body: JSON.stringify(userInfo)
-    });
-    const { user, token } = await res.json();
-    localStorage.setItem('jwtToken', token);
-    return dispatch(receiveCurrentUser(user));
-  } catch(err) {
-    const res = await err.json();
-    if (res.statusCode === 400) {
-      return dispatch(receiveErrors(res.errors));
-    }
-  }
-};
-
-export const logout = () => dispatch => {
-  localStorage.removeItem('jwtToken');
-  dispatch(logoutUser());
-};
+export function logout() {
+  return ((dispatch) => {
+    localStorage.removeItem('jwtToken');
+    dispatch(logoutUser());
+  });
+}
 
 const initialSlice = { user: undefined };
 

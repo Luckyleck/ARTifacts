@@ -9,7 +9,6 @@ import { logout } from '../../store/session';
 import profile from './assets/pikachu.png';
 
 const NavBar = () => {
-
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation();
     const sessionUser = useSelector(state => state.session.user);
@@ -44,26 +43,28 @@ const NavBar = () => {
                     </NavLink>
                 </div>
                 <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
-                    { location.pathname === '/' &&  !sessionUser && (
+                    {location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>
                             <button className='about'>About Artifacts</button>
                             <button className='about'>Contact Us</button>
                         </div>
                     )}
 
-                    { sessionUser && (
-                    <div className='profile-drop-button' id='profile-pic-button'>
-                        <div className='pic'><img src={profile} alt='profile' /></div>
-                    </div>)}
-                    { showMenu && sessionUser && (
-                    <ul className='dropdown-items'>
-                        <li>Your profile</li>
-                        <li>Favorite</li>
-                        <li onClick={logoutUser}>Sign out</li>
-                    </ul>
+                    {sessionUser && (
+                        <div className='profile-drop-button' id='profile-pic-button'>
+                            <div className='pic'><img src={profile} alt='profile' /></div>
+                        </div>
                     )}
 
-                    { !sessionUser && location.pathname !== '/' &&
+                    {showMenu && sessionUser && (
+                        <ul className='dropdown-items'>
+                            <li><NavLink to={`/${sessionUser._id}`}>Your profile</NavLink></li>
+                            <li>Favorite</li>
+                            <li onClick={logoutUser}>Sign out</li>
+                        </ul>
+                    )}
+
+                    {!sessionUser && location.pathname !== '/' &&
                         <div className='profile-drop-button' id='session-buttons'>
                             <button className='about' onClick={() => setSessionForm('signup')}>
                                 Sign up
@@ -75,7 +76,7 @@ const NavBar = () => {
                         </div>
                     }
 
-                    { (sessionForm === 'signup' || sessionForm === 'signin') && (
+                    {(sessionForm === 'signup' || sessionForm === 'signin') && (
                         <Modal onClose={onClose}>
                             <SessionForm onClose={onClose} formType={sessionForm}/>
                         </Modal>
@@ -95,7 +96,6 @@ const NavBar = () => {
                 }
                 
             </div>
-
         </header>
     )
 }
