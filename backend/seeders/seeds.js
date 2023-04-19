@@ -23,7 +23,8 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   const randomSeed = faker.random.alphaNumeric(5);
   users.push(
     new User({
-      username: faker.internet.userName(firstName, lastName),
+      // username: faker.internet.userName(firstName, lastName),
+      username: `${firstName} ${lastName}`,
       email: faker.internet.email(firstName, lastName),
       hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
       profilePic: `https://picsum.photos/seed/${randomSeed}/400/400`
