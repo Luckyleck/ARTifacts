@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Slider, { Range } from 'rc-slider';
 import "./Map.css";
 
 function Map() {
