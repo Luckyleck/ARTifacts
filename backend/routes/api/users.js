@@ -107,9 +107,4 @@ router
   .delete(deleteUser)
 ;
 
-router.param('id', (req, res, next, id) => {
-  console.log(id);
-  next();
-});
-
 module.exports = router;

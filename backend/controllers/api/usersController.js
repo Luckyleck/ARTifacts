@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
-const getUsers = async (req, res) => {
+async function getUsers(req, res) {
   const users = await User.find({}).sort({ createdAt: -1 });
   users.forEach((user) => {
-    user.populate('following');
+    user.populate('follows');
     user.populate('followers');
     user.populate('favorites');
   });
@@ -13,12 +13,17 @@ const getUsers = async (req, res) => {
 
 async function getRandomUsers(req, res) {
   const { num } = req.params;
-  const users = await User.aggregate([{ $sample: { size: num } }]);
-  users.forEach((user) => {
-    user.populate('following');
-    user.populate('followers');
-    user.populate('favorites');
-  });
+  const users = await User.aggregate([{ $sample: { size: parseInt(num) } }]).exec();
+  for (const user of users) {
+    const populatedUser = await User
+      .findById(user._id)
+      .populate('follows')
+      .populate('followers')
+      .populate('favorites')
+      .exec()
+    ;
+    Object.assign(user, populatedUser._doc);
+  }
   res.status(200).json(users);
 }
 
@@ -29,13 +34,13 @@ async function follow(req, res) {
     switch(action) {
       case 'follow':
         [updatedCurrentUser, updatedTargetUser] = await Promise.all([ 
-          User.findByIdAndUpdate(currentUser, { $addToSet: { following: targetUser } }, { new: true }),
+          User.findByIdAndUpdate(currentUser, { $addToSet: { follows: targetUser } }, { new: true }),
           User.findByIdAndUpdate(targetUser, { $addToSet: { followers: currentUser } }, { new: true })
         ]);
         break;
       case 'unfollow':
         [updatedCurrentUser, updatedTargetUser] = await Promise.all([ 
-          User.findByIdAndUpdate(currentUser, { $pull: { following: targetUser._id } }, { new: true }),
+          User.findByIdAndUpdate(currentUser, { $pull: { follows: targetUser._id } }, { new: true }),
           User.findByIdAndUpdate(targetUser, { $pull: { followers: currentUser._id } }, { new: true })
         ]); 
         break;
@@ -72,18 +77,18 @@ async function favorite(req, res) {
   }
 }
 
-const getUser = async (req, res) => {
+async function getUser(req, res) {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
   const user = await User.findById(id);
   if (!user) return res.status(400).json({ error: 'No such user' });
-  user.populate('following');
+  user.populate('follows');
   user.populate('followers');
   user.populate('favorites');
   res.status(200).json(user);
 }
 
-const updateUser = async (req, res) => {
+async function updateUser(req, res) {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
   const user = await User.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true });
@@ -91,7 +96,7 @@ const updateUser = async (req, res) => {
   res.status(200).json(user);
 }
 
-const deleteUser = async (req, res) => {
+async function deleteUser(req, res) {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
   const user = await User.findOneAndDelete({ _id: id });

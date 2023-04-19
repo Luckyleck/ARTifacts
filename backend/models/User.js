@@ -15,7 +15,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  following: [{
+  follows: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],
@@ -27,21 +27,5 @@ const userSchema = new Schema({
 }, {
   timestamps: true
 });
-
-userSchema.methods.addFollower = function() {
-  console.log('add friend function');
-}
-
-userSchema.methods.removeFollower = function() {
-  console.log('remove friend function');
-}
-
-userSchema.methods.addFavorite = function() {
-  console.log('add favorite function');
-}
-
-userSchema.methods.removeFavorite = function() {
-  console.log('remove favorite function');
-}
 
 module.exports = mongoose.model('User', userSchema);
