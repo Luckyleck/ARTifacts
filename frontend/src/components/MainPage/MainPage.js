@@ -12,6 +12,7 @@ import scream from './assets/The_scream.jpeg';
 import mg from './assets/mg.jpeg';
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import bg from './assets/bg.jpeg'
 
 function MainPage() {
   const [start, setStart] = useState(false);
@@ -34,7 +35,7 @@ function MainPage() {
 
         <div className='explore' onClick={() => history.push('/explore')}>
           <img src={logo} alt='logo' />
-          <p>CLICK LOGO TO ENTER</p>
+          <p>CLICK HERE TO ENTER</p>
         </div>
       </>
     );

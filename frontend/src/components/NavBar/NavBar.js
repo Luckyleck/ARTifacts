@@ -91,7 +91,10 @@ const NavBar = () => {
             </div>
 
             <div className='nav-buttons' id='test'>
+                { location.pathname === '/' ? <div>ARTifacts</div> :
                 <div>Test</div>
+                }
+                
             </div>
         </header>
     )
