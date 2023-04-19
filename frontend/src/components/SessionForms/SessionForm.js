@@ -115,7 +115,7 @@ const SessionForm = ({onClose, formType}) => {
 
       {form === 'signup' ? (
       <form className="session-form">
-      <button className='closeForm' onClick={onClose}>
+      <button type='button' className='closeForm' onClick={onClose}>
         <i className="fa-solid fa-xmark"></i>
       </button>
 
@@ -189,6 +189,7 @@ const SessionForm = ({onClose, formType}) => {
         type="submit"
         className='submit-form'
         onClick={handleSignupSubmit}
+        disabled
         >Sign Up</button> :
         <button
         type="submit"
@@ -199,7 +200,7 @@ const SessionForm = ({onClose, formType}) => {
         }
       </form>) : (
                <form className="session-form">
-               <button className='closeForm' onClick={onClose}>
+               <button type='button' className='closeForm' onClick={onClose}>
                    <i className="fa-solid fa-xmark"></i>
                </button>
                
@@ -234,6 +235,7 @@ const SessionForm = ({onClose, formType}) => {
                    value="Log In"
                    className='submit-form'
                    onClick={handleLoginSubmit}
+                   disabled
                 >Log In</button> : 
                <button
                    type="submit"
