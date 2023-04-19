@@ -24,11 +24,12 @@ router.get('/current', restoreUser, (req, res) => {
     res.cookie("CSRF-TOKEN", csrfToken);
   }
   if (!req.user) return res.json(null);
-  res.json({
-    _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email
-  });
+  // res.json({
+  //   _id: req.user._id,
+  //   username: req.user.username,
+  //   email: req.user.email
+  // });
+  res.json(req.user);
 });
 
 // Attach validateRegisterInput as a middleware before the route handler
