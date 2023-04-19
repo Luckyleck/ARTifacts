@@ -1,0 +1,35 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-118.2437, 34.0522]
+        },
+        "properties": {
+          "name": "Los Angeles"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-87.6298, 41.8781]
+        },
+        "properties": {
+          "name": "Chicago"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-74.0059, 40.7128]
+        },
+        "properties": {
+          "name": "New York"
+        }
+      }
+    ]
+  }
