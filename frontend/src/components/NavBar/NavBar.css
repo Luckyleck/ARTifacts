@@ -110,7 +110,10 @@ body {
 
 #test {
     position: absolute;
-    left: 49.2%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 20px;
+    color: #58595c;
 }
 
 .about-us, .profile-drop-button {

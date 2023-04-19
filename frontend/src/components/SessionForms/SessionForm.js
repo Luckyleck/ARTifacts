@@ -67,6 +67,11 @@ const SessionForm = ({onClose, formType}) => {
     if (sessionUser) onClose();
   }
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(login({email: 'demo-user@appacademy.io', password: 'starwars'}))
+  }
+
   const changePasswordType = () => {
     if (passwordType === 'password') {
       setPasswordType('text');
@@ -239,11 +244,16 @@ const SessionForm = ({onClose, formType}) => {
                 >Log In</button> : 
                <button
                    type="submit"
-                   className='submit-form'
-                   id='allow-submit'
+                   className='submit-form allow-submit'
                    onClick={handleLoginSubmit}
                >Log In</button>}
-       
+              
+              <button
+                    type="submit"
+                    className='submit-form allow-submit'
+                    id='demo-login'
+                    onClick={demoLogin}
+               >Demo Login</button>
                </form>
       )}
     </div>
