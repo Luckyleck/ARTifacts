@@ -34,6 +34,10 @@ const NavBar = () => {
         history.push('/')
     }
 
+    const toProfile = () => {
+        history.push(`/${sessionUser._id}`)
+    }
+
     return (
         <header id='navbar'>
             <div id='nav-container'>
@@ -58,7 +62,7 @@ const NavBar = () => {
 
                     {showMenu && sessionUser && (
                         <ul className='dropdown-items'>
-                            <li><NavLink to={`/${sessionUser._id}`}>Your profile</NavLink></li>
+                            <li onClick={toProfile}>Your profile</li>
                             <li>Favorite</li>
                             <li onClick={logoutUser}>Sign out</li>
                         </ul>

@@ -1,4 +1,4 @@
-import FollowsIndexItem from "../IndexItems/FollowsIndexItem";
+import FollowsIndexItem from "../IndexItems/followsIndexItem";
 
 export default function FollowsIndex({ user }) {
   return (
