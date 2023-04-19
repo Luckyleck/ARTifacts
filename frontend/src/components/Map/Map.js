@@ -32,13 +32,13 @@ function Map() {
     };
 
     if (createdAfter) {
-      debugger
       params = {
         ...params,
         created_after: createdAfter,
         created_before: formattedYear(createdAfter)
       };
     }
+    console.log(createdAfter)
 
     fetch(`${url}?${new URLSearchParams(params)}`)
       .then((response) => response.json())
@@ -71,13 +71,11 @@ function Map() {
   function handleRandomImage() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
-    console.log(randomArtwork)
     return randomArtwork && (
       <div className="art-display-container">
         <h2>{randomArtwork?.culture}</h2>
         <button onClick={() => setClicked(false )}>&times;</button> 
         <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
-        {console.log(randomArtwork)}
       </div>
     );
   }
@@ -103,7 +101,6 @@ function Map() {
 
   function onEachCountry(country, layer) {
     const countryName = country.properties.ADMIN
-    console.log(countryName)
     layer.bindPopup(countryName);
 
     const colors = ["green", "yellow", "red", "orange", "purple", "brown"]
@@ -131,12 +128,12 @@ function Map() {
   return (
     <>
       <div className="test-wrapper">
-
-        <select onChange={(e) => {
+        <input className="slider" type="range" min="500" max="1900" step="100" />
+        {/* <select onChange={(e) => {
           setCreatedAfter(e.target.value);
-          setCreatedBefore(parseInt(e.target.value + 99))
-        }
-        }>
+          setCreatedBefore(parseInt(e.target.value + 99));
+          console.log(createdAfter)
+        }}>
           <option value="">All Time</option>
           <option value="500">500s</option>
           <option value="600">600s</option>
@@ -153,8 +150,7 @@ function Map() {
           <option value="1700">1700s</option>
           <option value="1800">1800s</option>
           <option value="1900">1900s</option>
-        </select>
-        
+        </select> */}
       </div>
       <div className="our-map-container">
       <MapContainer
