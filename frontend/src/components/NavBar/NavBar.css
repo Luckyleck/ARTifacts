@@ -13,6 +13,7 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.6);
     box-sizing: border-box;
     align-items: center;
+    z-index: 100;
 }
 
 #nav-container {
@@ -79,7 +80,7 @@ body {
     width: 170px;
     font-size: 100%;
     display: block;
-    z-index: 1;
+    z-index: 5;
     /* margin-top: 16px; */
 }
 
