@@ -24,12 +24,12 @@ function Map() {
   function handleCountryClick(countryName) {
 
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
-    let params = {
-      q: countryName,
-      skip: 0,
-      limit: 500,
-      has_image: 1,
-    };
+    // let params = {
+    //   q: countryName,
+    //   skip: 0,
+    //   limit: 500,
+    //   has_image: 1,
+    // };
     console.log('before')
     console.log(createdAfter)
     if (createdAfter) {
@@ -151,8 +151,8 @@ function Map() {
         <option value="1900">1900s</option>
       </select> */}
       </div>
-      <div className="our-map-container">
-      <MapContainer
+      {/* <div className="our-map-container"> */}
+        <MapContainer
           className="our-map"
           zoom={3}
           center={[0,0]}
@@ -167,9 +167,9 @@ function Map() {
             onEachFeature={onEachCountry}
           />
         </MapContainer>
-      </div>
-      {clicked && handleRandomImage()}
+      {/* </div> */}
       <div>
+      {clicked && handleRandomImage()}
         <input className="slider" type="range" min="500" max="1900" step="100" list="values" onChange={(e) => setCreatedAfter(e.target.value)}/>
         {console.log(createdAfter)}
         <datalist id="values">

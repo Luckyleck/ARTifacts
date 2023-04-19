@@ -6,8 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
-import Map from './components/Map/Map';
-import WorldMap from './components/WorldMap/WorldMap';
+// import Map from './components/Map/Map';
+import RebuiltMap from './components/RebuiltMap/RebuiltMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import { fetchCurrentUser } from './store/session';
@@ -29,15 +29,15 @@ export default function App() {
           <MainPage />
         </Route>
         
-        <Route exact path="/explore">
+        {/* <Route exact path="/explore">
           <Map />
+        </Route> */}
+
+        <Route exact path="/rebuiltmap">
+          <RebuiltMap />
         </Route>
 
-        <Route exact path="/maptest">
-          <WorldMap/>
-        </Route>
-
-        <Route path="/:userId">
+        <Route exact path="/:userId">
           <ProfilePage />
         </Route>
       </Switch>
