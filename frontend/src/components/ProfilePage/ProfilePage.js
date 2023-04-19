@@ -42,11 +42,12 @@ export default function ProfilePage() {
     
     return (
         <>
-            <div>
+            {/* <div>
                 <RandomUsersIndex />
                 <FollowsIndex user={user} />
                 <FollowersIndex user={user} />
-            </div>
+            </div> */}
+            
             <div className='profile-container'>
                 <div className='profile-card'>
                     <div className='profile-card-top'>
