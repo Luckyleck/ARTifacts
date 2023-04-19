@@ -94,14 +94,18 @@ const NavBar = () => {
                 </div>
             </div>
 
-            {sessionUser && (
+            
             <div className='nav-buttons' id='test'>
                 { location.pathname === '/' && <div>ARTifacts</div> }
+            {sessionUser && (
+                <div>
                 { location.pathname === `/${sessionUser._id}` && 
                 <div>{sessionUser.username}'s Page</div>
                 }
-            </div>
+                </div>
             )}
+            </div>
+            
         </header>
     )
 }
