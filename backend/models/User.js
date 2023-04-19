@@ -18,6 +18,9 @@ const userSchema = new Schema({
   profilePic: {
     type: String
   },
+  backgroundPic: {
+    type: String
+  },
   follows: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
