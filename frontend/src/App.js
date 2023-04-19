@@ -13,7 +13,6 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import { fetchCurrentUser } from './store/session';
 
 import './index.css';
-import ProfilePage from './components/ProfilePage/ProfilePage';
 
 export default function App() {
   const dispatch = useDispatch();
