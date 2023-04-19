@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Slider, { Range } from 'rc-slider';
 import "./Map.css";
+import { MapContainer, GeoJSON } from 'react-leaflet';
+import countries from '../../data/countries.geo.json'
 
 function Map() {
   const [clicked, setClicked] = useState(false);
@@ -21,15 +23,18 @@ function Map() {
     return newYear
   }
 
-  function handleClick(option) {
+  function handleCountryClick(countryName) {
+
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
     let params = {
-      q: option,
+      q: countryName,
       skip: 0,
       limit: 500,
       has_image: 1,
     };
+
     if (createdAfter) {
+      debugger
       params = {
         ...params,
         created_after: createdAfter,
@@ -44,14 +49,14 @@ function Map() {
         data.data.forEach((artwork) => {
           if (createdAfter) {
             if (
-              artwork.culture[0]?.toLowerCase().includes(option.toLowerCase()) &&
+              artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase()) &&
               createdAfter
             ) {
               filtered.push(artwork);
             }
           } else {
             if (
-              artwork.culture[0]?.toLowerCase().includes(option.toLowerCase())
+              artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())
             ) {
               filtered.push(artwork)
             }
@@ -69,10 +74,11 @@ function Map() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
     console.log(randomArtwork)
-    return (
-      <div>
+    return randomArtwork && (
+      <div className="art-display-container">
         <h2>{randomArtwork?.culture}</h2>
-        <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} />
+        <button onClick={() => setClicked(false )}>&times;</button> 
+        <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
         {console.log(randomArtwork)}
       </div>
     );
@@ -82,13 +88,57 @@ function Map() {
     setArtworks([]);
   }, [country, createdAfter]);
 
+  /* -------------------MAP--------------------- */
+
+  const maxBounds = [
+    [-120, -210],
+    [110, 210]
+  ];
+
+  function style() {
+    return {
+      fillOpacity: 0.8,
+      color: "black",
+      weight: 2
+    }
+  }
+
+  function onEachCountry(country, layer) {
+    const countryName = country.properties.ADMIN
+    console.log(countryName)
+    layer.bindPopup(countryName);
+
+    const colors = ["green", "yellow", "red", "orange", "purple", "brown"]
+    const randomColorIndex = Math.floor(Math.random() * colors.length)
+
+    layer.setStyle({ fillColor: colors[randomColorIndex] })
+
+    layer.on({
+      click: () => {
+        handleCountryClick(country.properties.ADMIN)
+      },
+      mouseover: (e) => {
+        e.target.setStyle({
+          fillOpacity: 1
+        })
+      },
+      mouseout: (e) => {
+        e.target.setStyle({
+          fillOpacity: 0.5
+        })
+      }
+    })
+  }
+
   return (
     <>
       <div className="test-wrapper">
         <input type="text" onChange={(e) => setCountry(e.target.value)} />
-        <select onChange={(e) => 
-          {setCreatedAfter(e.target.value);
-          setCreatedBefore(parseInt(e.target.value + 99))}
+
+        <select onChange={(e) => {
+          setCreatedAfter(e.target.value);
+          setCreatedBefore(parseInt(e.target.value + 99))
+        }
         }>
           <option value="">All Time</option>
           <option value="500">500s</option>
@@ -107,11 +157,32 @@ function Map() {
           <option value="1800">1800s</option>
           <option value="1900">1900s</option>
         </select>
-        <button onClick={() => handleClick(country)}>search</button>
-        {clicked && handleRandomImage()}
+        
       </div>
+      <div className="our-map-container">
+      <MapContainer
+          className="our-map"
+          zoom={3}
+          center={[0,0]}
+          minZoom={3}
+          maxBounds={maxBounds}
+          maxBoundsViscosity={1}
+        >
+
+          <GeoJSON
+            data={countries.features}
+            style={style}
+            onEachFeature={onEachCountry}
+          />
+        </MapContainer>
+      </div>
+      {clicked && handleRandomImage()}
     </>
   );
 }
 
 export default Map;
+
+
+
+/* <button onClick={() => handleClick(country)}>search</button> */
