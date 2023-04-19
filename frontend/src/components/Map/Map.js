@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Map.css";
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import countries from '../../data/countries.geo.json'
+import countries from '../../data/countries.geo.json';
+import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 
 function Map() {
   const [clicked, setClicked] = useState(false);
@@ -72,9 +73,10 @@ function Map() {
   function handleRandomImage() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
-    console.log(randomArtwork)
+
     return randomArtwork && (
       <div className="art-display-container">
+        <FavoriteButton artwork={randomArtwork} />
         <h2>{randomArtwork?.culture}</h2>
         <button onClick={() => setClicked(false )}>&times;</button> 
         <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
@@ -104,7 +106,7 @@ function Map() {
 
   function onEachCountry(country, layer) {
     const countryName = country.properties.ADMIN
-    console.log(countryName)
+    // console.log(countryName)
     layer.bindPopup(countryName);
 
     const colors = ["green", "yellow", "red", "orange", "purple", "brown"]
