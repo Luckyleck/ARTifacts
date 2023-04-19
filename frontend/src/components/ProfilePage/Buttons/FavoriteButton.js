@@ -5,7 +5,7 @@ export default function FavoriteButton({ artwork }) {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
 
-  if (!artwork) return;
+  if (!currentUser || !artwork) return;
   if (currentUser?.favorites.includes(artwork._id)) return (
     <button onClick={() => dispatch(unfavorite(currentUser, artwork))}>unfavorite</button>
   );
