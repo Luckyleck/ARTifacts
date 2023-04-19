@@ -30,7 +30,8 @@ function Map() {
       limit: 500,
       has_image: 1,
     };
-
+    console.log('before')
+    console.log(createdAfter)
     if (createdAfter) {
       params = {
         ...params,
@@ -38,7 +39,6 @@ function Map() {
         created_before: formattedYear(createdAfter)
       };
     }
-    console.log(createdAfter)
 
     fetch(`${url}?${new URLSearchParams(params)}`)
       .then((response) => response.json())
@@ -128,29 +128,28 @@ function Map() {
   return (
     <>
       <div className="test-wrapper">
-        <input className="slider" type="range" min="500" max="1900" step="100" />
         {/* <select onChange={(e) => {
           setCreatedAfter(e.target.value);
           setCreatedBefore(parseInt(e.target.value + 99));
           console.log(createdAfter)
         }}>
-          <option value="">All Time</option>
-          <option value="500">500s</option>
-          <option value="600">600s</option>
-          <option value="700">700s</option>
-          <option value="800">800s</option>
-          <option value="900">900s</option>
-          <option value="1000">1000s</option>
-          <option value="1100">1100s</option>
-          <option value="1200">1200s</option>
-          <option value="1300">1300s</option>
-          <option value="1400">1400s</option>
-          <option value="1500">1500s</option>
-          <option value="1600">1600s</option>
-          <option value="1700">1700s</option>
-          <option value="1800">1800s</option>
-          <option value="1900">1900s</option>
-        </select> */}
+        <option value="">All Time</option>
+        <option value="500">500s</option>
+        <option value="600">600s</option>
+        <option value="700">700s</option>
+        <option value="800">800s</option>
+        <option value="900">900s</option>
+        <option value="1000">1000s</option>
+        <option value="1100">1100s</option>
+        <option value="1200">1200s</option>
+        <option value="1300">1300s</option>
+        <option value="1400">1400s</option>
+        <option value="1500">1500s</option>
+        <option value="1600">1600s</option>
+        <option value="1700">1700s</option>
+        <option value="1800">1800s</option>
+        <option value="1900">1900s</option>
+      </select> */}
       </div>
       <div className="our-map-container">
       <MapContainer
@@ -170,6 +169,27 @@ function Map() {
         </MapContainer>
       </div>
       {clicked && handleRandomImage()}
+      <div>
+        <input className="slider" type="range" min="500" max="1900" step="100" list="values" onChange={(e) => setCreatedAfter(e.target.value)}/>
+        {console.log(createdAfter)}
+        <datalist id="values">
+          <option value="500" label="500s"></option>
+          <option value="600" label="600s"></option>
+          <option value="700" label="700s"></option>
+          <option value="800" label="800s"></option>
+          <option value="900" label="900s"></option>
+          <option value="1000" label="1000s"></option>
+          <option value="1100" label="1100s"></option>
+          <option value="1200" label="1200s"></option>
+          <option value="1300" label="1300s"></option>
+          <option value="1400" label="1400s"></option>
+          <option value="1500" label="1500s"></option>
+          <option value="1600" label="1600s"></option>
+          <option value="1700" label="1700s"></option>
+          <option value="1800" label="1800s"></option>
+          <option value="1900" label="1900s"></option>
+        </datalist>
+      </div>
     </>
   );
 }

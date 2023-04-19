@@ -29,4 +29,20 @@
     display: flex;
     width: 85%;
     margin: 0 auto;
+    background-color: transparent;
+    background: green;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 5%;
+    z-index: 1001;
+}
+
+datalist {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    width: 200px;
+    width: 86%;
+    margin: 0 auto;
 }
