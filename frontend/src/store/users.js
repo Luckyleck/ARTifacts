@@ -3,6 +3,7 @@ import { receiveCurrentUser } from './session';
 
 
 const RECEIVE_USERS = 'users/RECEIVE_USERS';
+const RECEIVE_RANDOM_USERS = 'users/RECEIVE_RANDOM_USERS';
 const RECEIVE_USER = 'users/RECEIVE_USER';
 const REMOVE_USER = 'users/REMOVE_USER';
 
@@ -10,6 +11,13 @@ function receiveUsers(users) {
   return ({
     type: RECEIVE_USERS,
     users
+  });
+}
+
+function receiveRandomUsers(randomUsers) {
+  return ({
+    type: RECEIVE_RANDOM_USERS,
+    randomUsers
   });
 }
 
@@ -34,6 +42,10 @@ export function getCurrentUser(state) {
 
 export function getUsers(state) {
   return state?.users ? Object.values(state.users) : [];
+}
+
+export function getRandomUsers(state) {
+  return state?.users?.randomUsers ? Object.values(state.users.randomUsers) : [];
 }
 
 export function getUser(userId) {
@@ -70,7 +82,7 @@ export function fetchRandomUsers(num) {
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(receiveUsers(data));
+      dispatch(receiveRandomUsers(data));
     }
   });
 }
@@ -175,7 +187,9 @@ export function deleteUser(userId) {
 export default function usersReducer(slice = {}, action) {
   switch (action.type) {
     case RECEIVE_USERS:
-      return { ...action.users };
+      return { ...slice, ...action.users };
+    case RECEIVE_RANDOM_USERS:
+      return { ...slice, randomUsers: { ...action.randomUsers } };
     case RECEIVE_USER:
       return { ...slice, [action.user._id]: action.user };
     case REMOVE_USER:

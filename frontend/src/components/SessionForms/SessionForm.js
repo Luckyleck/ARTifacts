@@ -6,6 +6,7 @@ import logo from '../MainPage/assets/ART_white.png';
 
 
 const SessionForm = ({onClose, formType}) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +15,6 @@ const SessionForm = ({onClose, formType}) => {
   const [confirmType, setConfirmType] = useState('password');
   const errors = useSelector(state => state.errors.session);
   const sessionUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
   const [form, setForm] = useState(formType)
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const SessionForm = ({onClose, formType}) => {
     return () => {
       dispatch(clearSessionErrors());
     };
-  }, [onClose, dispatch, form]);
+  }, [dispatch, sessionUser, form, onClose]);
 
   const update = field => {
     let setState;

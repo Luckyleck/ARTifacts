@@ -1,9 +1,15 @@
+import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../../store/users';
 import FollowersIndexItem from "../IndexItems/FollowersIndexItem";
 
-export default function FollowsIndex({ user }) {
+export default function FollowsIndex() {
+  const { userId } = useParams();
+  const user = useSelector(getUser(userId));
+
   return (
     <div>
-      Followers
+      {`${user?.username}'s Followers`}
       <ul>
         {user?.followers.map((follower) => (
           <FollowersIndexItem

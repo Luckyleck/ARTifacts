@@ -2,12 +2,16 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 async function getUsers(req, res) {
-  const users = await User.find({}).sort({ createdAt: -1 });
-  users.forEach((user) => {
-    user.populate('follows');
-    user.populate('followers');
-    user.populate('favorites');
-  });
+  const users = await User.find({}).sort({ createdAt: -1 }).exec();
+  for (const user of users) {
+    const populatedUser = await User
+      .findById(user._id)
+      .populate('follows')
+      .populate('followers')
+      .exec()
+    ;
+    Object.assign(user, populatedUser._doc);
+  }
   res.status(200).json(users);
 }
 
@@ -19,7 +23,6 @@ async function getRandomUsers(req, res) {
       .findById(user._id)
       .populate('follows')
       .populate('followers')
-      .populate('favorites')
       .exec()
     ;
     Object.assign(user, populatedUser._doc);
@@ -80,11 +83,11 @@ async function favorite(req, res) {
 async function getUser(req, res) {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ error: 'No such user' });
-  const user = await User.findById(id);
+  const query = User.findById(id);
+  query.populate('follows');
+  query.populate('followers');
+  const user = await query.exec();
   if (!user) return res.status(400).json({ error: 'No such user' });
-  user.populate('follows');
-  user.populate('followers');
-  user.populate('favorites');
   res.status(200).json(user);
 }
 

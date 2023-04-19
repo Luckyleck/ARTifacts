@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser, getUser } from '../../store/users';
+import { fetchRandomUsers, fetchUser, getUser } from '../../store/users';
 
 import FollowersIndex from './Indexes/FollowersIndex';
 import FollowsIndex from './Indexes/FollowsIndex';
 import RandomUsersIndex from './Indexes/RandomUsersIndex';
+import FollowButton from './Buttons/FollowButton';
 
 import './ProfilePage.css'
 
@@ -23,10 +24,11 @@ import scream from '../MainPage/assets/The_scream.jpeg';
 const ProfilePage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const user = useSelector(getUser(userId));
+    const user = useSelector(getUser(userId))
 
     useEffect(() => {
-        dispatch(fetchUser(userId))
+        dispatch(fetchUser(userId));
+        dispatch(fetchRandomUsers(5));
     }, [dispatch, userId]);
 
 
