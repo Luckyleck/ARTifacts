@@ -84,9 +84,10 @@
     font-size: 25px;
     font-weight: 600;
     color: #939598;
+    display: flex;
 }
 
-.favorite {
+.favorite, .following {
     position: absolute;
     background-color:#F7F7F7;
     width: 1050px;
@@ -178,4 +179,16 @@
     font-size: 25px;
     color: #4e4f52;
     font-weight: 600;
+}
+
+#follow-button {
+    display: flex;
+    /* justify-content: center; */
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+#follow-button i {
+    padding-right: 7px;
+    padding-top: 0.6px;
 }

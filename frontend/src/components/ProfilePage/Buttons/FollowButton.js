@@ -11,9 +11,21 @@ export default function FollowButton() {
   if (!currentUser || !user) return;
   if (currentUser._id === user._id) return;
   if (currentUser?.follows?.includes(user._id)) return (
-    <button onClick={() => dispatch(unfollow(currentUser, user))}>unfollow</button>
+    // <button onClick={() => dispatch(unfollow(currentUser, user))}>unfollow</button>
+    <button
+    type="button"
+    className='submit-form allow-submit'
+    id='follow-button'
+    onClick={() => dispatch(unfollow(currentUser, user))}
+    ><i className="fa-solid fa-user-slash"></i>Unfollow</button>
   );
   return (
-    <button onClick={() => dispatch(follow(currentUser, user))}>follow</button>
+    // <button onClick={() => dispatch(follow(currentUser, user))}>follow</button>
+    <button
+    type="button"
+    className='submit-form allow-submit'
+    id='follow-button'
+    onClick={() => dispatch(follow(currentUser, user))}
+    ><i className="fa-solid fa-user-plus"></i>Follow</button>
   );
 }

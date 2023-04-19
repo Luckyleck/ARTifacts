@@ -24,7 +24,9 @@ import scream from '../MainPage/assets/The_scream.jpeg';
 const ProfilePage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const user = useSelector(getUser(userId))
+    const user = useSelector(getUser(userId));
+    const sessionUser = useSelector(state => state.session.user);
+    const [isfollowing, setIsFollowing] = useState(false);
 
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -41,7 +43,7 @@ const ProfilePage = () => {
         card.classList.add('move-left');
         setOpenFavorite(true);
     }
-    
+
     {/* <div>
         <RandomUsersIndex />
         <FollowsIndex user={user} />
@@ -49,6 +51,7 @@ const ProfilePage = () => {
     </div> */}
     return (
         <div className='profile-container'>
+            
             <div className='profile-card'>
                 <div className='profile-card-top'>
                     <div className='profile-card-background'>
@@ -59,9 +62,6 @@ const ProfilePage = () => {
                         <img src={pikachu} alt='pikachu' />
                     </div>
 
-                    {/* <div className='user-info'>
-                        <p>{user.username}</p>
-                    </div> */}
                 </div>
                 
                 {user && (
@@ -70,12 +70,14 @@ const ProfilePage = () => {
                 </div>
                 )}
 
+                <FollowButton />
+
                 {user && (
                 <div className='profile-card-bottom'>
                     <ul>
-                        <li>Followers: {user.followers.length}</li>
-                        <li>Following: {user.follows.length}</li>
-                        <li>Favorite arts: {user.favorites.length}</li>
+                        <li>Followers: <p>&nbsp;{user.followers.length}</p></li>
+                        <li>Following: <p>&nbsp; {user.follows.length}</p></li>
+                        <li>Favorite arts: <p>&nbsp; {user.favorites.length}</p></li>
                     </ul>
                     {!openFavorite &&
                     <div className='expand-favorite'>
@@ -87,7 +89,7 @@ const ProfilePage = () => {
             </div>
 
             {openFavorite && (
-            <div className='favorite'>
+            <div className='favorite' id='favorite'>
                 <div className='favorite-header'>
                     Favorites:
                 </div>
@@ -98,7 +100,9 @@ const ProfilePage = () => {
                         </div>
                     ))}
                 </div>
-            </div>)}
+            </div>
+            )}
+
         </div>
     );
 }
