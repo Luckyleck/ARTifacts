@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Slider, { Range } from 'rc-slider';
 import "./Map.css";
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import countries from '../../data/countries.geo.json'
@@ -7,7 +6,6 @@ import countries from '../../data/countries.geo.json'
 function Map() {
   const [clicked, setClicked] = useState(false);
   const [artworks, setArtworks] = useState([]);
-  const [country, setCountry] = useState("");
   const [createdAfter, setCreatedAfter] = useState("");
   const [createdBefore, setCreatedBefore] = useState("");
 
@@ -86,7 +84,7 @@ function Map() {
 
   useEffect(() => {
     setArtworks([]);
-  }, [country, createdAfter]);
+  }, [createdAfter]);
 
   /* -------------------MAP--------------------- */
 
@@ -133,7 +131,6 @@ function Map() {
   return (
     <>
       <div className="test-wrapper">
-        <input type="text" onChange={(e) => setCountry(e.target.value)} />
 
         <select onChange={(e) => {
           setCreatedAfter(e.target.value);
@@ -182,7 +179,3 @@ function Map() {
 }
 
 export default Map;
-
-
-
-/* <button onClick={() => handleClick(country)}>search</button> */
