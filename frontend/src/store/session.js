@@ -6,32 +6,42 @@ const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 
 // Dispatch receiveCurrentUser when a user logs in.
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-});
+export function receiveCurrentUser(currentUser) {
+  return ({
+    type: RECEIVE_CURRENT_USER,
+    currentUser
+  });
+}
 
 // Dispatch logoutUser to clear the session user when a user logs out.
-const logoutUser = () => ({
-  type: RECEIVE_USER_LOGOUT
-});
+function logoutUser() {
+  return ({
+    type: RECEIVE_USER_LOGOUT
+  });
+}
   
 // Dispatch receiveErrors to show authentication errors on the frontend.
-const receiveErrors = errors => ({
-  type: RECEIVE_SESSION_ERRORS,
-  errors
-});
+function receiveErrors(errors) {
+  return ({
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+  });
+}
 
 // Dispatch clearSessionErrors to clear any session errors.
-export const clearSessionErrors = () => ({
-  type: CLEAR_SESSION_ERRORS
-});
+export function clearSessionErrors () {
+  return ({
+    type: CLEAR_SESSION_ERRORS
+  });
+}
 
-export const fetchCurrentUser = () => async dispatch => {
-  const res = await jwtFetch('/api/users/current');
-  const user = await res.json();
-  return dispatch(receiveCurrentUser(user));
-};
+export function fetchCurrentUser() {
+  return (async (dispatch) => {
+    const res = await jwtFetch('/api/users/current');
+    const user = await res.json();
+    return dispatch(receiveCurrentUser(user));
+  });
+}
 
 export const signup = user => startSession(user, 'api/users/register');
 export const login = user => startSession(user, 'api/users/login');
