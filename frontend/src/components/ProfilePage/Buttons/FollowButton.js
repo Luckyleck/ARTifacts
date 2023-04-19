@@ -6,10 +6,10 @@ export default function FollowButton({ pageUser }) {
   const currentUser = useSelector(getCurrentUser);
 
   if (currentUser._id === pageUser._id) return (
-    <button onClick={() => dispatch(unfollow)}>Unfollow</button>
+    <button onClick={() => dispatch(unfollow(currentUser, pageUser))}>Unfollow</button>
   );
 
   return (
-    <button onClick={() => dispatch(follow)}>Follow</button>
+    <button onClick={() => dispatch(follow(currentUser, pageUser))}>Follow</button>
   );
 }
