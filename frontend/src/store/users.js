@@ -185,7 +185,6 @@ export function deleteUser(userId) {
 
 
 export default function usersReducer(slice = {}, action) {
-  console.log(action);
   switch (action.type) {
     case RECEIVE_USERS:
       return { ...slice, ...action.users };
