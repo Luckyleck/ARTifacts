@@ -40,8 +40,8 @@ export function getUser(userId) {
   return state => state?.users?.[userId] ? state.users[userId] : null;
 }
 
-export function getFollowing(userId) {
-  return state => state?.users?.[userId] ? state.users[userId].following : [];
+export function getFollows(userId) {
+  return state => state?.users?.[userId] ? state.users[userId].follows : [];
 }
 
 export function getFollowers(userId) {
@@ -134,7 +134,7 @@ export function unfavorite(currentUser, artwork) {
 
 export function fetchUser(userId) {
   return (async (dispatch) => {
-    const response = await jwtFetch(`/api/user/${userId}`);
+    const response = await jwtFetch(`/api/users/${userId}`);
 
     if (response.ok) {
       const data = await response.json();
@@ -145,7 +145,7 @@ export function fetchUser(userId) {
 
 export function updateUser(user) {
   return (async (dispatch) => {
-    const response = await jwtFetch(`/api/user/${user._id}`, {
+    const response = await jwtFetch(`/api/users/${user._id}`, {
       method: 'PUT',
       body: JSON.stringify(user)
     });
@@ -159,7 +159,7 @@ export function updateUser(user) {
 
 export function deleteUser(userId) {
   return (async (dispatch) => {
-    const response = await jwtFetch(`/api/user/${userId}`, {
+    const response = await jwtFetch(`/api/users/${userId}`, {
       method: 'DELETE',
       body: JSON.stringify(userId)
     });

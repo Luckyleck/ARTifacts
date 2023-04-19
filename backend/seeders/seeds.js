@@ -10,7 +10,7 @@ const NUM_SEED_USERS = 1000;
 const users = [];
 
 users.push(
-  new User ({
+  new User({
     username: 'demo-user',
     email: 'demo-user@appacademy.io',
     hashedPassword: bcrypt.hashSync('starwars', 10)
@@ -21,7 +21,7 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   const firstName = faker.name.firstName();
   const lastName = faker.name.lastName();
   users.push(
-    new User ({
+    new User({
       username: faker.internet.userName(firstName, lastName),
       email: faker.internet.email(firstName, lastName),
       hashedPassword: bcrypt.hashSync(faker.internet.password(), 10)
@@ -43,7 +43,7 @@ mongoose
 ;
 
 // Reset and seed db
-const insertSeeds = () => {
+function insertSeeds() {
   console.log("Resetting db and seeding users and tweets...");
 
   User.collection

@@ -8,13 +8,13 @@ import NavBar from './components/NavBar/NavBar';
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
 import WorldMap from './components/WorldMap/WorldMap';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import { fetchCurrentUser } from './store/session';
 
 import './index.css';
-import ProfilePage from './components/ProfilePage/ProfilePage';
 
-const App = () => {
+export default function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -37,12 +37,10 @@ const App = () => {
           <WorldMap/>
         </Route>
 
-        <Route exact path="/profile">
-          <ProfilePage/>
+        <Route path="/:userId">
+          <ProfilePage />
         </Route>
       </Switch>
     </>
   );
 }
-
-export default App;
