@@ -1,16 +1,20 @@
-import { useState } from "react";
-import { MapContainer, GeoJSON } from 'react-leaflet';
-import countries from '../../data/countries.geo.json';
-import "./Map.css";
+import { useState, useEffect } from "react";
 import { Slider } from '@material-ui/core';
 import { geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from "./MapFunctions";
-import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
+import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
+import "./Map.css";
+import countries from '../../data/countries.geo.json';
+import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
 
 export default function Map() {
   const [artworks, setArtworks] = useState([]);
   const [century, setCentury] = useState([0, 99]);
   const [modalShouldBeOpen, setModalShouldBeOpen] = useState(false);
+
+  useEffect(() => {
+    setModalShouldBeOpen(true);
+  }, [artworks]);
 
   function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
@@ -47,8 +51,12 @@ export default function Map() {
       }
     });
 
-    const randomIndex = Math.floor(Math.random() * artworks.length);
-    const randomArtwork = artworks[randomIndex];
+    console.log(timeFiltered);
+
+    const randomIndex = Math.floor(Math.random() * timeFiltered.length);
+    const randomArtwork = timeFiltered[randomIndex];
+
+    console.log(randomArtwork);
 
     return randomArtwork && (
       <ArtworkDisplayModal
@@ -75,6 +83,8 @@ export default function Map() {
     });
   }
 
+  console.log(century);
+  
   return (
     <>
       <MapContainer
@@ -100,9 +110,8 @@ export default function Map() {
         classes={sliderStyles()}
         valueLabelDisplay="auto"
         value={century[0]}
-        onChange={(e) => {
-          setCentury([e.target.value, e.target.value + 99]);
-          setModalShouldBeOpen(true);
+        onChange={(e, value) => {
+          setCentury([value, value + 99]);
         }}
       />
     </>
