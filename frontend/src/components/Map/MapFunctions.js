@@ -16,6 +16,13 @@ export function maxBounds() {
   ]
 }
 
+export function randomColor() {
+  const colors = ["green", "yellow", "red", "orange", "purple"]
+  const randomColorIndex = Math.floor(Math.random() * colors.length)
+
+  return colors[randomColorIndex]
+}
+
 // Slider Styling
 
 export const sliderStyles = makeStyles({
