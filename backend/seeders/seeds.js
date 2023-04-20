@@ -3,6 +3,8 @@ const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
+const pikachu = require('../../frontend/src/components/NavBar/assets/pikachu.png');
+const starry = require('../../frontend/src/components/MainPage/assets/starry_night.webp');
 
 const NUM_SEED_USERS = 1000;
 
@@ -16,8 +18,8 @@ users.push(
     username: 'demo-user',
     email: 'demo-user@appacademy.io',
     hashedPassword: bcrypt.hashSync('starwars', 10),
-    profilePic: `https://picsum.photos/seed/${randomSeed1}/400/400`,
-    backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
+    profilePic: pikachu,
+    backgroundPic: starry
   })
 );
 

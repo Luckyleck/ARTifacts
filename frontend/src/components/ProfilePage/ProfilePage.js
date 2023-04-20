@@ -81,11 +81,11 @@ const ProfilePage = () => {
             <div className='profile-card'>
                 <div className='profile-card-top'>
                     <div className='profile-card-background'>
-                        <img src={starry} alt='starry' />
+                        <img src={sessionUser.backgroundPic} alt='background-pic' />
                     </div>
 
                     <div className='pic profile-card-pic'>
-                        <img src={pikachu} alt='pikachu' />
+                        <img src={sessionUser.profilePic} alt='profile-pic' />
                     </div>
 
                 </div>
@@ -119,12 +119,13 @@ const ProfilePage = () => {
                 <div className='favorite-header'>
                     Favorites:
                 </div>
-                <div className='grid-container'>
-                    {arts.map((art, index) => (
+                <div className='grid-container favorites-container'>
+                    <FavoritesIndex />
+                    {/* {arts.map((art, index) => (
                         <div className='grid-item' key={index}>
                             <img src={art} alt='art' />
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
             )}
@@ -145,11 +146,11 @@ const ProfilePage = () => {
                         <div className='follow-card' onClick={() => history.push(`/${follow._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={follow.backgroundPic} alt='starry' />
+                                    <img src={follow.backgroundPic} alt='background-pic' />
                                 </div>
             
                                 <div className='pic follow-card-profile' onClick={() => history.push(`/${follow._id}`)}>
-                                    <img src={follow.profilePic} alt='pikachu' />
+                                    <img src={follow.profilePic} alt='profile-pic' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>
@@ -166,11 +167,11 @@ const ProfilePage = () => {
                         <div className='follow-card' onClick={() => history.push(`/${follower._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={follower.backgroundPic} alt='starry' />
+                                    <img src={follower.backgroundPic} alt='background-pic' />
                                 </div>
             
                                 <div className='pic follow-card-profile' onClick={() => history.push(`/${follower._id}`)}>
-                                    <img src={follower.profilePic} alt='pikachu' />
+                                    <img src={follower.profilePic} alt='profile-pic' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>
@@ -192,11 +193,11 @@ const ProfilePage = () => {
                         <div className='follow-card' onClick={() => history.push(`/${randomUser._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={randomUser.backgroundPic} alt='starry' />
+                                    <img src={randomUser.backgroundPic} alt='background-pic' />
                                 </div>
             
                                 <div className='pic follow-card-profile' onClick={() => history.push(`/${randomUser._id}`)}>
-                                    <img src={randomUser.profilePic} alt='pikachu' />
+                                    <img src={randomUser.profilePic} alt='profile-pic' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>

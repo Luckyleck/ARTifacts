@@ -61,7 +61,7 @@ export default function Map() {
     return randomArtwork && (
       <ArtworkDisplayModal
         artwork={randomArtwork}
-        setModalShouldBeOpen={setModalShouldBeOpen} />
+        toggle={setModalShouldBeOpen} />
     );
   }
 
