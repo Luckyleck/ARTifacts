@@ -1,5 +1,6 @@
 body {
-    background-color: #939598;
+    /* background-color: #939598; */
+    background-color: #F4EEE0;
     font-family: 'Lora', serif;
 }
 
@@ -11,7 +12,6 @@ body {
     width: 100%;
     /* max-width: 99vw; */
     background-color: #F7F7F7;
-    border-bottom: 1px solid rgba(0,0,0,0.6);
     box-sizing: border-box;
     align-items: center;
     z-index: 1090;
@@ -74,7 +74,7 @@ body {
 
 .dropdown-items {
     position: absolute;
-    background-color: #F3DEBA;
+    background-color: #F4EEE0;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     right: 10px;
