@@ -1,39 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import { Slider, Typography } from '@material-ui/core';
-import "./Map.css";
-import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';
-import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
+import "./Map.css";
+import { Slider } from '@material-ui/core';
+import { geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from "./MapFunctions";
+import ArtworkDisplayModal from "../DisplayArtwork/ArtworkDisplayModal";
+import 'leaflet/dist/leaflet.css'
 
 export default function Map() {
-  const [showArt, setShowArt] = useState([]); // Boolean // Replace later with modal
   const [artworks, setArtworks] = useState([]);
-  const [dateAfter, setDateAfter] = useState();
-  const dateBefore = dateAfter + 100;
-  const [params, setParams] = useState({
-    skip: 0,
-    limit: 300,
-    has_image: 1,
-  });
+  const [century, setCentury] = useState([0, 99]);
+  const [modalShouldBeOpen, setModalShouldBeOpen] = useState(false);
 
-  function handleCountryClick(countryName) {
+  function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
+    const params = { skip: 0, has_image: 1 };
 
     fetch(`${url}?${new URLSearchParams(params)}`)
       .then((response) => {
-        response.json();
+        return response.json();
       })
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          if (artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())) {
+          if (artwork?.culture[0]?.toLowerCase().includes(country?.toLowerCase())) {
             filtered.push(artwork);
           }
         });
         setArtworks(filtered);
-        setShowArt(true);
       })
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
@@ -41,11 +35,33 @@ export default function Map() {
     ;
   }
 
-  function onEachCountry(country, layer) {
-    const countryName = country.properties.ADMIN;
+  function ArtworkDisplay() {
+    const timeFiltered = [];
 
-    layer.bindPopup(countryName);
-    layer.setStyle({ fillColor: randomColor() });
+    artworks.forEach((artwork) => {
+      const artworkYear = (artwork?.creation_date_earliest + artwork?.creation_date_latest) / 2;
+      if (century[0]) {
+        if (century[0] <= artworkYear && artworkYear <= century[1]) timeFiltered.push(artwork);
+      } else {
+        timeFiltered.push(artwork);
+      }
+    });
+
+    const randomIndex = Math.floor(Math.random() * artworks.length);
+    const randomArtwork = artworks[randomIndex];
+
+    return randomArtwork && (
+      <ArtworkDisplayModal
+        artwork={randomArtwork}
+        setModalShouldBeOpen={setModalShouldBeOpen} />
+    );
+  }
+
+  function onEachCountry(country, layer) {
+    const colors = ["green", "yellow", "red", "orange", "purple", "brown"];
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    layer.setStyle({ fillColor: colors[randomColorIndex] });
+    
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN);
@@ -59,17 +75,6 @@ export default function Map() {
     });
   }
 
-  function handleRandomArt() {
-    const randomIndex = Math.floor(Math.random() * artworks.length);
-    const randomArtwork = artworks[randomIndex];
-
-    return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />
-  }
-
-  function handleSliderChange(event, value) {
-    setDateAfter(value);
-  }
-
   return (
     <>
       <MapContainer
@@ -80,22 +85,25 @@ export default function Map() {
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
       >
-      <GeoJSON
-        data={countries.features}
-        style={geoJsonStyle}
-        onEachFeature={onEachCountry}
-      />
+        <GeoJSON
+          data={countries.features}
+          style={geoJsonStyle}
+          onEachFeature={onEachCountry}
+        />
       </MapContainer>
-      {showArt && handleRandomArt()}
+      {modalShouldBeOpen && ArtworkDisplay()}
       <Slider
-        value={dateAfter}
-        onChange={handleSliderChange}
-        min={500}
+        min={0}
         max={1900}
         step={100}
         marks={sliderMarks}
         classes={sliderStyles()}
         valueLabelDisplay="auto"
+        value={century[0]}
+        onChange={(e) => {
+          setCentury([e.target.value, e.target.value + 99]);
+          setModalShouldBeOpen(true);
+        }}
       />
     </>
   );
