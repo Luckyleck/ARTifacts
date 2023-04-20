@@ -33,10 +33,10 @@ const MainPage = () => {
           <img src={mg} alt="mg" className="animated-image" />
         </div>
 
-        {/* <div className='explore' onClick={() => history.push('/explore')}>
+        <div className='explore' onClick={() => history.push('/explore')}>
           <img src={logo} alt='logo' />
           <p>CLICK HERE TO ENTER</p>
-        </div> */}
+        </div>
       </>
     );
 }
