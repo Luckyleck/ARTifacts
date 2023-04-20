@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     </ul>
                     {!openFavorite &&
                     <div className='expand-favorite'>
-                        <i className="fa-solid fa-angles-down" onClick={moveLeft}></i>
+                        <i className="fa-solid fa-angles-down" id='profile-expand' onClick={moveLeft}></i>
                         <p>Expand Favorites</p>
                     </div> }
                 </div>

@@ -137,7 +137,7 @@
     border-bottom: 1px solid #939598;
 }
 
-.fa-angles-down {
+#profile-expand {
     /* position: absolute; */
     transform: rotate(-90deg);
     /* right: -10px; */
