@@ -62,14 +62,10 @@ async function favorite(req, res) {
     let updatedCurrentUser;
     switch(action) {
       case 'favorite':
-        updatedCurrentUser = await Promise.all([ 
-          User.findByIdAndUpdate(currentUser, { $addToSet: { favorites: artwork } }, { new: true }),
-        ]);
+        updatedCurrentUser = await User.findByIdAndUpdate(currentUser, { $addToSet: { favorites: artwork } }, { new: true });
         break;
       case 'unfavorite':
-        updatedCurrentUser = await Promise.all([ 
-          User.findByIdAndUpdate(currentUser, { $pull: { favorites: artwork._id } }, { new: true }),
-        ]); 
+        updatedCurrentUser = await User.findByIdAndUpdate(currentUser, { $pull: { favorites: { id: artwork.id } } }, { new: true }); 
         break;
       default:
         break;

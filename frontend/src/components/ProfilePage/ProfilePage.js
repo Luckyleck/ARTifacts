@@ -7,6 +7,7 @@ import FollowersIndex from './Indexes/FollowersIndex';
 import FollowsIndex from './Indexes/FollowsIndex';
 import RandomUsersIndex from './Indexes/RandomUsersIndex';
 import FollowButton from './Buttons/FollowButton';
+import FavoritesIndex from './Indexes/FavoritesIndex';
 
 import './ProfilePage.css'
 
@@ -33,6 +34,7 @@ const ProfilePage = () => {
         dispatch(fetchRandomUsers(5));
     }, [dispatch, userId]);
 
+    console.log(user);
 
     const [openFavorite, setOpenFavorite] = useState(false);
 
