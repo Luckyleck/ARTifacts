@@ -28,28 +28,44 @@ const ContactPage = () => {
             title: 'Team Lead - Flex Developer',
             backgroundpic: starry,
             profile: al,
-            bio: 'testing'
+            bio: 'testing',
+            github: 'https://github.com/Luckyleck',
+            linkedin: '',
+            javascript: 'https://luckyleck.github.io/JS-Project/',
+            fullstack: '',
         },
         {
             name: 'Kevin Chan',
             title: 'Frontend Lead',
             backgroundpic: starry,
             profile: kc,
-            bio: 'testing'
+            bio: 'testing',
+            github: 'https://github.com/kchannn13',
+            linkedin: 'https://www.linkedin.com/in/kevin-chan-426203158/',
+            javascript: 'https://kchannn13.github.io/The-Adventures-of-Gary-the-Snail/',
+            fullstack: 'https://linkedup-ptj7.onrender.com/',
         },
         {
             name: 'Michael Gastello',
             title: 'Flex Developer',
             backgroundpic: starry,
             profile: mg,
-            bio: 'testing'
+            bio: 'testing',
+            github: 'https://github.com/mgastello',
+            linkedin: 'https://www.linkedin.com/in/michael-gastello-168822260/',
+            javascript: 'https://mgastello.github.io/xChngd/',
+            fullstack: 'https://arrow-8xvn.onrender.com/',
         },
         {
             name: 'Steven Notovitz',
             title: 'Backend Lead',
             backgroundpic: starry,
             profile: sn,
-            bio: 'testing'
+            bio: 'testing',
+            github: 'https://github.com/StevenNotovitz',
+            linkedin: '',
+            javascript: 'https://stevennotovitz.github.io/aA-JS-project-Labyrinth/',
+            fullstack: '',
         }
     ]
 
@@ -82,19 +98,19 @@ const ContactPage = () => {
 
                     { showProjects === index &&
                     <div className='projects-container' >
-                        <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/kevin-chan-426203158/' className='navButtons' id='network'>
+                        <a target='_blank' rel='noreferrer' href={developer.github}>
                             <img src={github} alt='github' />
                         </a>
 
-                        <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/kevin-chan-426203158/' className='navButtons' id='network'>
+                        <a target='_blank' rel='noreferrer' href={developer.linkedin}>
                             <img src={linkedin} alt='linkedin' />
                         </a>
 
-                        <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/kevin-chan-426203158/' className='navButtons' id='network'>
+                        <a target='_blank' rel='noreferrer' href={developer.javascript}>
                             <img src={js} alt='js' />
                         </a>
 
-                        <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/kevin-chan-426203158/' className='navButtons' id='network'>
+                        <a target='_blank' rel='noreferrer' href={developer.fullstack}>
                             <img src={react} alt='react' />
                         </a>
                     </div>}
