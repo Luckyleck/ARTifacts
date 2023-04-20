@@ -11,7 +11,6 @@ export default function Map() {
   const [artworks, setArtworks] = useState([]);
   const [century, setCentury] = useState([0, 99]);
   const [modalShouldBeOpen, setModalShouldBeOpen] = useState(false);
-
   
   function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
@@ -78,7 +77,7 @@ export default function Map() {
 
   function onEachCountry(country, layer) {
     const colors = ["green", "yellow", "red", "orange", "purple", "brown"];
-    const randomColorIndex = Math.floor(Math.random() * colors.length)
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
     layer.setStyle({ fillColor: colors[randomColorIndex] });
 
     layer.on({
