@@ -14,7 +14,7 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.6);
     box-sizing: border-box;
     align-items: center;
-    z-index: 100;
+    z-index: 1090;
 }
 
 #nav-container {
