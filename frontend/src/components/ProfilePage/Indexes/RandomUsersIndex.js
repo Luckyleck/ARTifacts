@@ -7,7 +7,7 @@ export default function RandomUsersIndex() {
 
   return (
     <div>
-      Random Users
+      Random users
       <ul>
         {randomUsers?.map((randomUser) => (
           <RandomUsersIndexItem
