@@ -18,7 +18,7 @@ export default function Map() {
 
   function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
-    const params = { skip: 0, has_image: 1 };
+    const params = { skip: 0, has_image: 1, q: country };
 
     fetch(`${url}?${new URLSearchParams(params)}`)
       .then((response) => {
