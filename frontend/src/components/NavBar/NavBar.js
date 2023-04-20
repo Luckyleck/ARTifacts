@@ -1,12 +1,13 @@
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import './NavBar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './assets/ART.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
 import { logout } from '../../store/session';
 import profile from './assets/pikachu.png';
+import { fetchUser, getUser } from '../../store/users';
 
 const NavBar = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -15,7 +16,9 @@ const NavBar = () => {
     const [sessionForm, setSessionForm] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-    
+    const { userId } = useParams();
+    const user = useSelector(getUser(userId));
+
     const handleMenuOpen = () => {
         setShowMenu(true);
     };
@@ -37,7 +40,7 @@ const NavBar = () => {
     const toProfile = () => {
         history.push(`/${sessionUser._id}`)
     }
-
+    
     return (
         <header id='navbar'>
             <div id='nav-container'>
@@ -93,13 +96,18 @@ const NavBar = () => {
                     )} */}
                 </div>
             </div>
-
+            
             <div className='nav-buttons' id='test'>
-                { location.pathname === '/' ? <div>ARTifacts</div> :
-                <div>Test</div>
+                { location.pathname === '/' && <div>ARTifacts</div> }
+            {user && (
+                <div>
+                { location.pathname === `/${user._id}` && 
+                <div>{user.username}'s Page</div>
                 }
-                
+                </div>
+            )}
             </div>
+            
         </header>
     )
 }

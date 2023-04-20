@@ -137,8 +137,15 @@
   background-color: #d9d6d6;
 }
 
-#allow-submit {
+.allow-submit {
   cursor: pointer;
+}
+
+#demo-login{
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: 100px
 }
 
 .switch {
