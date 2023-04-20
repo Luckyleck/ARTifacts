@@ -9,22 +9,31 @@ const NUM_SEED_USERS = 1000;
 // Create users
 const users = [];
 
+const randomSeed1 = faker.random.alphaNumeric(5);
+const randomSeed2 = faker.random.alphaNumeric(5);
 users.push(
   new User({
     username: 'demo-user',
     email: 'demo-user@appacademy.io',
-    hashedPassword: bcrypt.hashSync('starwars', 10)
+    hashedPassword: bcrypt.hashSync('starwars', 10),
+    profilePic: `https://picsum.photos/seed/${randomSeed1}/400/400`,
+    backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
   })
 );
 
 for (let i = 1; i < NUM_SEED_USERS; i++) {
   const firstName = faker.name.firstName();
   const lastName = faker.name.lastName();
+  const randomSeed1 = faker.random.alphaNumeric(5);
+  const randomSeed2 = faker.random.alphaNumeric(5);
   users.push(
     new User({
-      username: faker.internet.userName(firstName, lastName),
+      // username: faker.internet.userName(firstName, lastName),
+      username: `${firstName} ${lastName}`,
       email: faker.internet.email(firstName, lastName),
-      hashedPassword: bcrypt.hashSync(faker.internet.password(), 10)
+      hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
+      profilePic: `https://picsum.photos/seed/${randomSeed1}/400/400`,
+      backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
     })
   );
 }
