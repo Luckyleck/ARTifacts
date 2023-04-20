@@ -31,6 +31,8 @@ const ProfilePage = () => {
     const [isfollowing, setIsFollowing] = useState(false);
     const [openFavorite, setOpenFavorite] = useState(false);
     const history = useHistory();
+    const [follower, setFollower] = useState(false);
+    const [following, setFollowing] = useState(false);
 
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -53,6 +55,24 @@ const ProfilePage = () => {
         <FollowsIndex user={user} />
         <FollowersIndex user={user} />
     </div> */}
+
+    const viewFollowers = () => {
+        setFollowing(false);
+        setFollower(true);
+        const followerColor = document.querySelector('.follow-followers');
+        const followingColor = document.querySelector('.follow-following');
+        followingColor.classList.remove('add-color');
+        followerColor.classList.add('add-color');
+    }
+
+    const viewFollowing = () => {
+        setFollower(false);
+        setFollowing(true);
+        const followerColor = document.querySelector('.follow-followers');
+        const followingColor = document.querySelector('.follow-following');
+        followerColor.classList.remove('add-color');
+        followingColor.classList.add('add-color');
+    }
 
     return (
         <div className='profile-container'>
@@ -114,10 +134,11 @@ const ProfilePage = () => {
                 </div>
 
                 <div className='follow-title'>
-                    <div>Followers</div>
-                    <div>Following</div>
+                    <div className='follow-followers' onClick={viewFollowers}><p>Followers</p></div>
+                    <div className='follow-following' onClick={viewFollowing}><p>Following</p></div>
                 </div>
-
+                
+                { following && (
                 <div className='follow-detail'>
                     {user && user.follows.map(follow => (
                         <div className='follow-card' onClick={() => history.push(`/${follow._id}`)}>
@@ -126,7 +147,7 @@ const ProfilePage = () => {
                                     <img src={follow.backgroundPic} alt='starry' />
                                 </div>
             
-                                <div className='pic follow-card-profile'>
+                                <div className='pic follow-card-profile' onClick={() => history.push(`/${follow._id}`)}>
                                     <img src={follow.profilePic} alt='pikachu' />
                                 </div>
                             </div>
@@ -136,6 +157,28 @@ const ProfilePage = () => {
                         </div>
                     ))}
                 </div>
+                )}
+
+                { follower && (
+                <div className='follow-detail'>
+                    {user && user.followers.map(follower => (
+                        <div className='follow-card' onClick={() => history.push(`/${follower._id}`)}>
+                            <div className='profile-card-top follow-card-top'>
+                                <div className='profile-card-background follow-card-background'>
+                                    <img src={follower.backgroundPic} alt='starry' />
+                                </div>
+            
+                                <div className='pic follow-card-profile' onClick={() => history.push(`/${follower._id}`)}>
+                                    <img src={follower.profilePic} alt='pikachu' />
+                                </div>
+                            </div>
+                            <div className='user-info' id='follow-card-info'>
+                                <p id='follow-card-username'>{follower.username}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                )}
             </div>
 
         </div>

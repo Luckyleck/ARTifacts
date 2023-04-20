@@ -59,6 +59,7 @@ const NavBar = () => {
 
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
+                            {/* <i className="fa-solid fa-map"></i> */}
                             <div className='pic'><img src={profile} alt='profile' /></div>
                         </div>
                     )}

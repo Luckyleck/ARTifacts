@@ -245,10 +245,26 @@
     border-bottom: 1px solid #939598;
 }
 
-.follow-title > div {
+.follow-followers, .follow-following {
     flex-basis: 50%;
     text-align: center;
     border-right: 1px solid #939598;
+    cursor: pointer;
+    color: #939598;
+    font-weight: 800;
+}
+
+.add-color {
+    background-color: #908c8c;
+    /* color: #F7F7F7; */
+}
+
+.add-color p{
+    color: #F7F7F7;
+}
+
+.follow-followers:hover, .follow-following:hover {
+    background-color: #d1cbcb;
 }
 
 .follow-detail {
@@ -275,7 +291,7 @@
     height: 60px;
     bottom: -45%;
     right: 35%;
-    cursor: default;
+    cursor: pointer;
 }
 
 .follow-card {
@@ -285,6 +301,7 @@
     margin-bottom: 30px;
     background-color: #939598;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 #follow-card-username {
@@ -298,4 +315,9 @@
 
 .follow-card:hover {
     filter: brightness(70%);
+}
+
+.add-color {
+    background-color: #b2b4b7;
+    color: #939598;
 }
