@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     </ul>
                     {!openFavorite &&
                     <div className='expand-favorite'>
-                        <i className="fa-solid fa-angles-down" onClick={moveLeft}></i>
+                        <i className="fa-solid fa-angles-down" id='profile-expand' onClick={moveLeft}></i>
                         <p>Expand Favorites</p>
                     </div> }
                 </div>
@@ -120,9 +120,9 @@ const ProfilePage = () => {
                     Favorites:
                 </div>
                 <div className='grid-container'>
-                    {arts.map((art, index) => (
+                    {user?.favorites.map((art, index) => (
                         <div className='grid-item' key={index}>
-                            <img src={art} alt='art' />
+                            <img src={art.images.web.url} alt='art' />
                         </div>
                     ))}
                 </div>
@@ -141,8 +141,8 @@ const ProfilePage = () => {
                 
                 { following && (
                 <div className='follow-detail'>
-                    {user && user.follows.map(follow => (
-                        <div className='follow-card' onClick={() => history.push(`/${follow._id}`)}>
+                    {user && user.follows.map((follow, index) => (
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${follow._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
                                     <img src={follow.backgroundPic} alt='starry' />
@@ -162,8 +162,8 @@ const ProfilePage = () => {
 
                 { follower && (
                 <div className='follow-detail'>
-                    {user && user.followers.map(follower => (
-                        <div className='follow-card' onClick={() => history.push(`/${follower._id}`)}>
+                    {user && user.followers.map((follower, index) => (
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${follower._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
                                     <img src={follower.backgroundPic} alt='starry' />
@@ -188,8 +188,8 @@ const ProfilePage = () => {
                 </div>
 
                 <div className='follow-detail explore-detail'>
-                    {randomUsers && randomUsers.map(randomUser => (
-                        <div className='follow-card' onClick={() => history.push(`/${randomUser._id}`)}>
+                    {randomUsers && randomUsers.map((randomUser, index) => (
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${randomUser._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
                                     <img src={randomUser.backgroundPic} alt='starry' />
