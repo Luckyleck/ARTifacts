@@ -96,8 +96,8 @@
     background-color: #F7F7F7;
     /* width: 90%;
     height: 50%; */
-    height: 33vh;
-    max-height: 33vh;
+    height: 32vh;
+    max-height: 32vh;
     overflow-y: scroll;
     padding: 0.8vw;
     margin-left: 0.5vw;
@@ -182,11 +182,11 @@
     height: 30px;
 }
 
-.projects-container i, .projects-container img {
+.projects-container a {
     transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.projects-container i:hover, .projects-container img:hover {
+.projects-container a:hover {
     transform: scale(1.6);
 }
