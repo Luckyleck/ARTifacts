@@ -13,7 +13,8 @@ import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from 
 function Map() {
     const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal
     const [artworks, setArtworks] = useState([])
-    const [dateAfter, setDateAfter] = useState(500);
+    const [dateAfter, setDateAfter] = useState();
+    const dateBefore = dateAfter + 100
     const [params, setParams] = useState({
         skip: 0,
         limit: 300,
@@ -22,6 +23,36 @@ function Map() {
 
     function handleCountryClick(countryName) {
         console.log(countryName)
+        console.log(dateAfter)
+        const url = "https://openaccess-api.clevelandart.org/api/artworks";
+        
+
+        fetch(`${url}?${new URLSearchParams(params)}`)
+            .then((response) => response.json())
+            .then((data) => {
+                const filtered = [];
+                data.data.forEach((artwork) => {
+                    if (createdAfter) {
+                        if (
+                            artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase()) &&
+                            createdAfter
+                        ) {
+                            filtered.push(artwork);
+                        }
+                    } else {
+                        if (
+                            artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())
+                        ) {
+                            filtered.push(artwork)
+                        }
+                    }
+                });
+                setArtworks(filtered);
+                setShowArt(true);
+            })
+            .catch((error) => {
+                console.error("ERROR getting artwork data", error);
+            });
     }
 
     function onEachCountry(country, layer) {
@@ -55,13 +86,15 @@ function Map() {
         return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />
     }
 
-    function handleSliderChange(event, value) {
+    function handleSliderChange(event,value) {
         setDateAfter(value);
+        console.log(dateAfter)
+        console.log(event)
     }
 
     return (
         <>
-            
+
             {/* <Typography variant="body2">{dateAfter}s</Typography> */}
             <MapContainer
                 className="our-map"
