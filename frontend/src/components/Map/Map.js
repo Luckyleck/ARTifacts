@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Map.css";
 import { MapContainer, GeoJSON } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';
 import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 
