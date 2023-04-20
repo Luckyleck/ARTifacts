@@ -21,6 +21,7 @@ import adam from '../MainPage/assets/The_Creation_of_Adam.webp';
 import supper from '../MainPage/assets/The_Last_Supper.webp';
 import memory from '../MainPage/assets/The_Persistence_of_Memory.jpeg';
 import scream from '../MainPage/assets/The_scream.jpeg';
+import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -28,15 +29,16 @@ const ProfilePage = () => {
     const user = useSelector(getUser(userId));
     const sessionUser = useSelector(state => state.session.user);
     const [isfollowing, setIsFollowing] = useState(false);
+    const [openFavorite, setOpenFavorite] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchRandomUsers(5));
     }, [dispatch, userId]);
-
-    console.log(user);
-
-    const [openFavorite, setOpenFavorite] = useState(false);
+    
+    if (!sessionUser) return <Redirect to='/' />;
+    
 
     const arts = [cafe, girl, guernica, mona, adam, supper, memory, scream];
 
@@ -51,6 +53,7 @@ const ProfilePage = () => {
         <FollowsIndex user={user} />
         <FollowersIndex user={user} />
     </div> */}
+
     return (
         <div className='profile-container'>
             
@@ -60,7 +63,7 @@ const ProfilePage = () => {
                         <img src={starry} alt='starry' />
                     </div>
 
-                    <div className='pic' id='profile-card-pic'>
+                    <div className='pic profile-card-pic'>
                         <img src={pikachu} alt='pikachu' />
                     </div>
 
@@ -104,6 +107,36 @@ const ProfilePage = () => {
                 </div>
             </div>
             )}
+
+            <div className='follow-container'>
+                <div className='follow-tag'>
+                    <p>Followers / Following</p>
+                </div>
+
+                <div className='follow-title'>
+                    <div>Followers</div>
+                    <div>Following</div>
+                </div>
+
+                <div className='follow-detail'>
+                    {user && user.follows.map(follow => (
+                        <div className='follow-card' onClick={() => history.push(`/${follow._id}`)}>
+                            <div className='profile-card-top follow-card-top'>
+                                <div className='profile-card-background follow-card-background'>
+                                    <img src={follow.backgroundPic} alt='starry' />
+                                </div>
+            
+                                <div className='pic follow-card-profile'>
+                                    <img src={follow.profilePic} alt='pikachu' />
+                                </div>
+                            </div>
+                            <div className='user-info' id='follow-card-info'>
+                                <p id='follow-card-username'>{follow.username}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
         </div>
     );
