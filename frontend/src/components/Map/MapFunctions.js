@@ -21,8 +21,8 @@ export function maxBounds() {
 export const sliderStyles = makeStyles({
   root: {
     width: '80%',
-    left: '50%',
-    bottom: '8vh',  // Adjust as needed
+    left: '40%',
+    bottom: '7vh',  // Adjust as needed
     transform: 'translateX(-50%)',
     zIndex: 1000,
     padding: 0,
@@ -35,7 +35,7 @@ export const sliderStyles = makeStyles({
   },
   rail: {
     height: 20,     // increase the height of the rail
-    width: '100.5%'
+    width: '100%'
   },
   track: {
     height: 20,

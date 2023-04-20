@@ -1,4 +1,3 @@
-import './Favorites.css'
 import { useState } from 'react';
 import ArtworkDisplayModal from '../../ArtworkDisplay/Modal';
 

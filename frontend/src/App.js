@@ -2,19 +2,16 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-
+import { fetchCurrentUser } from './store/session';
 import NavBar from './components/NavBar/NavBar';
-
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
+import Timeline from './components/Map/Timeline';
 import WorldMap from './components/WorldMap/WorldMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
-
-import { fetchCurrentUser } from './store/session';
-
-import './index.css';
 import ContactPage from './components/ContactPage/ContactPage';
 import AboutPage from './components/AboutPage/AboutPage';
+import './index.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -24,39 +21,39 @@ export default function App() {
   }, [dispatch]);
 
   return loaded && (
-    <>
-      {/* <NavBar /> */}
+    <div className="wrapper">
       <Switch>
         <Route exact path="/">
-        <NavBar />
+          <NavBar />
           <MainPage />
         </Route>
 
         <Route exact path="/contact">
-        <NavBar />
+          <NavBar />
           <ContactPage />
         </Route>
 
         <Route exact path="/about">
-        <NavBar />
+          <NavBar />
           <AboutPage />
         </Route>
         
         <Route exact path="/explore">
-        <NavBar />
+          <NavBar />
           <Map />
+          {/* <Timeline /> */}
         </Route>
 
         <Route exact path="/maptest">
-        <NavBar />
-          <WorldMap/>
+          <NavBar />
+          <WorldMap />
         </Route>
 
         <Route path="/:userId">
-        <NavBar />
+          <NavBar />
           <ProfilePage />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }

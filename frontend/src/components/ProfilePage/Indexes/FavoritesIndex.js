@@ -9,7 +9,7 @@ export default function FavoritesIndex() {
 
   return (
     <>
-      {`${user?.username}'s favorites`}
+      {/* {`${user?.username}'s favorites`} */}
       <ul>
         {user?.favorites.map((favorite) => (
           <FavoritesIndexItem
