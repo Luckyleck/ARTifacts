@@ -149,13 +149,17 @@
 }
 
 .developer-projects {
+    /* width: 20vw; */
     position: relative;
 }
 
 #developer-expand {
     color: #939598;
-    position: absolute;
+    display: flex;
     top: -30px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%)
 }
 
 .projects-container {
