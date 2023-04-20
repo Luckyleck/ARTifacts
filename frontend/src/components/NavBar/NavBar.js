@@ -1,12 +1,13 @@
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import './NavBar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './assets/ART.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
 import { logout } from '../../store/session';
 import profile from './assets/pikachu.png';
+import { fetchUser, getUser } from '../../store/users';
 
 const NavBar = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -15,7 +16,9 @@ const NavBar = () => {
     const [sessionForm, setSessionForm] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
-    
+    const { userId } = useParams();
+    const user = useSelector(getUser(userId));
+
     const handleMenuOpen = () => {
         setShowMenu(true);
     };
@@ -37,7 +40,7 @@ const NavBar = () => {
     const toProfile = () => {
         history.push(`/${sessionUser._id}`)
     }
-
+    
     return (
         <header id='navbar'>
             <div id='nav-container'>
@@ -49,13 +52,14 @@ const NavBar = () => {
                 <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
                     {location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>
-                            <button className='about'>About Artifacts</button>
-                            <button className='about'>Contact Us</button>
+                            <button className='about' onClick={() => history.push('/about')}>About Artifacts</button>
+                            <button className='about' onClick={() => history.push('/contact')}>Contact Us</button>
                         </div>
                     )}
 
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
+                            {/* <button><i className="fa-solid fa-map"></i></button> */}
                             <div className='pic'><img src={profile} alt='profile' /></div>
                         </div>
                     )}
@@ -63,7 +67,8 @@ const NavBar = () => {
                     {showMenu && sessionUser && (
                         <ul className='dropdown-items'>
                             <li onClick={toProfile}>Your profile</li>
-                            <li>Favorite</li>
+                            <li onClick={() => history.push('/about')}>About Artifacts</li>
+                            <li onClick={() => history.push('/contact')}>Contact Us</li>
                             <li onClick={logoutUser}>Sign out</li>
                         </ul>
                     )}
@@ -92,14 +97,24 @@ const NavBar = () => {
                         </Modal>
                     )} */}
                 </div>
-            </div>
 
-            <div className='nav-buttons' id='test'>
-                { location.pathname === '/' ? <div>ARTifacts</div> :
-                <div>Test</div>
-                }
-                
+                {sessionUser && (
+                <button className='map-button' onClick={() => history.push('/explore')}>
+                    <i className="fa-solid fa-map"></i>
+                </button>)}
             </div>
+            
+            <div className='nav-buttons' id='test'>
+                { location.pathname === '/' && <div>ARTifacts</div> }
+            {user && (
+                <div>
+                { location.pathname === `/${user._id}` && 
+                <div>{user.username}'s Page</div>
+                }
+                </div>
+            )}
+            </div>
+            
         </header>
     )
 }

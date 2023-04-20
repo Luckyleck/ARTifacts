@@ -1,14 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import { Slider, Typography } from '@material-ui/core';
-import "./Map.css";
-import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';
-
-
-import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-
-import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
+import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 
 function Map() {
   const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal

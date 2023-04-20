@@ -14,7 +14,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import bg from './assets/bg.jpeg'
 
-function MainPage() {
+const MainPage = () => {
   const [start, setStart] = useState(false);
   const history = useHistory();
 

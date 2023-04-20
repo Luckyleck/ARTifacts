@@ -13,6 +13,8 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import { fetchCurrentUser } from './store/session';
 
 import './index.css';
+import ContactPage from './components/ContactPage/ContactPage';
+import AboutPage from './components/AboutPage/AboutPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,13 +25,25 @@ export default function App() {
 
   return loaded && (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/">
+        <NavBar />
           <MainPage />
+        </Route>
+
+        <Route exact path="/contact">
+        <NavBar />
+          <ContactPage />
+        </Route>
+
+        <Route exact path="/about">
+        <NavBar />
+          <AboutPage />
         </Route>
         
         <Route exact path="/explore">
+        <NavBar />
           <Map />
         </Route>
 
