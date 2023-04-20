@@ -4,7 +4,7 @@ import countries from '../../data/countries.geo.json';
 import "./Map.css";
 import { Slider } from '@material-ui/core';
 import { geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from "./MapFunctions";
-import ArtworkDisplayModal from "../DisplayArtwork/ArtworkDisplayModal";
+import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
 import 'leaflet/dist/leaflet.css'
 
 export default function Map() {
