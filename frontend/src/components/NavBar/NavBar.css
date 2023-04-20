@@ -9,12 +9,11 @@ body {
     top: 0;
     display: flex;
     /* justify-content: space-between; */
-    width: 100%;
-    /* max-width: 99vw; */
+    width: 100vw;
     background-color: #F7F7F7;
     box-sizing: border-box;
     align-items: center;
-    z-index: 1090;
+    z-index: 100;
 }
 
 #nav-container {
