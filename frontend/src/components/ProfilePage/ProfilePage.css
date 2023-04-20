@@ -44,7 +44,7 @@
 .pic img {
     width: 100%;
     height: 100%;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
 }
 
 .profile-card-pic {
@@ -156,7 +156,7 @@
 }
 
 .expand-favorite p {
-    color: #F7F7F7;
+    color: #939598;
     font-size: 20px;
 }
 
@@ -206,7 +206,7 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27%;
+    right: -27vw;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
@@ -331,8 +331,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27%;
-    top: 34%;
+    right: -27vw;
+    top: 34vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
