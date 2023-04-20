@@ -148,3 +148,22 @@ body {
     transition: all 0.2s ease-in-out;
     /* object-fit:cover; */
 }
+
+.map-button {
+    background-color: #F7F7F7;
+    font-size: 24px;
+    color: #939598;
+    border-radius: 100%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border: none;
+    right: 7%;
+    top: 1.3%;
+}
+
+.map-button:hover {
+    color: #F7F7F7;
+    background-color:#939598;
+}
