@@ -1,5 +1,6 @@
 import React from 'react'
 import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
+import "./DisplayArtwork.css";
 
 
 function DisplayArtwork({ artwork, setShowArt}) {
