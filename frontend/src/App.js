@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
-// import Map from './components/Map/Map';
+import Map from './components/Map/Map';
 import RebuiltMap from './components/RebuiltMap/RebuiltMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
@@ -29,9 +29,9 @@ export default function App() {
           <MainPage />
         </Route>
         
-        {/* <Route exact path="/explore">
+        <Route exact path="/explore">
           <Map />
-        </Route> */}
+        </Route>
 
         <Route exact path="/rebuiltmap">
           <RebuiltMap />
