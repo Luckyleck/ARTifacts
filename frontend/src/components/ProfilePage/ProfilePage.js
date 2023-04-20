@@ -120,7 +120,7 @@ const ProfilePage = () => {
                     Favorites:
                 </div>
                 <div className='grid-container'>
-                    {arts.map((art, index) => (
+                    {user.favorites.map((art, index) => (
                         <div className='grid-item' key={index}>
                             <img src={art} alt='art' />
                         </div>

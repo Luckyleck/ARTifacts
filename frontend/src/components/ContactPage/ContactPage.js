@@ -1,5 +1,4 @@
 import './ContactPage.css';
-import pikachu from '../NavBar/assets/pikachu.png';
 import js from './assets/js.png';
 import linkedin from './assets/linkedin.png';
 import react from './assets/react.png';

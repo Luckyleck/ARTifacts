@@ -61,6 +61,19 @@
     font-size: 30px;
     text-align: center;
     position: relative;
+    animation: fade-in 2s;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
 }
 
 .developer-info {
