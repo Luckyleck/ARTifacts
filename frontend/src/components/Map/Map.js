@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Slider } from '@material-ui/core';
+import { geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from "./MapFunctions";
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import countries from '../../data/countries.geo.json';
+import 'leaflet/dist/leaflet.css'
 import "./Map.css";
-import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
-
-
-
+import countries from '../../data/countries.geo.json';
+import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
 
 export default function Map() {
   const [artworks, setArtworks] = useState([]);
   const [century, setCentury] = useState([0, 99]);
   const [modalShouldBeOpen, setModalShouldBeOpen] = useState(false);
-  
+
+  useEffect(() => {
+    setModalShouldBeOpen(true);
+  }, [artworks]);
+
   function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
     const params = { skip: 0, has_image: 1 };
@@ -35,8 +39,8 @@ export default function Map() {
     ;
   }
 
-  function ArtworkDisplayModal() {
-    const timeFiltered = []
+  function ArtworkDisplay() {
+    const timeFiltered = [];
 
     artworks.forEach((artwork) => {
       const artworkYear = (artwork?.creation_date_earliest + artwork?.creation_date_latest) / 2;
@@ -47,39 +51,25 @@ export default function Map() {
       }
     });
 
-    const randomIndex = Math.floor(Math.random() * timeFiltered?.length);
-    const randomArtwork = timeFiltered?.[randomIndex];
+    console.log(timeFiltered);
+
+    const randomIndex = Math.floor(Math.random() * timeFiltered.length);
+    const randomArtwork = timeFiltered[randomIndex];
+
+    console.log(randomArtwork);
 
     return randomArtwork && (
-      <div className="art-display-container">
-        <FavoriteButton artwork={randomArtwork} />
-        <h2>{randomArtwork?.culture}</h2>
-        <button onClick={() => setModalShouldBeOpen(false)}>&times;</button> 
-        <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
-      </div>
+      <ArtworkDisplayModal
+        artwork={randomArtwork}
+        setModalShouldBeOpen={setModalShouldBeOpen} />
     );
-  }
-
-  /* -------------------MAP--------------------- */
-
-  const maxBounds = [
-    [-120, -210],
-    [110, 210]
-  ];
-
-  function style() {
-    return {
-      fillOpacity: 0.8,
-      color: "black",
-      weight: 2
-    }
   }
 
   function onEachCountry(country, layer) {
     const colors = ["green", "yellow", "red", "orange", "purple", "brown"];
     const randomColorIndex = Math.floor(Math.random() * colors.length);
     layer.setStyle({ fillColor: colors[randomColorIndex] });
-
+    
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN);
@@ -93,34 +83,37 @@ export default function Map() {
     });
   }
 
+  console.log(century);
+  
   return (
     <>
-      <input
-        type="number"
-        min="0"
-        max="1900"
-        step="100"
-        value={century[0]}
-        onChange={(e) => {
-          setCentury([parseInt(e.target.value), parseInt(e.target.value) + 99]);
-          setModalShouldBeOpen(true);
-        }}
-      />
       <MapContainer
         className="our-map"
         zoom={3}
-        center={[0,0]}
+        center={[0, 0]}
         minZoom={3}
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
       >
         <GeoJSON
           data={countries.features}
-          style={style}
+          style={geoJsonStyle}
           onEachFeature={onEachCountry}
         />
       </MapContainer>
-      {modalShouldBeOpen && ArtworkDisplayModal()}
+      {modalShouldBeOpen && ArtworkDisplay()}
+      <Slider
+        min={0}
+        max={1900}
+        step={100}
+        marks={sliderMarks}
+        classes={sliderStyles()}
+        valueLabelDisplay="auto"
+        value={century[0]}
+        onChange={(e, value) => {
+          setCentury([value, value + 99]);
+        }}
+      />
     </>
   );
 }
