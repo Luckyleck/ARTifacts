@@ -1,14 +1,15 @@
 import React from 'react'
+import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 
 
 function DisplayArtwork({ artwork, setShowArt}) {
     return (
         <div className="art-display-container">
-            <FavoriteButton artwork={randomArtwork} />
-            <h2>{randomArtwork?.culture}</h2>
+            <FavoriteButton artwork={artwork} />
+            <h2>{artwork?.culture}</h2>
             <button onClick={() => setShowArt(false)}>&times;</button>
-            <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image' />
-            {console.log(randomArtwork)}
+            <img src={artwork?.images.web.url} alt={artwork?.title} id='fetched-image' />
+            {console.log(artwork)}
         </div>
     )
 }
