@@ -60,7 +60,7 @@ const NavBar = () => {
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
                             {/* <button><i className="fa-solid fa-map"></i></button> */}
-                            <div className='pic'><img src={profile} alt='profile' /></div>
+                            <div className='pic'><img src={sessionUser.profilePic} alt='profile' /></div>
                         </div>
                     )}
 
