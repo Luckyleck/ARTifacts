@@ -52,14 +52,14 @@ const NavBar = () => {
                 <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
                     {location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>
-                            <button className='about'>About Artifacts</button>
-                            <button className='about'>Contact Us</button>
+                            <button className='about' onClick={() => history.push('/about')}>About Artifacts</button>
+                            <button className='about' onClick={() => history.push('/contact')}>Contact Us</button>
                         </div>
                     )}
 
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
-                            {/* <i className="fa-solid fa-map"></i> */}
+                            {/* <button><i className="fa-solid fa-map"></i></button> */}
                             <div className='pic'><img src={profile} alt='profile' /></div>
                         </div>
                     )}
@@ -67,7 +67,8 @@ const NavBar = () => {
                     {showMenu && sessionUser && (
                         <ul className='dropdown-items'>
                             <li onClick={toProfile}>Your profile</li>
-                            <li>Favorite</li>
+                            <li onClick={() => history.push('/about')}>About Artifacts</li>
+                            <li onClick={() => history.push('/contact')}>Contact Us</li>
                             <li onClick={logoutUser}>Sign out</li>
                         </ul>
                     )}
@@ -96,6 +97,11 @@ const NavBar = () => {
                         </Modal>
                     )} */}
                 </div>
+
+                {sessionUser && (
+                <button className='map-button' onClick={() => history.push('/explore')}>
+                    <i className="fa-solid fa-map"></i>
+                </button>)}
             </div>
             
             <div className='nav-buttons' id='test'>

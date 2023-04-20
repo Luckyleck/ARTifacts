@@ -321,3 +321,27 @@
     background-color: #b2b4b7;
     color: #939598;
 }
+
+.explore-container {
+    position: fixed;
+    background-color:#F7F7F7;
+    /* width: 744px; */
+    width: 27vw;
+    height: 60vh;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    right: -27%;
+    top: 34%;
+    box-shadow: -5px 5px 5px #434445;
+    z-index: 3;
+    transition: right 0.5s ease-in-out;
+}
+
+.explore-container:hover {
+    right: 0;
+}
+
+.explore-detail {
+    max-height: 58vh;
+}

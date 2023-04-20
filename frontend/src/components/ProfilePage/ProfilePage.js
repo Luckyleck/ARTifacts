@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRandomUsers, fetchUser, getUser } from '../../store/users';
+import { fetchRandomUsers, fetchUser, getRandomUsers, getUser } from '../../store/users';
 
 import FollowersIndex from './Indexes/FollowersIndex';
 import FollowsIndex from './Indexes/FollowsIndex';
@@ -33,6 +33,7 @@ const ProfilePage = () => {
     const history = useHistory();
     const [follower, setFollower] = useState(false);
     const [following, setFollowing] = useState(false);
+    const randomUsers = useSelector(getRandomUsers);
 
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -179,6 +180,31 @@ const ProfilePage = () => {
                     ))}
                 </div>
                 )}
+            </div>
+
+            <div className='explore-container'>
+                <div className='follow-tag'>
+                    <p>Explore Users</p>
+                </div>
+
+                <div className='follow-detail explore-detail'>
+                    {randomUsers && randomUsers.map(randomUser => (
+                        <div className='follow-card' onClick={() => history.push(`/${randomUser._id}`)}>
+                            <div className='profile-card-top follow-card-top'>
+                                <div className='profile-card-background follow-card-background'>
+                                    <img src={randomUser.backgroundPic} alt='starry' />
+                                </div>
+            
+                                <div className='pic follow-card-profile' onClick={() => history.push(`/${randomUser._id}`)}>
+                                    <img src={randomUser.profilePic} alt='pikachu' />
+                                </div>
+                            </div>
+                            <div className='user-info' id='follow-card-info'>
+                                <p id='follow-card-username'>{randomUser.username}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
         </div>
