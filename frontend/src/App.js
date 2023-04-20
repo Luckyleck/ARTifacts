@@ -6,7 +6,7 @@ import { fetchCurrentUser } from './store/session';
 import NavBar from './components/NavBar/NavBar';
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
-import Timeline from './components/Map/Timeline';
+import BackupMap from './components/Map/BackupMap';
 import WorldMap from './components/WorldMap/WorldMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ContactPage from './components/ContactPage/ContactPage';
@@ -41,7 +41,11 @@ export default function App() {
         <Route exact path="/explore">
           <NavBar />
           <Map />
-          {/* <Timeline /> */}
+        </Route>
+
+        <Route exact path="/backup">
+          <NavBar />
+          <BackupMap />
         </Route>
 
         <Route exact path="/maptest">
