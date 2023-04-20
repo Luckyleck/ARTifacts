@@ -6,7 +6,7 @@ export default function FavoriteButton({ artwork }) {
   const currentUser = useSelector(getCurrentUser);
 
   function objectExistsWithKey(arr, key, value) {
-    return arr?.some(obj => obj[key] === value);
+    return arr.some(obj => obj[key] === value);
   }
 
   if (!currentUser || !artwork) return;
