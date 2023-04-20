@@ -8,8 +8,8 @@ export default function FavoritesIndex() {
   const user = useSelector(getUser(userId));
 
   return (
-    <div>
-      {`${user?.username}'s favorites`}
+    <>
+      {/* {`${user?.username}'s favorites`} */}
       <ul>
         {user?.favorites.map((favorite) => (
           <FavoritesIndexItem
@@ -18,6 +18,6 @@ export default function FavoritesIndex() {
           />
         ))}
       </ul>
-    </div>
+    </>
   );
 }

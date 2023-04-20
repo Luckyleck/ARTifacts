@@ -1,189 +1,119 @@
 import { useState, useEffect } from "react";
-import "./Map.css";
+import { Slider } from '@material-ui/core';
+import { geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from "./MapFunctions";
 import { MapContainer, GeoJSON } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'
+import "./Map.css";
 import countries from '../../data/countries.geo.json';
-import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
+import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
 
-function Map() {
-  const [clicked, setClicked] = useState(false);
+export default function Map() {
   const [artworks, setArtworks] = useState([]);
-  const [country, setCountry] = useState("");
-  const [createdAfter, setCreatedAfter] = useState("");
-  const [createdBefore, setCreatedBefore] = useState("");
+  const [century, setCentury] = useState([0, 99]);
+  const [modalShouldBeOpen, setModalShouldBeOpen] = useState(false);
 
-  function formattedYear(year) {
-    let newYear;
+  useEffect(() => {
+    setModalShouldBeOpen(true);
+  }, [artworks]);
 
-    if (year.length === 4) {
-      newYear = parseInt(year + 99).toString().slice(0, 2) + "99"
-    } else {
-      newYear = parseInt(year + 99).toString().slice(0, 1) + "99"
-    }
-
-    return newYear
-  }
-
-  function handleCountryClick(countryName) {
-
+  function handleCountryClick(country) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
-    let params = {
-      q: countryName,
-      skip: 0,
-      limit: 500,
-      has_image: 1,
-    };
-
-    if (createdAfter) {
-      debugger
-      params = {
-        ...params,
-        created_after: createdAfter,
-        created_before: formattedYear(createdAfter)
-      };
-    }
+    const params = { skip: 0, has_image: 1, q: country };
 
     fetch(`${url}?${new URLSearchParams(params)}`)
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          if (createdAfter) {
-            if (
-              artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase()) &&
-              createdAfter
-            ) {
-              filtered.push(artwork);
-            }
-          } else {
-            if (
-              artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())
-            ) {
-              filtered.push(artwork)
-            }
+          if (artwork?.culture[0]?.toLowerCase().includes(country?.toLowerCase())) {
+            filtered.push(artwork);
           }
         });
         setArtworks(filtered);
-        setClicked(true);
       })
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
-      });
+      })
+    ;
   }
 
-  function handleRandomImage() {
-    const randomIndex = Math.floor(Math.random() * artworks.length);
-    const randomArtwork = artworks[randomIndex];
+  function ArtworkDisplay() {
+    const timeFiltered = [];
+
+    artworks.forEach((artwork) => {
+      const artworkYear = (artwork?.creation_date_earliest + artwork?.creation_date_latest) / 2;
+      if (century[0]) {
+        if (century[0] <= artworkYear && artworkYear <= century[1]) timeFiltered.push(artwork);
+      } else {
+        timeFiltered.push(artwork);
+      }
+    });
+
+    console.log(timeFiltered);
+
+    const randomIndex = Math.floor(Math.random() * timeFiltered.length);
+    const randomArtwork = timeFiltered[randomIndex];
+
+    console.log(randomArtwork);
 
     return randomArtwork && (
-      <div className="art-display-container">
-        <FavoriteButton artwork={randomArtwork} />
-        <h2>{randomArtwork?.culture}</h2>
-        <button onClick={() => setClicked(false)}>&times;</button> 
-        <img src={randomArtwork?.images.web.url} alt={randomArtwork?.title} id='fetched-image'/>
-        {console.log(randomArtwork)}
-      </div>
+      <ArtworkDisplayModal
+        artwork={randomArtwork}
+        toggle={setModalShouldBeOpen} />
     );
   }
 
-  useEffect(() => {
-    setArtworks([]);
-  }, [country, createdAfter]);
-
-  /* -------------------MAP--------------------- */
-
-  const maxBounds = [
-    [-120, -210],
-    [110, 210]
-  ];
-
-  function style() {
-    return {
-      fillOpacity: 0.8,
-      color: "black",
-      weight: 2
-    }
-  }
-
   function onEachCountry(country, layer) {
-    const countryName = country.properties.ADMIN
-    // console.log(countryName)
-    layer.bindPopup(countryName);
-
-    const colors = ["green", "yellow", "red", "orange", "purple", "brown"]
-    const randomColorIndex = Math.floor(Math.random() * colors.length)
-
-    layer.setStyle({ fillColor: colors[randomColorIndex] })
-
+    const colors = ["green", "yellow", "red", "orange", "purple", "brown"];
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    layer.setStyle({ fillColor: colors[randomColorIndex] });
+    
     layer.on({
       click: () => {
-        handleCountryClick(country.properties.ADMIN)
+        handleCountryClick(country.properties.ADMIN);
       },
       mouseover: (e) => {
-        e.target.setStyle({
-          fillOpacity: 1
-        })
+        e.target.setStyle({ fillOpacity: 1 });
       },
       mouseout: (e) => {
-        e.target.setStyle({
-          fillOpacity: 0.5
-        })
+        e.target.setStyle({ fillOpacity: 0.5 });
       }
-    })
+    });
   }
 
+  console.log(century);
+  
   return (
     <>
-      <div className="test-wrapper">
-        <input type="text" onChange={(e) => setCountry(e.target.value)} />
-
-        <select onChange={(e) => {
-          setCreatedAfter(e.target.value);
-          setCreatedBefore(parseInt(e.target.value + 99))
-        }
-        }>
-          <option value="">All Time</option>
-          <option value="500">500s</option>
-          <option value="600">600s</option>
-          <option value="700">700s</option>
-          <option value="800">800s</option>
-          <option value="900">900s</option>
-          <option value="1000">1000s</option>
-          <option value="1100">1100s</option>
-          <option value="1200">1200s</option>
-          <option value="1300">1300s</option>
-          <option value="1400">1400s</option>
-          <option value="1500">1500s</option>
-          <option value="1600">1600s</option>
-          <option value="1700">1700s</option>
-          <option value="1800">1800s</option>
-          <option value="1900">1900s</option>
-        </select>
-        
-      </div>
-      <div className="our-map-container">
       <MapContainer
-          className="our-map"
-          zoom={3}
-          center={[0,0]}
-          minZoom={3}
-          maxBounds={maxBounds}
-          maxBoundsViscosity={1}
-        >
-
-          <GeoJSON
-            data={countries.features}
-            style={style}
-            onEachFeature={onEachCountry}
-          />
-        </MapContainer>
-      </div>
-      {clicked && handleRandomImage()}
+        className="our-map"
+        zoom={3}
+        center={[0, 0]}
+        minZoom={3}
+        maxBounds={maxBounds}
+        maxBoundsViscosity={1}
+      >
+        <GeoJSON
+          data={countries.features}
+          style={geoJsonStyle}
+          onEachFeature={onEachCountry}
+        />
+      </MapContainer>
+      {modalShouldBeOpen && ArtworkDisplay()}
+      <Slider
+        min={0}
+        max={1900}
+        step={100}
+        marks={sliderMarks}
+        classes={sliderStyles()}
+        valueLabelDisplay="auto"
+        value={century[0]}
+        onChange={(e, value) => {
+          setCentury([value, value + 99]);
+        }}
+      />
     </>
   );
 }
-
-export default Map;
-
-
-
-/* <button onClick={() => handleClick(country)}>search</button> */
