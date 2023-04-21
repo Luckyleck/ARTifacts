@@ -50,7 +50,7 @@
 .contact-grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
+    gap: 2px;
     height: 90vh;
 }
 
@@ -61,7 +61,7 @@
     font-size: 30px;
     text-align: center;
     position: relative;
-    animation: fade-in 2s;
+    animation: fade-in 3s;
     animation-fill-mode: forwards;
     opacity: 1;
 }
@@ -159,7 +159,24 @@
     top: -30px;
     left: 50%;
     position: absolute;
-    transform: translate(-50%)
+    transform: translate(-50%);
+    animation: slide-down 1.5s infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-down {
+    0% {
+      transform: translateX(-50%) translateY(-50%);
+      opacity: 0;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
 }
 
 .projects-container {
@@ -174,7 +191,7 @@
     align-items: center;
     justify-content: space-around;
     box-shadow: 5px 5px 5px #434445;
-    animation: drop-down 2s;
+    animation: drop-down 1s;
     animation-fill-mode: forwards;
     /* z-index: 1; */
     opacity: 1;

@@ -93,7 +93,7 @@ const ContactPage = () => {
                     </div>
                 </div>
                 <div className='developer-projects' onMouseEnter={() => openProjects(index)} onMouseLeave={closeProjects}>
-                    <i className="fa-solid fa-angles-down" id='developer-expand'></i>
+                    <i className="fa-solid fa-angles-down slide" id='developer-expand'></i>
 
                     { showProjects === index &&
                     <div className='projects-container' >
