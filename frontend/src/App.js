@@ -48,10 +48,12 @@ export default function App() {
         </Route>
 
         <Route exact path="/rebuiltmap">
+        <NavBar />
           <RebuiltMap />
         </Route>
 
         <Route exact path="/:userId">
+        <NavBar />
           <ProfilePage />
         </Route>
       </Switch>
