@@ -8,9 +8,12 @@ import mg from '../MainPage/assets/mg.jpeg';
 import kc from './assets/kc.jpeg';
 import al from './assets/al.jpeg';
 import sn from './assets/sn.jpeg';
+import nighthawks from './assets/Nighthawks.jpeg'
 import { useState } from 'react';
+const { faker } = require('@faker-js/faker');
 
 const ContactPage = () => {
+
     const [showProjects, setShowProjects] = useState(false);
 
     const openProjects = (index) => {
@@ -25,7 +28,7 @@ const ContactPage = () => {
         {
             name: 'Alex Lecky',
             title: 'Team Lead - Flex Developer',
-            backgroundpic: starry,
+            backgroundpic: 'https://picsum.photos/seed/4/400/400',
             profile: al,
             bio: 'testing',
             github: 'https://github.com/Luckyleck',
@@ -47,7 +50,7 @@ const ContactPage = () => {
         {
             name: 'Michael Gastello',
             title: 'Flex Developer',
-            backgroundpic: starry,
+            backgroundpic: nighthawks,
             profile: mg,
             bio: 'testing',
             github: 'https://github.com/mgastello',
@@ -58,7 +61,7 @@ const ContactPage = () => {
         {
             name: 'Steven Notovitz',
             title: 'Backend Lead',
-            backgroundpic: starry,
+            backgroundpic: 'https://picsum.photos/seed/4/400/400',
             profile: sn,
             bio: 'testing',
             github: 'https://github.com/StevenNotovitz',

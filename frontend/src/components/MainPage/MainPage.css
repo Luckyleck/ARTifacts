@@ -1,7 +1,7 @@
 .image-container {
     background: #939598;
     position: relative;
-    height: 93.8vh;
+    height: 92.4vh;
     filter: brightness(70%);
     overflow: hidden;
 }
@@ -12,74 +12,122 @@
 
 .image-container img:nth-child(1) {
     animation: slide 20s linear infinite;
-    left: -400px;
     top: 30%;
-    transform: translateY(-60%) translateX(50%);
+    transform: translateY(-60%) translateX(140%);
     height: 50%;
 }
 
 .image-container img:nth-child(2) {
     animation: slide 20s linear infinite;
-    left: -400px;
-    transform: translateX(-60%) translateY(-80%);
-    top: 50%;
-    height: 50%;
+    transform: translateX(10%) translateY(85%);
+    height: 55%;
 }
 
 .image-container img:nth-child(3) {
     animation: slide 20s linear infinite;
-    transform: translateY(210%) translateX(-20%);
-    height: 30%;
+    transform: translateY(80%) translateX(50%);
+    height: 40%;
 }
 
 .image-container img:nth-child(4) {
     animation: slide 20s linear infinite;
-    transform: translateY(70%) translateX(120%);
+    transform: translateY(70%) translateX(250%);
     height: 50%;
+    z-index: 1;
 }
 
 .image-container img:nth-child(5) {
     animation: slide 20s linear infinite;
-    transform: translateY(10%) translateX(-200%);
-    height: 30%;
+    transform: translateY(0) translateX(-10%);
+    height: 50%;
 }
 
 .image-container img:nth-child(6) {
     animation: slide 20s linear infinite;
-    transform: translateY(120%) translateX(-150%);
-    height: 30%;
+    transform: translateY(170%) translateX(50%);
+    height: 40%;
 }
 
 .image-container img:nth-child(7) {
     animation: slide 20s linear infinite;
-    transform: translateY(10%) translateX(120%);
-    height: 30%;
+    transform: translateY(0) translateX(120%);
+    height: 40%;
 }
 
 .image-container img:nth-child(8) {
     animation: slide 20s linear infinite;
-    transform: translateY(130%) translateX(-260%);
-    height: 40%;
+    transform: translateY(0%) translateX(-100%);
+    height: 50%;
 }
 
 .image-container img:nth-child(9) {
     animation: slide 20s linear infinite;
-    transform: translateY(10%) translateX(-350%);
-    height: 45%;
+    transform: translateY(70%) translateX(-85%);
+    height: 60%;
 }
 
 .image-container img:nth-child(10) {
     animation: slide 20s linear infinite;
-    transform: translateY(10%) translateX(-400%);
-    height: 45%;
+    transform: translateY(80%) translateX(-180%);
+    height: 58%;
+}
+
+.image-container img:nth-child(11) {
+    animation: slide 20s linear infinite;
+    transform: translateY(0%) translateX(-190%);
+    height: 58%;
+}
+
+.image-container img:nth-child(12) {
+    animation: slide 20s linear infinite;
+    transform: translateY(100%) translateX(-380%);
+    height: 50%;
+}
+
+.image-container img:nth-child(13) {
+    animation: slide 20s linear infinite;
+    transform: translateY(80%) translateX(-270%);
+    height: 58%;
+    z-index: 2;
+}
+
+.image-container img:nth-child(14) {
+    animation: slide 20s linear infinite;
+    transform: translateY(50%) translateX(-130%);
+    height: 50%;
+}
+
+.image-container img:nth-child(15) {
+    animation: slide 20s linear infinite;
+    transform: translateY(30%) translateX(-350%);
+    height: 56%;
+    z-index: 1;
+}
+
+.image-container img:nth-child(16) {
+    animation: slide 20s linear infinite;
+    transform: translateY(120%) translateX(140%);
+    height: 50%;
+}
+
+.image-container img:nth-child(17) {
+    animation: slide 20s linear infinite;
+    transform: translateY(120%) translateX(-330%);
+    height: 50%;
+}
+
+.image-container img:nth-child(18) {
+    animation: slide 20s linear infinite;
+    transform: translateY(120%) translateX(-330%);
+    height: 50%;
 }
 
 @keyframes slide {
     0% {
-        left: -1000px;
+        left: -1500px;
     }
     100% {
-        left: calc(100% + 400px);
+        left: calc(100% + 800px);
     }
 }
 

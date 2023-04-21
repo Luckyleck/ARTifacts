@@ -13,14 +13,6 @@ import './ProfilePage.css'
 
 import starry from '../MainPage/assets/starry_night.webp'
 import pikachu from '../NavBar/assets/pikachu.png'
-import cafe from '../MainPage/assets/Cafe_Terrace_at_Night.webp';
-import girl from '../MainPage/assets/Girl_with_a_Pearl_Earring.jpeg';
-import guernica from '../MainPage/assets/Guernica.jpeg';
-import mona from '../MainPage/assets/Mona_Lisa.jpg';
-import adam from '../MainPage/assets/The_Creation_of_Adam.webp';
-import supper from '../MainPage/assets/The_Last_Supper.webp';
-import memory from '../MainPage/assets/The_Persistence_of_Memory.jpeg';
-import scream from '../MainPage/assets/The_scream.jpeg';
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfilePage = () => {
@@ -41,9 +33,6 @@ const ProfilePage = () => {
     }, [dispatch, userId]);
     
     if (!sessionUser) return <Redirect to='/' />;
-    
-
-    const arts = [cafe, girl, guernica, mona, adam, supper, memory, scream];
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
