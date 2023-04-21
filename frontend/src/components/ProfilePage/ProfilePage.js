@@ -87,12 +87,11 @@ const ProfilePage = () => {
                     <div className='pic profile-card-pic'>
                         <img src={user?.profilePic} alt='profile-pic' />
                     </div>
-
                 </div>
                 
                 {user && (
                 <div className='user-info'>
-                    <p>{user?.username}</p>
+                    <p>{user.username}</p>
                 </div>
                 )}
 
@@ -101,9 +100,9 @@ const ProfilePage = () => {
                 {user && (
                 <div className='profile-card-bottom'>
                     <ul>
-                        <li>Followers: <p>&nbsp;{user?.followers?.length}</p></li>
-                        <li>Following: <p>&nbsp; {user?.follows?.length}</p></li>
-                        <li>Favorite arts: <p>&nbsp; {user?.favorites?.length}</p></li>
+                        <li>Followers: <p>&nbsp;{user.followers?.length}</p></li>
+                        <li>Following: <p>&nbsp; {user.follows?.length}</p></li>
+                        <li>Favorite arts: <p>&nbsp; {user.favorites?.length}</p></li>
                     </ul>
                     {!openFavorite &&
                     <div className='expand-favorite'>
@@ -142,18 +141,18 @@ const ProfilePage = () => {
                 { following && (
                 <div className='follow-detail'>
                     {user && user?.follows?.map((follow, index) => (
-                        <div className='follow-card' key={index} onClick={() => history.push(`/${follow?._id}`)}>
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${follow._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={follow?.backgroundPic} alt='background-pic' />
+                                    <img src={follow.backgroundPic} alt='background-pic' />
                                 </div>
             
                                 <div className='pic follow-card-profile' onClick={() => history.push(`/${follow?._id}`)}>
-                                    <img src={follow?.profilePic} alt='profile-pic' />
+                                    <img src={follow.profilePic} alt='profile-pic' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>
-                                <p id='follow-card-username'>{follow?.username}</p>
+                                <p id='follow-card-username'>{follow.username}</p>
                             </div>
                         </div>
                     ))}
@@ -163,18 +162,18 @@ const ProfilePage = () => {
                 { follower && (
                 <div className='follow-detail'>
                     {user && user?.followers?.map((follower, index) => (
-                        <div className='follow-card' key={index} onClick={() => history.push(`/${follower?._id}`)}>
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${follower._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={follower?.backgroundPic} alt='background-pic' />
+                                    <img src={follower.backgroundPic} alt='background-pic' />
                                 </div>
             
-                                <div className='pic follow-card-profile' onClick={() => history.push(`/${follower?._id}`)}>
-                                    <img src={follower?.profilePic} alt='profile-pic' />
+                                <div className='pic follow-card-profile' onClick={() => history.push(`/${follower._id}`)}>
+                                    <img src={follower.profilePic} alt='profile-pic' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>
-                                <p id='follow-card-username'>{follower?.username}</p>
+                                <p id='follow-card-username'>{follower.username}</p>
                             </div>
                         </div>
                     ))}
@@ -189,18 +188,18 @@ const ProfilePage = () => {
 
                 <div className='follow-detail explore-detail'>
                     {randomUsers && randomUsers?.map((randomUser, index) => (
-                        <div className='follow-card' key={index} onClick={() => history.push(`/${randomUser?._id}`)}>
+                        <div className='follow-card' key={index} onClick={() => history.push(`/${randomUser._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
-                                    <img src={randomUser?.backgroundPic} alt='starry' />
+                                    <img src={randomUser.backgroundPic} alt='starry' />
                                 </div>
             
-                                <div className='pic follow-card-profile' onClick={() => history.push(`/${randomUser?._id}`)}>
-                                    <img src={randomUser?.profilePic} alt='pikachu' />
+                                <div className='pic follow-card-profile' onClick={() => history.push(`/${randomUser._id}`)}>
+                                    <img src={randomUser.profilePic} alt='pikachu' />
                                 </div>
                             </div>
                             <div className='user-info' id='follow-card-info'>
-                                <p id='follow-card-username'>{randomUser?.username}</p>
+                                <p id='follow-card-username'>{randomUser.username}</p>
                             </div>
                         </div>
                     ))}
