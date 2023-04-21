@@ -61,6 +61,7 @@ const NavBar = () => {
                         <div className='profile-drop-button' id='profile-pic-button'>
                             {/* <button><i className="fa-solid fa-map"></i></button> */}
                             <div className='pic'><img src={profile} alt='profile' /></div>
+                            <p>me <i className="fa-solid fa-caret-down"></i></p>
                         </div>
                     )}
 
@@ -101,6 +102,7 @@ const NavBar = () => {
                 {sessionUser && (
                 <button className='map-button' onClick={() => history.push('/explore')}>
                     <i className="fa-solid fa-map"></i>
+                    <p>Map</p>
                 </button>)}
             </div>
             
