@@ -21,6 +21,7 @@ import bedroom from './assets/bedroom.png';
 import nighthawks from './assets/Nighthawks.png';
 import al from './assets/al.PNG';
 import sn from './assets/sn.PNG';
+import kc from './assets/kc.PNG';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import bg from './assets/bg.jpeg';
@@ -50,7 +51,10 @@ const MainPage = () => {
           <img src={wave} alt="wave" className="animated-image" />
           <img src={bedroom} alt="bedroom" className="animated-image" />
           <img src={nighthawks} alt="nighthawks" className="animated-image" />
-          {/* <img src={mg} alt="mg" className="animated-image" /> */}
+          <img src={mg} alt="mg" className="animated-image" />
+          <img src={al} alt="al" className="animated-image" />
+          <img src={sn} alt="sn" className="animated-image" />
+          <img src={kc} alt="kc" className="animated-image" />
         </div>
 
         <div className='explore' onClick={() => history.push('/explore')}>

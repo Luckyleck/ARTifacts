@@ -38,7 +38,7 @@
 
 .image-container img:nth-child(5) {
     animation: slide 20s linear infinite;
-    transform: translateY(0) translateX(-10%);
+    transform: translateY(-5%) translateX(-10%);
     height: 50%;
 }
 
@@ -68,8 +68,9 @@
 
 .image-container img:nth-child(10) {
     animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(-180%);
+    transform: translateY(30%) translateX(-170%);
     height: 58%;
+    z-index: 2;
 }
 
 .image-container img:nth-child(11) {
@@ -86,22 +87,23 @@
 
 .image-container img:nth-child(13) {
     animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(-270%);
+    transform: translateY(00%) translateX(-270%);
     height: 58%;
-    z-index: 2;
+    z-index: 3;
 }
 
 .image-container img:nth-child(14) {
     animation: slide 20s linear infinite;
-    transform: translateY(50%) translateX(-130%);
-    height: 50%;
+    transform: translateY(0%) translateX(-505%);
+    height: 53%;
+    z-index: 2;
 }
 
 .image-container img:nth-child(15) {
     animation: slide 20s linear infinite;
-    transform: translateY(30%) translateX(-350%);
+    transform: translateY(80%) translateX(-200%);
     height: 56%;
-    z-index: 1;
+    z-index: 2;
 }
 
 .image-container img:nth-child(16) {
@@ -112,30 +114,72 @@
 
 .image-container img:nth-child(17) {
     animation: slide 20s linear infinite;
-    transform: translateY(120%) translateX(-330%);
-    height: 50%;
+    transform: translateY(67%) translateX(-280%);
+    height: 60%;
 }
 
 .image-container img:nth-child(18) {
     animation: slide 20s linear infinite;
-    transform: translateY(120%) translateX(-330%);
-    height: 50%;
+    transform: translateY(85%) translateX(-280%);
+    height: 53%;
+}
+
+.image-container img:nth-child(19) {
+    animation: slide 20s linear infinite;
+    transform: translateY(115%) translateX(-155%);
+    height: 47%;
+    z-index: 3;
+}
+
+.image-container img:nth-child(20) {
+    animation: slide 20s linear infinite;
+    transform: translateY(0%) translateX(-420%);
+    height: 45%;
+    z-index: 3;
+}
+
+.image-container img:nth-child(21) {
+    animation: slide 20s linear infinite;
+    transform: translateY(0%) translateX(-620%);
+    height: 45%;
+    z-index: 3;
+}
+
+.image-container img:nth-child(22) {
+    animation: slide 20s linear infinite;
+    transform: translateY(75%) translateX(-340%);
+    height: 57%;
+    z-index: 3;
 }
 
 @keyframes slide {
     0% {
-        left: -1500px;
+        /* left: -1500px; */
+        left: 10%;
     }
     100% {
-        left: calc(100% + 800px);
+        /* left: calc(100% + 800px); */
+        left: 140%;
     }
 }
+
+/* @keyframes slide {
+    0% {
+        left: 10%;
+    }
+    50% {
+        left: 110%;
+    }
+    100% {
+        left: 10%;
+    }
+} */
 
 .explore {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1;
+    z-index: 500;
     position: absolute;
     top: 50%;
     left: 50%;
