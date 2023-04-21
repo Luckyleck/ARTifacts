@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
-import WorldMap from './components/WorldMap/WorldMap';
+import RebuiltMap from './components/RebuiltMap/RebuiltMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import { fetchCurrentUser } from './store/session';
@@ -47,13 +47,11 @@ export default function App() {
           <Map />
         </Route>
 
-        <Route exact path="/maptest">
-        <NavBar />
-          <WorldMap/>
+        <Route exact path="/rebuiltmap">
+          <RebuiltMap />
         </Route>
 
-        <Route path="/:userId">
-        <NavBar />
+        <Route exact path="/:userId">
           <ProfilePage />
         </Route>
       </Switch>
