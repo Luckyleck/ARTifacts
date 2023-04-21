@@ -8,9 +8,12 @@ import mg from '../MainPage/assets/mg.jpeg';
 import kc from './assets/kc.jpeg';
 import al from './assets/al.jpeg';
 import sn from './assets/sn.jpeg';
+import nighthawks from './assets/Nighthawks.jpeg'
 import { useState } from 'react';
+const { faker } = require('@faker-js/faker');
 
 const ContactPage = () => {
+
     const [showProjects, setShowProjects] = useState(false);
 
     const openProjects = (index) => {
@@ -25,9 +28,9 @@ const ContactPage = () => {
         {
             name: 'Alex Lecky',
             title: 'Team Lead - Flex Developer',
-            backgroundpic: starry,
+            backgroundpic: 'https://picsum.photos/seed/4/400/400',
             profile: al,
-            bio: 'testing',
+            bio: 'My name is Alex Lecky and I am the Team Lead.',
             github: 'https://github.com/Luckyleck',
             linkedin: '',
             javascript: 'https://luckyleck.github.io/JS-Project/',
@@ -38,7 +41,7 @@ const ContactPage = () => {
             title: 'Frontend Lead',
             backgroundpic: starry,
             profile: kc,
-            bio: 'testing',
+            bio: 'My name is Kevin Chan and I headed the front-end development of the UI/UX of ARTifacts via React, and heavily contributed styling the front-end via HTML/CSS. I hope you enjoy you experience in ARTifacts and feel free to reach out with any question!',
             github: 'https://github.com/kchannn13',
             linkedin: 'https://www.linkedin.com/in/kevin-chan-426203158/',
             javascript: 'https://kchannn13.github.io/The-Adventures-of-Gary-the-Snail/',
@@ -47,9 +50,9 @@ const ContactPage = () => {
         {
             name: 'Michael Gastello',
             title: 'Flex Developer',
-            backgroundpic: starry,
+            backgroundpic: nighthawks,
             profile: mg,
-            bio: 'testing',
+            bio: 'My name is Michael Gastello and I am the Flex Developer.',
             github: 'https://github.com/mgastello',
             linkedin: 'https://www.linkedin.com/in/michael-gastello-168822260/',
             javascript: 'https://mgastello.github.io/xChngd/',
@@ -58,9 +61,9 @@ const ContactPage = () => {
         {
             name: 'Steven Notovitz',
             title: 'Backend Lead',
-            backgroundpic: starry,
+            backgroundpic: 'https://picsum.photos/seed/4/400/400',
             profile: sn,
-            bio: 'testing',
+            bio: 'My name is Steven Notovitz and I am the Backend Lead.',
             github: 'https://github.com/StevenNotovitz',
             linkedin: '',
             javascript: 'https://stevennotovitz.github.io/aA-JS-project-Labyrinth/',
