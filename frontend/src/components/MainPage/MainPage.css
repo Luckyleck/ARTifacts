@@ -152,18 +152,18 @@
     z-index: 3;
 }
 
-@keyframes slide {
+/* @keyframes slide {
     0% {
-        /* left: -1500px; */
+        left: -1500px;
         left: 10%;
     }
     100% {
-        /* left: calc(100% + 800px); */
+        left: calc(100% + 800px);
         left: 140%;
     }
-}
+} */
 
-/* @keyframes slide {
+@keyframes slide {
     0% {
         left: 10%;
     }
@@ -173,7 +173,7 @@
     100% {
         left: 10%;
     }
-} */
+}
 
 .explore {
     display: flex;
