@@ -7,7 +7,7 @@
     display: flex;
     border-radius: 10px;
 }
-/* dsdfds */
+
 .art-display-buttons {
     flex-direction: column;
 }
@@ -43,6 +43,7 @@
 .favorite-button {
     height: 200px;
     width: 100px;
+    padding: 5px;
 }
 
 #x-button {

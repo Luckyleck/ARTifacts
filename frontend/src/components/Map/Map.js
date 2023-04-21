@@ -126,7 +126,6 @@ function Map() {
 
   return (
     <>
-      <h1>{dateAfter.current}</h1>
       <MapContainer
         className="our-map"
         zoom={3}
