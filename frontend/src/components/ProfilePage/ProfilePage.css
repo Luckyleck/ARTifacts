@@ -345,20 +345,3 @@
 .explore-detail {
     max-height: 58vh;
 }
-
-.favorites-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.favorite-thumbnail {
-  max-width: 8vw;
-}
-
-/* .profile-card {
-  max-height: 80vh;
-}
-
-.favorite {
-  max-height: 80vh;
-} */

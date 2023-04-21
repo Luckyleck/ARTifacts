@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';
 
 
-import DisplayArtwork from "../DisplayArtwork/DisplayArtwork.js";
+import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
 
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
 
