@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import { Slider, Typography } from '@material-ui/core';
 import "./Map.css";
@@ -119,6 +119,10 @@ function Map() {
     });
 
   }
+
+  useEffect(() => {
+    setArtworks([])
+  }, [dateAfter.current])
 
   return (
     <>
