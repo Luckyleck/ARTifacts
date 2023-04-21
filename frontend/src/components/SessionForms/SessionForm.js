@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors, login } from '../../store/session';
 import logo from '../MainPage/assets/ART_white.png';
-const { faker } = require('@faker-js/faker');
 
 const SessionForm = ({onClose, formType}) => {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const SessionForm = ({onClose, formType}) => {
   const [confirmType, setConfirmType] = useState('password');
   const errors = useSelector(state => state.errors.session);
   const sessionUser = useSelector(state => state.session.user);
-  const [form, setForm] = useState(formType)
+  const [form, setForm] = useState(formType);
 
   useEffect(() => {
     if (sessionUser) {
@@ -51,14 +50,11 @@ const SessionForm = ({onClose, formType}) => {
 
   const handleSignupSubmit = e => {
     e.preventDefault();
-    const randomSeed1 = faker.random.alphaNumeric(5);
-    const randomSeed2 = faker.random.alphaNumeric(5); 
+    
     const user = {
       email,
       username,
-      password,
-      profilePic: `https://picsum.photos/seed/${randomSeed1}/400/400`,
-      backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
+      password
     };
 
     dispatch(signup(user)); 

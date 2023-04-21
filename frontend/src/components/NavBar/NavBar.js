@@ -29,7 +29,6 @@ const NavBar = () => {
 
     const onClose = () => {
         setSessionForm(false);
-        // setSignIn(false);
     }
 
     const logoutUser = () => {
@@ -40,7 +39,7 @@ const NavBar = () => {
     const toProfile = () => {
         history.push(`/${sessionUser._id}`)
     }
-    
+
     return (
         <header id='navbar'>
             <div id='nav-container'>
@@ -59,8 +58,12 @@ const NavBar = () => {
 
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
-                            {/* <button><i className="fa-solid fa-map"></i></button> */}
-                            <div className='pic'><img src={profile} alt='profile' /></div>
+                            <div className='pic'>
+                                <img
+                                    src={sessionUser?.profilePic}
+                                    alt='profile'
+                                />
+                            </div>
                             <p>me <i className="fa-solid fa-caret-down"></i></p>
                         </div>
                     )}

@@ -5,7 +5,8 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const { loginUser, restoreUser } = require('../../config/passport');
-const { getUsers, getRandomUsers, follow, favorite, getUser, updateUser, deleteUser } = require('../../controllers/api/usersController')
+const { getUsers, getRandomUsers, follow, favorite, getUser, updateUser, deleteUser } = require('../../controllers/api/usersController');
+const { faker } = require('@faker-js/faker');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -56,9 +57,13 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   }
 
   // Otherwise create a new user
+  const randomSeed1 = faker.random.alphaNumeric(5);
+  const randomSeed2 = faker.random.alphaNumeric(5); 
   const newUser = new User({
     username: req.body.username,
-    email: req.body.email
+    email: req.body.email,
+    profilePic: `https://picsum.photos/seed/${randomSeed1}/400/400`,
+    backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
   });
 
   bcrypt.genSalt(10, (err, salt) => {
