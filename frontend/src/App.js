@@ -25,35 +25,34 @@ export default function App() {
 
   return loaded && (
     <>
-      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/">
-        <NavBar />
+          <NavBar />
           <MainPage />
         </Route>
 
         <Route exact path="/contact">
-        <NavBar />
+          <NavBar />
           <ContactPage />
         </Route>
 
         <Route exact path="/about">
-        <NavBar />
+          <NavBar />
           <AboutPage />
         </Route>
         
         <Route exact path="/explore">
-        <NavBar />
+          <NavBar />
           <Map />
         </Route>
 
         <Route exact path="/rebuiltmap">
-        <NavBar />
+          <NavBar />
           <RebuiltMap />
         </Route>
 
         <Route exact path="/:userId">
-        <NavBar />
+          <NavBar />
           <ProfilePage />
         </Route>
       </Switch>
