@@ -101,7 +101,7 @@ const NavBar = () => {
                     )} */}
                 </div>
 
-                {sessionUser && (
+                {sessionUser && location.pathname !== '/explore' && (
                 <button className='map-button' onClick={() => history.push('/explore')}>
                     <i className="fa-solid fa-map"></i>
                     <p>Map</p>
