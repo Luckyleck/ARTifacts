@@ -7,7 +7,6 @@ import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
-import RebuiltMap from './components/RebuiltMap/RebuiltMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import { fetchCurrentUser } from './store/session';
@@ -44,11 +43,6 @@ export default function App() {
         <Route exact path="/explore">
           <NavBar />
           <Map />
-        </Route>
-
-        <Route exact path="/rebuiltmap">
-          <NavBar />
-          <RebuiltMap />
         </Route>
 
         <Route exact path="/:userId">
