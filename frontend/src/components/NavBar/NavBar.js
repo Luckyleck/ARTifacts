@@ -109,7 +109,7 @@ const NavBar = () => {
             </div>
             
             <div className='nav-buttons' id='test'>
-                { location.pathname === '/' && <div>ARTifacts</div> }
+                { location.pathname === '/' || location.pathname === '/explore' && <div>ARTifacts</div> }
             {user && (
                 <div>
                 { location.pathname === `/${user._id}` && 
