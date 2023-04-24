@@ -20,7 +20,6 @@ function DisplayArtwork({ artwork, setShowArt }) {
                     <h1>{artwork.title}</h1>
                     <h2>Technique</h2>
                     <h2>{artwork.technique}</h2>
-                    <h2>Description</h2>
                     <h2>{artwork.wall_description}</h2>
                     <h3>{artwork.tombstone}</h3>
                 </div>
