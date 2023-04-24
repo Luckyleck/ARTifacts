@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import { Slider, Typography } from '@material-ui/core';
+import { Slider } from '@material-ui/core';
 import "./Map.css";
 import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';

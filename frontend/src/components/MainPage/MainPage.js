@@ -22,12 +22,9 @@ import nighthawks from './assets/Nighthawks.png';
 import al from './assets/al.PNG';
 import sn from './assets/sn.PNG';
 import kc from './assets/kc.PNG';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import bg from './assets/bg.jpeg';
 
 const MainPage = () => {
-  const [start, setStart] = useState(false);
   const history = useHistory();
 
     return (
