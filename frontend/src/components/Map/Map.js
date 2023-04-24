@@ -22,8 +22,6 @@ function Map() {
   })
 
   function doFetch(countryName) {
-    console.log(dateAfter.current)
-
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
 
     const tempParams = {
@@ -41,7 +39,6 @@ function Map() {
       // debugger;
       searchString += `created_before=${dateAfter.current + 99}`;
 
-      console.log(searchString);
       return searchString;
     }
 
@@ -51,7 +48,6 @@ function Map() {
     fetch(`${url}?${paramsString}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(`Params used for search ${params}`)
         const filtered = [];
         data.data.forEach((artwork) => {
           if (artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())) {
@@ -70,19 +66,11 @@ function Map() {
 
     doFetch(countryName);
 
-    console.log(countryName);
-    console.log(`Handle Country Click ${dateAfter.current}`)
-
   }
 
   function onEachCountry(country, layer) {
 
-    console.log(dateAfter.current)
-    console.log(layer)
-    console.log(this)
-
     const countryName = country.properties.ADMIN
-    // console.log(countryName)
     layer.bindPopup(countryName);
 
     layer.setStyle({ fillColor: randomColor() })
@@ -113,7 +101,6 @@ function Map() {
     event.preventDefault();
     // const newDateAfter = value
     dateAfter.current = value
-    console.log(test)
     setParams({
       ...params,
     });

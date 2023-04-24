@@ -133,7 +133,6 @@ function RebuiltMap() {
             </MapContainer>
             <div>
                 <input className="slider" type="range" min="500" max="1900" step="100" list="values" onChange={handleYearChange} />
-                {console.log(createdAfter)}
                 <datalist id="values">
                     <option value="500" label="500s"></option>
                     <option value="600" label="600s"></option>
@@ -350,7 +349,6 @@ export default RebuiltMap
 //                             </div>
 //                             <div className='year-filter'>
 //                                 <input className="slider" type="range" min="500" max="1900" step="100" list="values" onChange={handleYearChange} />
-//                                 {console.log(createdAfter)}
 //                                 <datalist id="values">
 //                                     <option value="500" label="500s"></option>
 //                                     <option value="600" label="600s"></option>
