@@ -18,21 +18,21 @@ function Map() {
     skip: 0,
     limit: 300,
     has_image: 1,
-  })
+  });
 
   function doFetch(countryName) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
 
     const tempParams = {
-      q: countryName.toLowerCase(), ...params,
-    }
+      q: countryName.toLowerCase(), ...params
+    };
 
     function formatParams(params) {
 
-      let searchString = ''
+      let searchString = '';
 
       for (const [key, value] of Object.entries(params)) {
-        searchString += `${key}=${value}&`
+        searchString += `${key}=${value}&`;
       }
       searchString += `created_after=${dateAfter.current}&`;
       searchString += `created_before=${dateAfter.current + 99}`;
@@ -40,7 +40,7 @@ function Map() {
       return searchString;
     }
 
-    const paramsString = formatParams(tempParams)
+    const paramsString = formatParams(tempParams);
 
     fetch(`${url}?${paramsString}`)
       .then((response) => response.json())
@@ -56,7 +56,8 @@ function Map() {
       })
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
-      });
+      })
+    ;
   }
 
   function handleCountryClick (countryName) {
@@ -64,47 +65,42 @@ function Map() {
   }
 
   function onEachCountry(country, layer) {
-
-    const countryName = country.properties.ADMIN
-    layer.bindPopup(countryName);
-
-    layer.setStyle({ fillColor: randomColor() })
+    // layer.bindPopup(country.properties.ADMIN);
+    layer.setStyle({ fillColor: randomColor() });
     layer.on({
       click: () => {
-        handleCountryClick(country.properties.ADMIN)
+        handleCountryClick(country.properties.ADMIN);
       },
       mouseover: (e) => {
         e.target.setStyle({
           fillOpacity: 1
-        })
+        });
       },
       mouseout: (e) => {
         e.target.setStyle({
           fillOpacity: 0.8
-        })
+        });
       }
-    })
+    });
   }
 
   function handleRandomArt() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
-    return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />
+    return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />;
   }
 
   function handleSliderChange(event, value) {
     event.preventDefault();
-    // const newDateAfter = value
-    dateAfter.current = value
+    dateAfter.current = value;
     setParams({
-      ...params,
+      ...params
     });
-
   }
 
   useEffect(() => {
-    setArtworks([])
-  }, [dateAfter.current])
+    setArtworks([]);
+  }, [dateAfter.current]);
 
   return (
     <>
@@ -116,19 +112,17 @@ function Map() {
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
       >
-
         <GeoJSON
           data={countries.features}
           style={geoJsonStyle}
           onEachFeature={onEachCountry}
         />
-
       </MapContainer>
       {showArt && handleRandomArt()}
       <Slider
         value={dateAfter.current}
         onChange={handleSliderChange}
-        min={500}
+        min={0}
         max={1900}
         step={100}
         marks={sliderMarks}
@@ -136,7 +130,7 @@ function Map() {
         valueLabelDisplay="auto"
       />
     </>
-  )
+  );
 }
 
 export default Map;

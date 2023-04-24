@@ -7,7 +7,6 @@ import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage';
 import Map from './components/Map/Map';
-import BackupMap from './components/Map/BackupMap';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import { fetchCurrentUser } from './store/session';

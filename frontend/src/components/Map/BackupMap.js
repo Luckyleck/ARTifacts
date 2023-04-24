@@ -5,7 +5,8 @@ import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
 import "./Map.css";
 import countries from '../../data/countries.geo.json';
-import ArtworkDisplayModal from "../ArtworkDisplay/Modal";
+// import ArtworkDisplayModal from '../ArtworkDisplay/Modal';
+import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
 
 export default function BackupMap() {
   const [artworks, setArtworks] = useState([]);
@@ -55,7 +56,7 @@ export default function BackupMap() {
     const randomArtwork = timeFiltered[randomIndex];
 
     return randomArtwork && (
-      <ArtworkDisplayModal
+      <DisplayArtwork
         artwork={randomArtwork}
         toggle={setModalShouldBeOpen} />
     );
@@ -94,18 +95,17 @@ export default function BackupMap() {
     }
   }
 
-  // Slider Styling
   const sliderStyles = makeStyles({
     root: {
       width: '80%',
       left: '50%',
-      bottom: '7vh',  // Adjust as needed
+      bottom: '8vh',  // Adjust as needed
       transform: 'translateX(-50%)',
       zIndex: 1000,
       padding: 0,
       '& .MuiSlider-track': {
         backgroundColor: 'transparent' // remove the left "filling up" effect by setting the background color to transparent
-    },
+      },
       '& .MuiSlider-mark': {
         backgroundColor: 'rgba(0, 0, 0, 0.54)' // change this to the desired tick color
       }
