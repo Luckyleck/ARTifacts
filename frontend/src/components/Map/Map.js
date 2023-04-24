@@ -110,9 +110,9 @@ function Map() {
     <>
       <MapContainer
         className="our-map"
-        zoom={3}
-        center={[0, 0]}
-        minZoom={3}
+        zoom={2.25}
+        center={[45, 0]}
+        minZoom={2.25}
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
       >
