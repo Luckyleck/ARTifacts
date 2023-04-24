@@ -7,6 +7,7 @@ import FollowButton from './Buttons/FollowButton';
 
 import './ProfilePage.css'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import FavoritesIndex from './Indexes/FavoritesIndex';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -93,13 +94,14 @@ const ProfilePage = () => {
                 <div className='favorite-header'>
                     Favorites:
                 </div>
-                <div className='grid-container'>
+                <FavoritesIndex />
+                {/* <div className='grid-container'>
                     {user?.favorites?.map((art, index) => (
                         <div className='grid-item' key={index}>
                             <img src={art.images.web.url} alt='art' />
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
             )}
 
