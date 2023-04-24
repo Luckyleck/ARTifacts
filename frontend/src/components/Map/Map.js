@@ -5,7 +5,6 @@ import "./Map.css";
 import 'leaflet/dist/leaflet.css'
 import countries from '../../data/countries.geo.json';
 
-
 import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
 
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
@@ -36,12 +35,10 @@ function Map() {
         searchString += `${key}=${value}&`
       }
       searchString += `created_after=${dateAfter.current}&`;
-      // debugger;
       searchString += `created_before=${dateAfter.current + 99}`;
 
       return searchString;
     }
-
 
     const paramsString = formatParams(tempParams)
 
@@ -63,9 +60,7 @@ function Map() {
   }
 
   function handleCountryClick (countryName) {
-
     doFetch(countryName);
-
   }
 
   function onEachCountry(country, layer) {
@@ -113,7 +108,6 @@ function Map() {
 
   return (
     <>
-      <h1>{dateAfter.current}</h1>
       <MapContainer
         className="our-map"
         zoom={3}
