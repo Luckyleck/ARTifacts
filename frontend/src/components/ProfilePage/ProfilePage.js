@@ -3,16 +3,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRandomUsers, fetchUser, getRandomUsers, getUser } from '../../store/users';
 
-import FollowersIndex from './Indexes/FollowersIndex';
-import FollowsIndex from './Indexes/FollowsIndex';
-import RandomUsersIndex from './Indexes/RandomUsersIndex';
 import FollowButton from './Buttons/FollowButton';
-import FavoritesIndex from './Indexes/FavoritesIndex';
 
 import './ProfilePage.css'
-
-import starry from '../MainPage/assets/starry_night.webp'
-import pikachu from '../NavBar/assets/pikachu.png'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfilePage = () => {
@@ -20,7 +13,6 @@ const ProfilePage = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
     const sessionUser = useSelector(state => state.session.user);
-    const [isfollowing, setIsFollowing] = useState(false);
     const [openFavorite, setOpenFavorite] = useState(false);
     const history = useHistory();
     const [follower, setFollower] = useState(false);
@@ -39,12 +31,6 @@ const ProfilePage = () => {
         card.classList.add('move-left');
         setOpenFavorite(true);
     }
-
-    {/* <div>
-        <RandomUsersIndex />
-        <FollowsIndex user={user} />
-        <FollowersIndex user={user} />
-    </div> */}
 
     const viewFollowers = () => {
         setFollowing(false);

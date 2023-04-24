@@ -1,13 +1,12 @@
 import { NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import './NavBar.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import logo from './assets/ART.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
 import { logout } from '../../store/session';
-import profile from './assets/pikachu.png';
-import { fetchUser, getUser } from '../../store/users';
+import { getUser } from '../../store/users';
 
 const NavBar = () => {
     const [showMenu, setShowMenu] = useState(false);

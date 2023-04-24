@@ -10,7 +10,6 @@ import al from './assets/al.jpeg';
 import sn from './assets/sn.jpeg';
 import nighthawks from './assets/Nighthawks.jpeg'
 import { useState } from 'react';
-const { faker } = require('@faker-js/faker');
 
 const ContactPage = () => {
 
