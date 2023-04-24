@@ -1,6 +1,5 @@
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { getUser } from '../../../store/users';
 import FollowersIndexItem from "../IndexItems/FollowersIndexItem";
 
