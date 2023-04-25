@@ -140,6 +140,7 @@ export function unfavorite(currentUser, artwork) {
     if (response.ok) {
       const data = await response.json();
       dispatch(receiveCurrentUser(data));
+      dispatch(receiveUser(data));
     }
   });
 }
