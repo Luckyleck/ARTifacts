@@ -27,22 +27,19 @@ export function randomColor() {
 
 export const sliderStyles = makeStyles({
     root: {
+        // color: 'green',
         width: '80%',
         left: '50%',
-        bottom: '8vh',  // Adjust as needed
+        bottom: '8vh', // Adjust as needed
         transform: 'translateX(-50%)',
         zIndex: 1000,
         padding: 0,
-        '& .MuiSlider-track': {
-            backgroundColor: 'transparent' // remove the left "filling up" effect by setting the background color to transparent
-        },
-        '& .MuiSlider-mark': {
-            backgroundColor: 'rgba(0, 0, 0, 0.54)' // change this to the desired tick color
-        }
     },
     rail: {
         height: 20, // increase the height of the rail
-        width: '100%'
+        width: '100.5%'
+        // opacity: 1,
+        // borderRadius: '10px'
     },
     track: {
         height: 20,
@@ -53,15 +50,13 @@ export const sliderStyles = makeStyles({
         borderRadius: 40
     },
     markLabel: {
-        fontSize: '100%'
+        fontSize: '150%'
     }
+
 });
 
+
 export const sliderMarks = [
-    { value: 100, label: '100s' },
-    { value: 200, label: '200s' },
-    { value: 300, label: '300s' },
-    { value: 400, label: '400s' },
     { value: 500, label: '500s' },
     { value: 600, label: '600s' },
     { value: 700, label: '700s' },
@@ -88,3 +83,7 @@ export const sliderMarks = [
 //         features: filteredCountries
 //     };
 // }
+
+
+
+
