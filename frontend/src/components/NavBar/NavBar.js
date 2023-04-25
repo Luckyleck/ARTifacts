@@ -54,7 +54,6 @@ const NavBar = () => {
                             <button className='about' onClick={() => history.push('/contact')}>Contact Us</button>
                         </div>
                     )}
-
                     {sessionUser && (
                         <div className='profile-drop-button' id='profile-pic-button'>
                             <div className='pic'>
@@ -66,7 +65,6 @@ const NavBar = () => {
                             <p>me <i className="fa-solid fa-caret-down"></i></p>
                         </div>
                     )}
-
                     {showMenu && sessionUser && (
                         <ul className='dropdown-items'>
                             <li onClick={toProfile}>Your profile</li>
@@ -75,8 +73,7 @@ const NavBar = () => {
                             <li onClick={logoutUser}>Sign out</li>
                         </ul>
                     )}
-
-                    {!sessionUser && location.pathname !== '/' &&
+                    {!sessionUser && location.pathname !== '/' && (
                         <div className='profile-drop-button' id='session-buttons'>
                             <button className='about' onClick={() => setSessionForm('signup')}>
                                 Sign up
@@ -86,41 +83,34 @@ const NavBar = () => {
                                 Sign in
                             </button>
                         </div>
-                    }
-
+                    )}
                     {(sessionForm === 'signup' || sessionForm === 'signin') && (
                         <Modal onClose={onClose}>
-                            <SessionForm onClose={onClose} formType={sessionForm}/>
+                            <SessionForm onClose={onClose} formType={sessionForm} />
                         </Modal>
                     )}
-
-                    {/* { signIn && (
-                        <Modal onClose={onClose}>
-                            <LoginForm onClose={onClose} />
-                        </Modal>
-                    )} */}
                 </div>
-
                 {sessionUser && (
-                <button className='map-button' onClick={() => history.push('/explore')}>
-                    <i className="fa-solid fa-map"></i>
-                    <p>Map</p>
-                </button>)}
+                    <button className='map-button' onClick={() => history.push('/explore')}>
+                        <i className="fa-solid fa-map"></i>
+                        <p>Map</p>
+                    </button>
+                )}
             </div>
-            
             <div className='nav-buttons' id='test'>
-                { location.pathname === '/' && <div>ARTifacts</div> }
-            {user && (
-                <div>
-                { location.pathname === `/${user._id}` && 
-                <div>{user.username}'s Page</div>
-                }
-                </div>
-            )}
+                {location.pathname === '/' && (
+                    <div>ARTifacts</div>
+                )}
+                {user && (
+                    <div>
+                        {location.pathname === `/${user._id}` && (
+                            <div>{user.username}'s Page</div>
+                        )}
+                    </div>
+                )}
             </div>
-            
         </header>
-    )
+    );
 }
 
 export default NavBar;

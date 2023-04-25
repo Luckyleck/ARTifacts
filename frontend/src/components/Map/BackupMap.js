@@ -58,7 +58,8 @@ export default function BackupMap() {
     return randomArtwork && (
       <DisplayArtwork
         artwork={randomArtwork}
-        toggle={setModalShouldBeOpen} />
+        toggle={setModalShouldBeOpen}
+      />
     );
   }
 
@@ -84,7 +85,7 @@ export default function BackupMap() {
     return [
       [-120, -210],
       [110, 210]
-    ]
+    ];
   }
 
   function geoJsonStyle() {
@@ -92,14 +93,14 @@ export default function BackupMap() {
       fillOpacity: 0.8,
       color: "black",
       weight: 2
-    }
+    };
   }
 
   const sliderStyles = makeStyles({
     root: {
       width: '80%',
       left: '50%',
-      bottom: '8vh',  // Adjust as needed
+      bottom: '3vh',  // Adjust as needed
       transform: 'translateX(-50%)',
       zIndex: 1000,
       padding: 0,
@@ -115,7 +116,7 @@ export default function BackupMap() {
       width: '100%'
     },
     track: {
-      height: 20,
+      height: 20
     },
     mark: {           // The tick on the rail
       width: '4px',
@@ -123,7 +124,10 @@ export default function BackupMap() {
       borderRadius: 40
     },
     markLabel: {
-      fontSize: '100%'
+      fontSize: '125%',
+      fontWeight: 'bold',
+      color: 'grey',
+      // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
     }
   });
 
@@ -146,7 +150,7 @@ export default function BackupMap() {
     { value: 1600, label: '1600s' },
     { value: 1700, label: '1700s' },
     { value: 1800, label: '1800s' },
-    { value: 1900, label: '1900s' },
+    { value: 1900, label: '1900s' }
   ];
   
   return (

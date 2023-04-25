@@ -1,19 +1,16 @@
-import { useState, useRef, useEffect } from "react";
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { useState, useEffect, useRef } from "react";
 import { Slider } from '@material-ui/core';
-import "./Map.css";
+import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
+import "./Map.css";
 import countries from '../../data/countries.geo.json';
-
 import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
 
 function Map() {
-  const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal
-  const [artworks, setArtworks] = useState([])
-  // const [dateAfter, setDateAfter] = useState(1500); //created_after param here
-  const dateAfter = useRef(1500)
+  const [showArt, setShowArt] = useState([]); // Boolean // Replace later with modal
+  const [artworks, setArtworks] = useState([]);
+  const dateAfter = useRef(1500);
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
@@ -87,7 +84,13 @@ function Map() {
   function handleRandomArt() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
-    return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />;
+
+    return randomArtwork && (
+      <DisplayArtwork
+        artwork={randomArtwork}
+        setShowArt={setShowArt}
+      />
+    );
   }
 
   function handleSliderChange(event, value) {
@@ -120,14 +123,14 @@ function Map() {
       </MapContainer>
       {showArt && handleRandomArt()}
       <Slider
-        value={dateAfter.current}
-        onChange={handleSliderChange}
         min={0}
         max={1900}
         step={100}
         marks={sliderMarks}
         classes={sliderStyles()}
         valueLabelDisplay="auto"
+        value={dateAfter.current}
+        onChange={handleSliderChange}
       />
     </>
   );
