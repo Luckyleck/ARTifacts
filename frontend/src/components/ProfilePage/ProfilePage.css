@@ -203,9 +203,8 @@
 .follow-container {
     position: fixed;
     background-color:#F7F7F7;
-    /* width: 744px; */
     width: 27vw;
-    height: 81vh;
+    height: 80vh;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -259,7 +258,6 @@
 
 .add-color {
     background-color: #908c8c;
-    /* color: #F7F7F7; */
 }
 
 .add-color p{
@@ -280,7 +278,6 @@
 .follow-card-top {
     width: 16.5vw;
     height: 8vh
-    /* height: 16vh; */
 }
 
 .follow-card-background {
@@ -328,14 +325,13 @@
 .explore-container {
     position: fixed;
     background-color:#F7F7F7;
-    /* width: 744px; */
     width: 27vw;
-    height: 60vh;
+    height: 58.5vh;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     right: -27vw;
-    top: 34vh;
+    top: 38.5vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
