@@ -57,6 +57,11 @@ export const sliderStyles = makeStyles({
 
 
 export const sliderMarks = [
+    { value: 0, label: '0' },
+    { value: 100, label: '100s' },
+    { value: 200, label: '200s' },
+    { value: 300, label: '300s' },
+    { value: 400, label: '400s' },
     { value: 500, label: '500s' },
     { value: 600, label: '600s' },
     { value: 700, label: '700s' },
