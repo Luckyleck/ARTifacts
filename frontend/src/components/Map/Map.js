@@ -1,38 +1,36 @@
-import { useState, useRef, useEffect } from "react";
-import { MapContainer, GeoJSON } from 'react-leaflet';
+import { useState, useEffect, useRef } from "react";
 import { Slider } from '@material-ui/core';
-import "./Map.css";
+import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
+import "./Map.css";
 import countries from '../../data/countries.geo.json';
-
 import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
 
 function Map() {
   const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal
   const [artworks, setArtworks] = useState([])
-  // const [dateAfter, setDateAfter] = useState(1500); //created_after param here
   const dateAfter = useRef(1500)
+  const [countryName, setCountryName] = useState('')
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
     has_image: 1,
-  })
+  });
 
   function doFetch(countryName) {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
 
     const tempParams = {
-      q: countryName.toLowerCase(), ...params,
-    }
+      q: countryName.toLowerCase(), ...params
+    };
 
     function formatParams(params) {
 
-      let searchString = ''
+      let searchString = '';
 
       for (const [key, value] of Object.entries(params)) {
-        searchString += `${key}=${value}&`
+        searchString += `${key}=${value}&`;
       }
       searchString += `created_after=${dateAfter.current}&`;
       searchString += `created_before=${dateAfter.current + 99}`;
@@ -40,7 +38,7 @@ function Map() {
       return searchString;
     }
 
-    const paramsString = formatParams(tempParams)
+    const paramsString = formatParams(tempParams);
 
     fetch(`${url}?${paramsString}`)
       .then((response) => response.json())
@@ -56,58 +54,65 @@ function Map() {
       })
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
-      });
+      })
+    ;
   }
 
   function handleCountryClick (countryName) {
+    setCountryName(countryName)
     doFetch(countryName);
   }
 
   function onEachCountry(country, layer) {
-
-    const countryName = country.properties.ADMIN
-    layer.bindPopup(countryName);
-
-    layer.setStyle({ fillColor: randomColor() })
+    // layer.bindPopup(country.properties.ADMIN);
+    layer.setStyle({ fillColor: randomColor() });
     layer.on({
       click: () => {
-        handleCountryClick(country.properties.ADMIN)
+        handleCountryClick(country.properties.ADMIN);
       },
       mouseover: (e) => {
         e.target.setStyle({
           fillOpacity: 1
-        })
+        });
       },
       mouseout: (e) => {
         e.target.setStyle({
           fillOpacity: 0.8
-        })
+        });
       }
-    })
+    });
   }
 
   function handleRandomArt() {
     const randomIndex = Math.floor(Math.random() * artworks.length);
     const randomArtwork = artworks[randomIndex];
-    return randomArtwork && <DisplayArtwork artwork={randomArtwork} setShowArt={setShowArt} />
+
+    return randomArtwork && (
+      <DisplayArtwork
+        artwork={randomArtwork}
+        setShowArt={setShowArt}
+      />
+    );
   }
 
   function handleSliderChange(event, value) {
     event.preventDefault();
-    // const newDateAfter = value
-    dateAfter.current = value
+    dateAfter.current = value;
     setParams({
-      ...params,
+      ...params
     });
-
   }
 
   useEffect(() => {
-    setArtworks([])
-  }, [dateAfter.current])
+    setArtworks([]);
+  }, [dateAfter.current]);
 
   return (
     <>
+      <div className="filter-info">
+        <h1>{countryName}</h1>
+        <h1>{dateAfter.current}</h1>
+      </div>
       <MapContainer
         className="our-map"
         zoom={2.25}
@@ -116,27 +121,25 @@ function Map() {
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
       >
-
         <GeoJSON
           data={countries.features}
           style={geoJsonStyle}
           onEachFeature={onEachCountry}
         />
-
       </MapContainer>
       {showArt && handleRandomArt()}
       <Slider
-        value={dateAfter.current}
-        onChange={handleSliderChange}
-        min={500}
+        min={0}
         max={1900}
         step={100}
         marks={sliderMarks}
         classes={sliderStyles()}
         valueLabelDisplay="auto"
+        value={dateAfter.current}
+        onChange={handleSliderChange}
       />
     </>
-  )
+  );
 }
 
 export default Map;
