@@ -16,12 +16,14 @@ export function geoJsonStyle() {
   };
 }
 
-export function randomColor() {
-    const colors = ["pink", "coral", "peachpuff", "lightyellow", "palegoldenrod", "palegreen", "seagreen", "mediumslateblue", "thistle"];
-    const randomColorIndex = Math.floor(Math.random() * colors.length);
+// export function randomColor() {
+//     const colors = ["pink", "coral", "peachpuff", "lightyellow", "palegoldenrod", "palegreen", "seagreen", "mediumslateblue", "thistle"];
+//     const randomColorIndex = Math.floor(Math.random() * colors.length);
 
-    return colors[randomColorIndex];
-}
+//     return colors[randomColorIndex];
+// }
+
+export const colors = ["pink", "coral", "palegreen", "seagreen", "mediumslateblue", "thistle"]
 
 // Slider Styling
 
