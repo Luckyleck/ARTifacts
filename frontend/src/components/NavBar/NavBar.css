@@ -17,7 +17,6 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    min-height: 9vh;
     max-height: 9vh;
 }
 

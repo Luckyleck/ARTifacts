@@ -61,7 +61,7 @@
   position: relative;
 }
 
-.closeForm {
+.close-form {
   position: absolute;
   top: 8px;
   right: 7px;
@@ -78,7 +78,7 @@
   align-items: center;
 }
 
-.closeForm:hover {
+.close-form:hover {
   background-color: #dbdee3;
 }
 

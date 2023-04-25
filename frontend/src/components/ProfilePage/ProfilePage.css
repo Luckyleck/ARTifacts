@@ -130,6 +130,7 @@
 
 .grid-item img {
     height: 100px;
+    cursor: pointer;
 }
 
 .favorite-header {

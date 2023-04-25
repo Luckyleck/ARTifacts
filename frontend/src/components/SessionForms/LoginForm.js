@@ -39,7 +39,7 @@ const LoginForm = ({onClose}) => {
         <p>Welcome to ARTifacts!</p>
     </div>
         <form className="session-form" onSubmit={handleSubmit}>
-        <button className='closeForm' onClick={onClose}>
+        <button className='close-form' onClick={onClose}>
             <i className="fa-solid fa-xmark"></i>
         </button>
         
