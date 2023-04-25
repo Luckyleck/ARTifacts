@@ -49,19 +49,19 @@ export function getRandomUsers(state) {
 }
 
 export function getUser(userId) {
-  return state => state?.users?.[userId] ? state.users[userId] : null;
+  return state => state?.users?.user?.[userId] ? state.users.user[userId] : null;
 }
 
 export function getFollows(userId) {
-  return state => state?.users?.[userId] ? state.users[userId].follows : [];
+  return state => state?.users?.user?.[userId] ? state.users.user[userId].follows : [];
 }
 
 export function getFollowers(userId) {
-  return state => state?.users?.[userId] ? state.users[userId].followers : [];
+  return state => state?.users?.user?.[userId] ? state.users.user[userId].followers : [];
 }
 
 export function getFavorites(userId) {
-  return state => state?.users?.[userId] ? state.users[userId].favorites: [];
+  return state => state?.users?.user?.[userId] ? state.users.user[userId].favorites: [];
 }
 
 
@@ -165,6 +165,7 @@ export function updateUser(user) {
 
     if (response.ok) {
       const data = await response.json();
+      dispatch(receiveCurrentUser(data));
       dispatch(receiveUser(data));
     }
   });
@@ -192,7 +193,7 @@ export default function usersReducer(slice = {}, action) {
     case RECEIVE_RANDOM_USERS:
       return { ...slice, randomUsers: { ...action.randomUsers } };
     case RECEIVE_USER:
-      return { ...slice, [action.user._id]: action.user };
+      return { ...slice, user: { [action.user._id]: action.user } };
     case REMOVE_USER:
       const newSlice = { ...slice };
       delete newSlice[action.userId];

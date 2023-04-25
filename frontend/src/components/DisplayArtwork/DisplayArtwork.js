@@ -30,7 +30,7 @@ function DisplayArtwork({ artwork, setShowArt }) {
             </div>
             {/* {showInfo && <DisplayArtInfo artwork={artwork} setShowInfo={setShowInfo} setShowArt={setShowArt} />} */}
         </>
-    )
+    );
 }
 
 export default DisplayArtwork;
