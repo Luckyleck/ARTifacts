@@ -6,6 +6,13 @@
     z-index: 1000;
     display: flex;
     border-radius: 10px;
+    max-height: 500px;
+    
+}
+
+.art-display-container img {
+    max-height: 500px;
+    max-width: 800px;
 }
 
 .art-display-buttons {
@@ -13,22 +20,66 @@
 }
 
 .art-info {
-    font-size: x-large;
+    font-size: 22px;
     font-family: ui-sans-serif;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    line-height: 26px;
     /* width: 50%; */
     /* height: 50%; */
     background-color: rgb(209, 209, 209);
+    max-height: 500px;
+    max-width: 500px;
+    overflow-y: scroll;
     /* max-height: 100%; */
     height: auto;
     width: 50vh;
-    padding: 2%;
+    /* padding: 2%; */
     align-items: space-between;
     text-align: center;
 }
+
+.art-info h1 {
+    padding-bottom: 16px;
+    font-weight: 600;
+}
+
+.art-info h1:first-child {
+    padding-top: 50px;
+}
+
+.art-info h2 {
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.art-info h3 {
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+.close-display {
+    font-size: 28px;
+    width: 45px;
+    height: 45px;
+}
+
+
+.fav-buttons {
+    top: 11%;
+    right: 0.8%;
+    font-size: 28px;
+    width: 45px;
+    height: 45px;
+}
+
+#favorited {
+    color: brown;
+}
+
+
 
 #fetched-image {
     max-height: 55vh;
