@@ -109,7 +109,7 @@ const ProfilePage = () => {
                 </div>
                 {following && (
                     <div className='follow-detail'>
-                        {user && user?.follows?.map((follow, index) => (
+                        {user && user.follows.map((follow, index) => (
                             <div className='follow-card' key={index} onClick={() => history.push(`/${follow._id}`)}>
                                 <div className='profile-card-top follow-card-top'>
                                     <div className='profile-card-background follow-card-background'>
@@ -128,7 +128,7 @@ const ProfilePage = () => {
                 )}
                 {follower && (
                     <div className='follow-detail'>
-                        {user && user?.followers?.map((follower, index) => (
+                        {user && user.followers.map((follower, index) => (
                             <div className='follow-card' key={index} onClick={() => history.push(`/${follower._id}`)}>
                                 <div className='profile-card-top follow-card-top'>
                                     <div className='profile-card-background follow-card-background'>
@@ -151,7 +151,7 @@ const ProfilePage = () => {
                     <p>Explore Users</p>
                 </div>
                 <div className='follow-detail explore-detail'>
-                    {randomUsers && randomUsers?.map((randomUser, index) => (
+                    {randomUsers && randomUsers.map((randomUser, index) => (
                         <div className='follow-card' key={index} onClick={() => history.push(`/${randomUser._id}`)}>
                             <div className='profile-card-top follow-card-top'>
                                 <div className='profile-card-background follow-card-background'>
