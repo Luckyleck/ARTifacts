@@ -13,7 +13,7 @@
     background-color:#F7F7F7;
     /* width: 744px; */
     width: 400px;
-    height: 700px;
+    height: 600px;
     border-radius: 8px;
     z-index: 2;
     box-shadow: 5px 5px 5px #434445;
@@ -92,8 +92,8 @@
     position: absolute;
     background-color:#F7F7F7;
     width: 1050px;
-    height: 700px;
-    max-height: 700px;
+    height: 600px;
+    /* max-height: 600px; */
     overflow-y: scroll;
     border-radius: 8px;
     animation: slide-in 3s;

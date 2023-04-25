@@ -1,6 +1,6 @@
 import './Favorites.css'
 import { useState } from 'react';
-import ArtworkViewModal from './ArtworkViewModal';
+import DisplayArtwork from '../../DisplayArtwork/DisplayArtwork';
 
 export default function FavoritesIndexItem({ favorite }) {
   const [ArtworkViewModalIsOpen, setArtworkViewModalIsOpen] = useState(false);
@@ -11,10 +11,10 @@ export default function FavoritesIndexItem({ favorite }) {
 
   return (
     <>
-      <button onClick={toggleArtworkViewModal}>
+      <button onClick={toggleArtworkViewModal} className="grid-item">
         <img src={favorite?.images.web.url} alt={favorite?.title} className="favorite-thumbnail" />
       </button>
-      {ArtworkViewModalIsOpen && <ArtworkViewModal toggle={toggleArtworkViewModal} artwork={favorite} />}
+      {ArtworkViewModalIsOpen && <DisplayArtwork toggle={toggleArtworkViewModal} artwork={favorite} />}
     </>
   );
 }
