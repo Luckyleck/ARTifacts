@@ -50,7 +50,6 @@ function Map() {
           }
         });
         setArtworks(filtered);
-        setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)]);
         setShowArt(true);
       })
       .catch((error) => {
