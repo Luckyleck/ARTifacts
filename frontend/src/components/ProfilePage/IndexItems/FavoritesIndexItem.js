@@ -14,7 +14,9 @@ export default function FavoritesIndexItem({ favorite }) {
       <button onClick={toggleArtworkViewModal} className="grid-item">
         <img src={favorite?.images.web.url} alt={favorite?.title} className="favorite-thumbnail" />
       </button>
-      {ArtworkViewModalIsOpen && <DisplayArtwork toggle={toggleArtworkViewModal} artwork={favorite} />}
+      {ArtworkViewModalIsOpen && (
+        <DisplayArtwork artwork={favorite} setShowArt={toggleArtworkViewModal} />
+      )}
     </>
   );
 }

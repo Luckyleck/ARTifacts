@@ -8,10 +8,10 @@ import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
 
 function Map() {
-  const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal
-  const [artworks, setArtworks] = useState([])
-  const dateAfter = useRef(1500)
-  const [countryName, setCountryName] = useState('')
+  const [showArt, setShowArt] = useState(false); // Boolean // Replace later with modal
+  const [artworks, setArtworks] = useState([]);
+  const dateAfter = useRef(1500);
+  const [countryName, setCountryName] = useState('');
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
@@ -26,12 +26,12 @@ function Map() {
     };
 
     function formatParams(params) {
-
       let searchString = '';
 
       for (const [key, value] of Object.entries(params)) {
         searchString += `${key}=${value}&`;
       }
+
       searchString += `created_after=${dateAfter.current}&`;
       searchString += `created_before=${dateAfter.current + 99}`;
 
@@ -110,8 +110,8 @@ function Map() {
   return (
     <>
       <div className="filter-info">
-        <h1>{countryName}</h1>
-        <h1>{dateAfter.current}</h1>
+        <h1>{countryName},</h1>
+        <h1>{dateAfter.current}s</h1>
       </div>
       <MapContainer
         className="our-map"
