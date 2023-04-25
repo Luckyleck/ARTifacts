@@ -8,7 +8,6 @@ import FollowButton from './Buttons/FollowButton';
 import './ProfilePage.css'
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FavoritesIndex from './Indexes/FavoritesIndex';
-import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const ProfilePage = () => {
     const [follower, setFollower] = useState(false);
     const [following, setFollowing] = useState(false);
     const randomUsers = useSelector(getRandomUsers);
-    const [ArtworkViewModalIsOpen, setArtworkViewModalIsOpen] = useState(false);
 
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -28,10 +26,6 @@ const ProfilePage = () => {
     }, [dispatch, userId]);
     
     if (!sessionUser) return <Redirect to='/' />;
-
-    function toggleArtworkViewModal() {
-        setArtworkViewModalIsOpen(!ArtworkViewModalIsOpen);
-    }
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
@@ -95,17 +89,14 @@ const ProfilePage = () => {
                     <div className='favorite-header'>
                         Favorites:
                     </div>
-                    {/* <FavoritesIndex /> */}
-                    <div className='grid-container'>
+                    <FavoritesIndex />
+                    {/* <div className='grid-container'>
                         {user?.favorites?.map((art, index) => (
-                            <>
-                                <div className='grid-item' key={index}>
-                                    <img src={art.images.web.url} alt='art' onClick={toggleArtworkViewModal}/>
-                                    {ArtworkViewModalIsOpen && <DisplayArtwork toggle={toggleArtworkViewModal} artwork={art} />}
-                                </div>
-                            </>
+                            <div className='grid-item' key={index}>
+                                <img src={art.images.web.url} alt='art' />
+                            </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             )}
             <div className='follow-container'>
