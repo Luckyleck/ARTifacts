@@ -14,6 +14,7 @@ function Map() {
   const [artworks, setArtworks] = useState([])
   // const [dateAfter, setDateAfter] = useState(1500); //created_after param here
   const dateAfter = useRef(1500)
+  const [countryName, setCountryName] = useState('')
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
@@ -60,13 +61,14 @@ function Map() {
   }
 
   function handleCountryClick (countryName) {
+    setCountryName(countryName)
     doFetch(countryName);
   }
 
   function onEachCountry(country, layer) {
 
     const countryName = country.properties.ADMIN
-    layer.bindPopup(countryName);
+    // layer.bindPopup(countryName);
 
     layer.setStyle({ fillColor: randomColor() })
     layer.on({
@@ -108,6 +110,10 @@ function Map() {
 
   return (
     <>
+      <div className="filter-info">
+        <h1>{countryName}</h1>
+        <h1>{dateAfter.current}</h1>
+      </div>
       <MapContainer
         className="our-map"
         zoom={2.25}
@@ -128,7 +134,7 @@ function Map() {
       <Slider
         value={dateAfter.current}
         onChange={handleSliderChange}
-        min={500}
+        min={0}
         max={1900}
         step={100}
         marks={sliderMarks}
