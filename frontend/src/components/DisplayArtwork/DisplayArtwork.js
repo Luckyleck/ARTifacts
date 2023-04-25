@@ -16,16 +16,17 @@ function DisplayArtwork({ artwork, setShowArt }) {
             <div className="art-display-container">
                 <img src={artwork?.images.web.url} alt={artwork?.title} id='fetched-image' onClick={handleClick}/>
                 <div className="art-info">
-                    <h2>Title</h2>
-                    <h1>{artwork.title}</h1>
-                    <h2>Technique</h2>
+                    <h1>Title</h1>
+                    <h2>{artwork.title}</h2>
+                    <h1>Technique</h1>
                     <h2>{artwork.technique}</h2>
+                    <h1>Description</h1>
                     <h2>{artwork.wall_description}</h2>
                     <h3>{artwork.tombstone}</h3>
                 </div>
                 <div className="art-display-buttons">
-                    <button onClick={() => setShowArt(false)} id="x-button">&times;</button>
-                    <FavoriteButton artwork={artwork} className="favorite-button" />
+                    <button onClick={() => setShowArt(false)} className='close-form close-display'><i className="fa-solid fa-xmark"></i></button>
+                    <FavoriteButton artwork={artwork}/>
                 </div>
             </div>
             {/* {showInfo && <DisplayArtInfo artwork={artwork} setShowInfo={setShowInfo} setShowArt={setShowArt} />} */}
