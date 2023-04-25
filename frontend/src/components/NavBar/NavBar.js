@@ -98,6 +98,7 @@ const NavBar = () => {
                 )}
             </div>
             <div className='nav-buttons' id='test'>
+<<<<<<< HEAD
                 {location.pathname === '/' && (
                     <div>ARTifacts</div>
                 )}
@@ -108,6 +109,17 @@ const NavBar = () => {
                         )}
                     </div>
                 )}
+=======
+                {/* { location.pathname === '/' || location.pathname === '/explore' && <div>ARTifacts</div> } */}
+                { location.pathname === '/' && <div>ARTifacts</div> }
+            {user && (
+                <div>
+                { location.pathname === `/${user._id}` && 
+                <div>{user.username}'s Page</div>
+                }
+                </div>
+            )}
+>>>>>>> main
             </div>
         </header>
     );

@@ -8,9 +8,10 @@ import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
 import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
 
 function Map() {
-  const [showArt, setShowArt] = useState([]); // Boolean // Replace later with modal
-  const [artworks, setArtworks] = useState([]);
-  const dateAfter = useRef(1500);
+  const [showArt, setShowArt] = useState([]) // Boolean // Replace later with modal
+  const [artworks, setArtworks] = useState([])
+  const dateAfter = useRef(1500)
+  const [countryName, setCountryName] = useState('')
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
@@ -58,6 +59,7 @@ function Map() {
   }
 
   function handleCountryClick (countryName) {
+    setCountryName(countryName)
     doFetch(countryName);
   }
 
@@ -107,6 +109,10 @@ function Map() {
 
   return (
     <>
+      <div className="filter-info">
+        <h1>{countryName}</h1>
+        <h1>{dateAfter.current}</h1>
+      </div>
       <MapContainer
         className="our-map"
         zoom={2.25}

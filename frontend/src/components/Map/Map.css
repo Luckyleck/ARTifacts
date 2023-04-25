@@ -1,6 +1,10 @@
 .our-map {
     position: relative;
     height: 86vh;
+    max-height: 90vh;
+    min-height: 93vh;
+    overflow: auto;
+    width: 100%;
     background-color: rgb(0, 157, 255);
 }
 
@@ -18,4 +22,15 @@
     border: 20px solid #c7b299;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+}
+
+.filter-info {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 200000;
+    display: flex;
+    gap: 5px;
+    top: 20px;
+    font-size: 25px;
 }
