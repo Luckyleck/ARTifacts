@@ -34,3 +34,7 @@
     top: 20px;
     font-size: 25px;
 }
+
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}

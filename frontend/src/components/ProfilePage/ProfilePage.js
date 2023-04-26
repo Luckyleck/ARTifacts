@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRandomUsers, fetchUser, getRandomUsers, getUser } from '../../store/users';
+import { fetchRandomUsers, fetchUser, getRandomUsers, getUser, updateUser } from '../../store/users';
+import { Modal } from '../context/Modal'
 
 import FollowButton from './Buttons/FollowButton';
 
@@ -19,13 +20,26 @@ const ProfilePage = () => {
     const [follower, setFollower] = useState(false);
     const [following, setFollowing] = useState(false);
     const randomUsers = useSelector(getRandomUsers);
+    const [username, setUsername] = useState(sessionUser.username)
+    const [editUsername, setEditUsername] = useState(false)
 
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchRandomUsers(5));
     }, [dispatch, userId]);
-    
+
     if (!sessionUser) return <Redirect to='/' />;
+
+    const changeUsername = () => {
+        setEditUsername(true);
+    }
+
+    const handleChangeUsername = (e) => {
+        e.preventDefault()
+        const testUser = { email: sessionUser.email, profilePic: sessionUser.profilePic, username: username, _id: sessionUser._id }
+        dispatch(updateUser(testUser))
+        setEditUsername(false)
+    }
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
@@ -63,9 +77,39 @@ const ProfilePage = () => {
                     </div>
                 </div>
                 {user && (
-                    <div className='user-info'>
-                        <p>{user.username}</p>
-                    </div>
+                    <>
+                        {sessionUser._id === user._id && <div className='edit-username-button-container'>
+                            <button className='edit-username-button' onClick={changeUsername}><i className="fa-solid fa-pen"></i></button>
+                        </div>}
+                        {/* {editUsername && <Modal id="edit-username-modal" onClose={() => setEditUsername(false)}>
+                            <form>
+                                <button className='close-form' onClick={() => setEditUsername(false)}>
+                                    <i className="fa-solid fa-xmark"></i>
+                                </button>
+                                <h1 className='edit-username-header'>Edit your username</h1>
+                                <input type='text' placeholder={user.username} onChange={(e) => setUsername(e.target.value)}/>
+                                <input type='submit' value="Submit Changes" onClick={handleChangeUsername} />
+                            </form>
+                        </Modal>} */}
+                        {editUsername && <div className="modal">
+                            <div className="modal-background" onClick={() => setEditUsername(false)} />
+                            <div className="edit-username-modal" >
+                                <form>
+                                    <button type='button' className='close-form' onClick={() => setEditUsername(false)}>
+                                        <i className="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <h1 className='edit-username-header'>Change your username</h1>
+                                    <input type='text' placeholder={user.username} className='edit-username-input' onChange={(e) => setUsername(e.target.value)} />
+                                    <input type='submit' value="Submit Changes" className='edit-username-submit' onClick={handleChangeUsername} />
+                                </form>
+                            </div>
+                        </div>}
+                        <div className='edit-user-info'>
+                            <div className='user-info'>
+                                <p>{user.username}</p>
+                            </div>
+                        </div>
+                    </>
                 )}
                 <FollowButton />
                 {user && (

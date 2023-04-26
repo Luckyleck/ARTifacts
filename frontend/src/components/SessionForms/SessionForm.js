@@ -120,7 +120,7 @@ const SessionForm = ({onClose, formType}) => {
 
       {form === 'signup' ? (
       <form className="session-form">
-      <button type='button' className='closeForm' onClick={onClose}>
+      <button type='button' className='close-form' onClick={onClose}>
         <i className="fa-solid fa-xmark"></i>
       </button>
 
@@ -205,7 +205,7 @@ const SessionForm = ({onClose, formType}) => {
         }
       </form>) : (
                <form className="session-form">
-               <button type='button' className='closeForm' onClick={onClose}>
+               <button type='button' className='close-form' onClick={onClose}>
                    <i className="fa-solid fa-xmark"></i>
                </button>
                

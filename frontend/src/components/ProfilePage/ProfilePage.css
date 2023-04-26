@@ -177,8 +177,7 @@
 
 .user-info {
     display: flex;
-    justify-content: center;
-    padding-top: 60px;
+    gap: 10px;
 }
 
 .user-info p {
@@ -346,4 +345,81 @@
 
 .explore-detail {
     max-height: 58vh;
+}
+
+.edit-user-info {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-username-button-container {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}
+
+.edit-username-button {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    color: #4e4f52
+}
+
+.edit-username-button:hover {
+    cursor: pointer;
+    background-color: #e2dbdb;
+}
+
+.edit-username-modal {
+    position: absolute;
+    background-color:#F7F7F7;
+    width: 350px;
+    height: 250px;
+    border-radius: 8px;
+    top: 32px;
+}
+
+.edit-username-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    font-size: 19px;
+    color: #4e4f52;
+}
+
+.edit-username-input {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 30px;
+    height: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #4e4f52;
+}
+
+.edit-username-submit {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 30px;
+    height: 34px;
+    width: 150px;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    color: #4e4f52;
+}
+
+.edit-username-input:hover {
+    cursor: pointer;
+}
+
+.edit-username-submit:hover {
+    cursor: pointer;
 }
