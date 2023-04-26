@@ -5,7 +5,8 @@ import 'leaflet/dist/leaflet.css'
 import "./Map.css";
 import countries from '../../data/countries.geo.json';
 import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from "./MapFunctions";
+import { geoJsonStyle, maxBounds, /*randomColor,*/ sliderMarks, sliderStyles, colors } from "./MapFunctions";
+
 
 function Map() {
   const [showArt, setShowArt] = useState(false); // Boolean // Replace later with modal
@@ -58,7 +59,7 @@ function Map() {
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
       })
-    ;
+      ;
   }
 
   function handleCountryClick (countryName) {
@@ -68,7 +69,12 @@ function Map() {
 
   function onEachCountry(country, layer) {
     // layer.bindPopup(country.properties.ADMIN);
-    layer.setStyle({ fillColor: randomColor() });
+    const colorIndex = countries.features.findIndex(
+      (feature) => feature.properties.ADMIN === country.properties.ADMIN
+    );
+    layer.setStyle({
+      fillColor: colors[colorIndex % colors.length]
+    });
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN);
@@ -97,12 +103,12 @@ function Map() {
 
   useEffect(() => {
     setArtworks([]);
-  }, [dateAfter.current]);
+  }, [dateAfter]);
 
   return (
     <>
       <div className="filter-info">
-        <h1>{countryName},</h1>
+        <h1>{countryName}{countryName && ','}</h1>
         <h1>{dateAfter.current}s</h1>
       </div>
       <MapContainer
@@ -119,12 +125,15 @@ function Map() {
           onEachFeature={onEachCountry}
         />
       </MapContainer>
-      {showArt && (
+      {showArt && artworks.length && (
         <>
-          <DisplayArtwork artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]} setShowArt={setShowArt} />
-          <button onClick={() => {
-            setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)]);
-          }} className="next-button">?</button>
+          <DisplayArtwork
+            artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
+            setShowArt={setShowArt}
+          />
+          <button onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])} className="next-button">
+            ?
+          </button>
         </>
       )}
       <Slider
