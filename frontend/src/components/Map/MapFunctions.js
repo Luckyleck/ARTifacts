@@ -49,7 +49,7 @@ export const sliderStyles = makeStyles({
         borderRadius: 40
     },
     markLabel: {
-        fontSize: '125%',
+        // fontSize: '20px',
         fontWeight: 'bold',
         color: 'grey'
         // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'

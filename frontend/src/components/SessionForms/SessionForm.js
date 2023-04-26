@@ -133,6 +133,7 @@ const SessionForm = ({onClose, formType}) => {
             onChange={update('email')}
             placeholder="example@user.io"
             className='session-input'
+            autoComplete='false'
           />
 
         <div className="errors">{errors?.email}</div>
@@ -145,6 +146,7 @@ const SessionForm = ({onClose, formType}) => {
             onChange={update('username')}
             placeholder="example"
             className='session-input'
+            autoComplete='false'
           />
         <div className="errors">{errors?.username}</div>
         
@@ -157,6 +159,7 @@ const SessionForm = ({onClose, formType}) => {
             onChange={update('password')}
             placeholder="******"
             className='session-input'
+            autoComplete='false'
           />
           {passwordType === 'password' ?
           <i className="fa-solid fa-eye" onClick={changePasswordType}></i> :
@@ -173,6 +176,7 @@ const SessionForm = ({onClose, formType}) => {
             onChange={update('password2')}
             placeholder="******"
             className='session-input'
+            autoComplete='false'
           />
         {confirmType === 'password' ?
         <i className="fa-solid fa-eye" onClick={changeConfirmType}></i> :
@@ -187,6 +191,7 @@ const SessionForm = ({onClose, formType}) => {
           value="Sign Up"
           className='submit-form'
           disabled={!email || !username || !password || password !== password2}
+          autoComplete='false'
         /> */}
 
         { !email || !username || !password || password !== password2 ?
@@ -218,6 +223,7 @@ const SessionForm = ({onClose, formType}) => {
                    onChange={update('email')}
                    placeholder="Email"
                    className='session-input'
+                   autoComplete='false'
                    />
        
                <div className="errors">{errors?.email}</div>
@@ -230,6 +236,7 @@ const SessionForm = ({onClose, formType}) => {
                    onChange={update('password')}
                    placeholder="Password"
                    className='session-input'
+                   autoComplete='false'
                    />
                
                <div className="errors">{errors?.password}</div>

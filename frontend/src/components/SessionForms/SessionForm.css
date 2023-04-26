@@ -129,7 +129,8 @@
   background-color: #F7F7F7;
   font-weight: 550;
   color: #5d6164;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
+  cursor: pointer;
 }
 
 .submit-form:hover {

@@ -34,3 +34,15 @@
     top: 20px;
     font-size: 25px;
 }
+
+.next-button {
+  position: fixed;
+  left: 35.5%;
+  top: 80.5%;
+  z-index: 1099;
+  width: 50px;
+}
+
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}
