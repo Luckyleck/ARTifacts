@@ -39,7 +39,7 @@ const ContactPage = () => {
                         </div>
 
                         <div className='developer-bio'>
-                            <p>{developer.bio}</p>
+                            <p className='developer-bio-text'>{developer.bio}</p>
                         </div>
                     </div>
                     <div className='developer-projects' onMouseEnter={() => openProjects(index)} onMouseLeave={closeProjects}>
