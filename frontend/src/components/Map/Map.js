@@ -10,6 +10,7 @@ import { geoJsonStyle, maxBounds, randomColor, sliderMarks, sliderStyles } from 
 function Map() {
   const [showArt, setShowArt] = useState(false); // Boolean // Replace later with modal
   const [artworks, setArtworks] = useState([]);
+  const [randomArtwork, setRandomArtwork] = useState();
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
   const [params, setParams] = useState({ // needed for component 
@@ -83,18 +84,6 @@ function Map() {
     });
   }
 
-  function handleRandomArt() {
-    const randomIndex = Math.floor(Math.random() * artworks.length);
-    const randomArtwork = artworks[randomIndex];
-
-    return randomArtwork && (
-      <DisplayArtwork
-        artwork={randomArtwork}
-        setShowArt={setShowArt}
-      />
-    );
-  }
-
   function handleSliderChange(event, value) {
     event.preventDefault();
     dateAfter.current = value;
@@ -127,7 +116,14 @@ function Map() {
           onEachFeature={onEachCountry}
         />
       </MapContainer>
-      {showArt && handleRandomArt()}
+      {showArt && (
+        <>
+          <DisplayArtwork artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]} setShowArt={setShowArt} />
+          <button onClick={() => {
+            setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)]);
+          }} className="next-button">?</button>
+        </>
+      )}
       <Slider
         min={0}
         max={1900}
