@@ -2,11 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRandomUsers, fetchUser, getRandomUsers, getUser, updateUser } from '../../store/users';
-import { Modal } from '../context/Modal'
-
 import FollowButton from './Buttons/FollowButton';
-
-import './ProfilePage.css'
+import './ProfilePage.css';
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FavoritesIndex from './Indexes/FavoritesIndex';
 
@@ -20,8 +17,8 @@ const ProfilePage = () => {
     const [follower, setFollower] = useState(false);
     const [following, setFollowing] = useState(false);
     const randomUsers = useSelector(getRandomUsers);
-    const [username, setUsername] = useState(sessionUser.username)
-    const [editUsername, setEditUsername] = useState(false)
+    const [username, setUsername] = useState(sessionUser.username);
+    const [editUsername, setEditUsername] = useState(false);
 
     useEffect(() => {
         dispatch(fetchUser(userId));
@@ -36,9 +33,9 @@ const ProfilePage = () => {
 
     const handleChangeUsername = (e) => {
         e.preventDefault()
-        const testUser = { email: sessionUser.email, profilePic: sessionUser.profilePic, username: username, _id: sessionUser._id }
-        dispatch(updateUser(testUser))
-        setEditUsername(false)
+        const testUser = { email: sessionUser.email, profilePic: sessionUser.profilePic, username: username, _id: sessionUser._id };
+        dispatch(updateUser(testUser));
+        setEditUsername(false);
     }
 
     const moveLeft = () => {
@@ -107,7 +104,7 @@ const ProfilePage = () => {
                         <ul>
                             <li>Followers: <p>&nbsp;{user.followers?.length}</p></li>
                             <li>Following: <p>&nbsp; {user.follows?.length}</p></li>
-                            <li>Favorite arts: <p>&nbsp; {user.favorites?.length}</p></li>
+                            <li>Favorites: <p>&nbsp; {user.favorites?.length}</p></li>
                         </ul>
                         {!openFavorite && (
                             <div className='expand-favorite'>
@@ -124,13 +121,6 @@ const ProfilePage = () => {
                         Favorites:
                     </div>
                     <FavoritesIndex />
-                    {/* <div className='grid-container'>
-                        {user?.favorites?.map((art, index) => (
-                            <div className='grid-item' key={index}>
-                                <img src={art.images.web.url} alt='art' />
-                            </div>
-                        ))}
-                    </div> */}
                 </div>
             )}
             <div className='follow-container'>
@@ -182,7 +172,7 @@ const ProfilePage = () => {
             </div>
             <div className='explore-container'>
                 <div className='follow-tag'>
-                    <p className='tab-text'>Explore Users</p>
+                    <p className='tab-text'>Explore other Users</p>
                 </div>
                 <div className='follow-detail explore-detail'>
                     {randomUsers && randomUsers?.map((randomUser, index) => (

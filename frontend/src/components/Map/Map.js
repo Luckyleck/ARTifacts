@@ -9,12 +9,12 @@ import { geoJsonStyle, maxBounds, /*randomColor,*/ sliderMarks, sliderStyles, co
 
 
 function Map() {
-  const [showArt, setShowArt] = useState(false); // Boolean // Replace later with modal
+  const [showArt, setShowArt] = useState(false);
   const [artworks, setArtworks] = useState([]);
   const [randomArtwork, setRandomArtwork] = useState();
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
-  const [params, setParams] = useState({ // needed for component 
+  const [params, setParams] = useState({
     skip: 0,
     limit: 300,
     has_image: 1
@@ -24,7 +24,8 @@ function Map() {
     const url = "https://openaccess-api.clevelandart.org/api/artworks";
 
     const tempParams = {
-      q: countryName.toLowerCase(), ...params
+      ...params,
+      q: countryName.toLowerCase()
     };
 
     function formatParams(params) {
@@ -59,7 +60,7 @@ function Map() {
       .catch((error) => {
         console.error("ERROR getting artwork data", error);
       })
-      ;
+    ;
   }
 
   function handleCountryClick (countryName) {
@@ -68,10 +69,8 @@ function Map() {
   }
 
   function onEachCountry(country, layer) {
+    const colorIndex = countries.features.findIndex(feature => feature.properties.ADMIN === country.properties.ADMIN);
     // layer.bindPopup(country.properties.ADMIN);
-    const colorIndex = countries.features.findIndex(
-      (feature) => feature.properties.ADMIN === country.properties.ADMIN
-    );
     layer.setStyle({
       fillColor: colors[colorIndex % colors.length]
     });
