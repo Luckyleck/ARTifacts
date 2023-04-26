@@ -81,16 +81,6 @@ const ProfilePage = () => {
                         {sessionUser._id === user._id && <div className='edit-username-button-container'>
                             <button className='edit-username-button' onClick={changeUsername}><i className="fa-solid fa-pen"></i></button>
                         </div>}
-                        {/* {editUsername && <Modal id="edit-username-modal" onClose={() => setEditUsername(false)}>
-                            <form>
-                                <button className='close-form' onClick={() => setEditUsername(false)}>
-                                    <i className="fa-solid fa-xmark"></i>
-                                </button>
-                                <h1 className='edit-username-header'>Edit your username</h1>
-                                <input type='text' placeholder={user.username} onChange={(e) => setUsername(e.target.value)}/>
-                                <input type='submit' value="Submit Changes" onClick={handleChangeUsername} />
-                            </form>
-                        </Modal>} */}
                         {editUsername && <div className="modal">
                             <div className="modal-background" onClick={() => setEditUsername(false)} />
                             <div className="edit-username-modal" >
