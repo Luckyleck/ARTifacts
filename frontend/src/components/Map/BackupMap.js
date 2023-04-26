@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css'
 import "./Map.css";
 import countries from '../../data/countries.geo.json';
 import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
-// import ArtworkDisplayModal from '../ArtworkDisplay/Modal';
 
 export default function BackupMap() {
   const [artworks, setArtworks] = useState([]);
