@@ -207,7 +207,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27vw;
+    right: -27.2vw;
+    top: 13vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
@@ -306,6 +307,8 @@
 #follow-card-username {
     font-size: 15px;
     color: #F7F7F7;
+    display: flex;
+    margin: 0 auto;
 }
 
 #follow-card-info {
@@ -329,8 +332,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27vw;
-    top: 38.5vh;
+    right: -27.2vw;
+    top: 33.3vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;

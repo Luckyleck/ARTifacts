@@ -107,7 +107,7 @@ const ProfilePage = () => {
                         <ul>
                             <li>Followers: <p>&nbsp;{user.followers?.length}</p></li>
                             <li>Following: <p>&nbsp; {user.follows?.length}</p></li>
-                            <li>Favorite arts: <p>&nbsp; {user.favorites?.length}</p></li>
+                            <li>Favorites: <p>&nbsp; {user.favorites?.length}</p></li>
                         </ul>
                         {!openFavorite && (
                             <div className='expand-favorite'>
