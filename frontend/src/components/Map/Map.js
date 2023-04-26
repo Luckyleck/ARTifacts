@@ -102,7 +102,7 @@ function Map() {
   return (
     <>
       <div className="filter-info">
-        <h1>{countryName},</h1>
+        <h1>{countryName}{countryName && ' ,'}</h1>
         <h1>{dateAfter.current}s</h1>
       </div>
       <MapContainer
