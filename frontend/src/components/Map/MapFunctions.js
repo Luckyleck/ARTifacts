@@ -23,7 +23,8 @@ export function geoJsonStyle() {
 //     return colors[randomColorIndex];
 // }
 
-export const colors = ["pink", "coral", "palegreen", "seagreen", "mediumslateblue", "thistle"]
+// export const colors = ["pink", "coral", "palegreen", "seagreen", "mediumslateblue", "thistle"];
+export const colors = ["aquamarine", "bisque", "plum", "powderblue", "wheat", "whitesmoke", "pink", "coral", "palegreen", "khaki", "mediumseagreen", "mediumslateblue", "thistle"];
 
 // Slider Styling
 
