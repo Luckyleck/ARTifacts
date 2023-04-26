@@ -25,24 +25,26 @@ const ProfilePage = () => {
         dispatch(fetchRandomUsers(5));
     }, [dispatch, userId]);
 
-    if (!sessionUser) return <Redirect to='/' />;
+    if (!sessionUser) return (
+        <Redirect to="/" />
+    );
 
     const changeUsername = () => {
         setEditUsername(true);
-    }
+    };
 
     const handleChangeUsername = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const testUser = { email: sessionUser.email, profilePic: sessionUser.profilePic, username: username, _id: sessionUser._id };
         dispatch(updateUser(testUser));
         setEditUsername(false);
-    }
+    };
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
         card.classList.add('move-left');
         setOpenFavorite(true);
-    }
+    };
 
     const viewFollowers = () => {
         setFollowing(false);
@@ -51,7 +53,7 @@ const ProfilePage = () => {
         const followingColor = document.querySelector('.follow-following');
         followingColor.classList.remove('add-color');
         followerColor.classList.add('add-color');
-    }
+    };
 
     const viewFollowing = () => {
         setFollower(false);
@@ -60,39 +62,45 @@ const ProfilePage = () => {
         const followingColor = document.querySelector('.follow-following');
         followerColor.classList.remove('add-color');
         followingColor.classList.add('add-color');
-    }
+    };
 
     return (
-        <div className='profile-container'>
-            <div className='profile-card'>
-                <div className='profile-card-top'>
-                    <div className='profile-card-background'>
-                        <img src={user?.backgroundPic} alt='background-pic' />
+        <div className="profile-container">
+            <div className="profile-card">
+                <div className="profile-card-top">
+                    <div className="profile-card-background">
+                        <img src={user?.backgroundPic} alt="background-pic" />
                     </div>
-                    <div className='pic profile-card-pic'>
-                        <img src={user?.profilePic} alt='profile-pic' />
+                    <div className="pic profile-card-pic">
+                        <img src={user?.profilePic} alt="profile-pic" />
                     </div>
                 </div>
                 {user && (
                     <>
-                        {sessionUser._id === user._id && <div className='edit-username-button-container'>
-                            <button className='edit-username-button' onClick={changeUsername}><i className="fa-solid fa-pen"></i></button>
-                        </div>}
-                        {editUsername && <div className="modal">
-                            <div className="modal-background" onClick={() => setEditUsername(false)} />
-                            <div className="edit-username-modal" >
-                                <form>
-                                    <button type='button' className='close-form' onClick={() => setEditUsername(false)}>
-                                        <i className="fa-solid fa-xmark"></i>
-                                    </button>
-                                    <h1 className='edit-username-header'>Change your username</h1>
-                                    <input type='text' placeholder={user.username} className='edit-username-input' onChange={(e) => setUsername(e.target.value)} />
-                                    <input type='submit' value="Submit Changes" className='edit-username-submit' onClick={handleChangeUsername} />
-                                </form>
+                        {sessionUser._id === user._id && (
+                            <div className="edit-username-button-container">
+                                <button onClick={changeUsername} className="edit-username-button">
+                                    <i className="fa-solid fa-pen"></i>
+                                </button>
                             </div>
-                        </div>}
-                        <div className='edit-user-info'>
-                            <div className='user-info'>
+                        )}
+                        {editUsername && (
+                            <div className="modal">
+                                <div onClick={() => setEditUsername(false)} className="modal-background"></div>
+                                <div className="edit-username-modal">
+                                    <form>
+                                        <button type="button" onClick={() => setEditUsername(false)} className="close-form">
+                                            <i className="fa-solid fa-xmark"></i>
+                                        </button>
+                                        <h1 className="edit-username-header">Change your username</h1>
+                                        <input type="text" placeholder={user.username} onChange={(e) => setUsername(e.target.value)} className="edit-username-input" />
+                                        <input type="submit" value="Submit Changes" onClick={handleChangeUsername} className="edit-username-submit" />
+                                    </form>
+                                </div>
+                            </div>
+                        )}
+                        <div className="edit-user-info">
+                            <div className="user-info">
                                 <p>{user.username}</p>
                             </div>
                         </div>
@@ -100,15 +108,15 @@ const ProfilePage = () => {
                 )}
                 <FollowButton />
                 {user && (
-                    <div className='profile-card-bottom'>
+                    <div className="profile-card-bottom">
                         <ul>
                             <li>Followers: <p>&nbsp;{user.followers?.length}</p></li>
                             <li>Following: <p>&nbsp; {user.follows?.length}</p></li>
                             <li>Favorites: <p>&nbsp; {user.favorites?.length}</p></li>
                         </ul>
                         {!openFavorite && (
-                            <div className='expand-favorite'>
-                                <i className="fa-solid fa-angles-down" id='profile-expand' onClick={moveLeft}></i>
+                            <div className="expand-favorite">
+                                <i onClick={moveLeft} id="profile-expand" className="fa-solid fa-angles-down"></i>
                                 <p>Expand Favorites</p>
                             </div>
                         )}
@@ -116,77 +124,75 @@ const ProfilePage = () => {
                 )}
             </div>
             {openFavorite && (
-                <div className='favorite' id='favorite'>
-                    <div className='favorite-header'>
-                        Favorites:
-                    </div>
+                <div id="favorite" className="favorite">
+                    <div className="favorite-header">Favorites:</div>
                     <FavoritesIndex />
                 </div>
             )}
-            <div className='follow-container'>
-                <div className='follow-tag'>
-                    <p className='tab-text'>Followers / Following</p>
+            <div className="follow-container">
+                <div className="follow-tag">
+                    <p className="tab-text">Followers / Following</p>
                 </div>
-                <div className='follow-title'>
-                    <div className='follow-followers' onClick={viewFollowers}><p>Followers</p></div>
-                    <div className='follow-following' onClick={viewFollowing}><p>Following</p></div>
+                <div className="follow-title">
+                    <div onClick={viewFollowers} className="follow-followers"><p>Followers</p></div>
+                    <div onClick={viewFollowing} className="follow-following"><p>Following</p></div>
                 </div>
                 {following && (
-                    <div className='follow-detail'>
+                    <div className="follow-detail">
                         {user && user?.follows?.map((follow, index) => (
-                            <div className='follow-card' key={index} onClick={() => history.push(`/${follow._id}`)}>
-                                <div className='profile-card-top follow-card-top'>
-                                    <div className='profile-card-background follow-card-background'>
-                                        <img src={follow.backgroundPic} alt='background-pic' />
+                            <div key={index} onClick={() => history.push(`/${follow._id}`)} className="follow-card">
+                                <div className="profile-card-top follow-card-top">
+                                    <div className="profile-card-background follow-card-background">
+                                        <img src={follow.backgroundPic} alt="background-pic" />
                                     </div>
-                                    <div className='pic follow-card-profile' onClick={() => history.push(`/${follow?._id}`)}>
-                                        <img src={follow.profilePic} alt='profile-pic' />
+                                    <div onClick={() => history.push(`/${follow?._id}`)} className="pic follow-card-profile">
+                                        <img src={follow.profilePic} alt="profile-pic" />
                                     </div>
                                 </div>
-                                <div className='user-info' id='follow-card-info'>
-                                    <p id='follow-card-username'>{follow.username}</p>
+                                <div id="follow-card-info" className="user-info">
+                                    <p id="follow-card-username">{follow.username}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 )}
                 {follower && (
-                    <div className='follow-detail'>
+                    <div className="follow-detail">
                         {user && user?.followers?.map((follower, index) => (
-                            <div className='follow-card' key={index} onClick={() => history.push(`/${follower._id}`)}>
-                                <div className='profile-card-top follow-card-top'>
-                                    <div className='profile-card-background follow-card-background'>
-                                        <img src={follower.backgroundPic} alt='background-pic' />
+                            <div key={index} onClick={() => history.push(`/${follower._id}`)} className="follow-card">
+                                <div className="profile-card-top follow-card-top">
+                                    <div className="profile-card-background follow-card-background">
+                                        <img src={follower.backgroundPic} alt="background-pic" />
                                     </div>
-                                    <div className='pic follow-card-profile' onClick={() => history.push(`/${follower._id}`)}>
-                                        <img src={follower.profilePic} alt='profile-pic' />
+                                    <div onClick={() => history.push(`/${follower._id}`)} className="pic follow-card-profile">
+                                        <img src={follower.profilePic} alt="profile-pic" />
                                     </div>
                                 </div>
-                                <div className='user-info' id='follow-card-info'>
-                                    <p id='follow-card-username'>{follower.username}</p>
+                                <div id="follow-card-info" className="user-info">
+                                    <p id="follow-card-username">{follower.username}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 )}
             </div>
-            <div className='explore-container'>
-                <div className='follow-tag'>
-                    <p className='tab-text'>Explore other Users</p>
+            <div className="explore-container">
+                <div className="follow-tag">
+                    <p className="tab-text">Explore other Users</p>
                 </div>
-                <div className='follow-detail explore-detail'>
+                <div className="follow-detail explore-detail">
                     {randomUsers && randomUsers?.map((randomUser, index) => (
-                        <div className='follow-card' key={index} onClick={() => history.push(`/${randomUser._id}`)}>
-                            <div className='profile-card-top follow-card-top'>
-                                <div className='profile-card-background follow-card-background'>
-                                    <img src={randomUser.backgroundPic} alt='starry' />
+                        <div key={index} onClick={() => history.push(`/${randomUser._id}`)} className="follow-card">
+                            <div className="profile-card-top follow-card-top">
+                                <div className="profile-card-background follow-card-background">
+                                    <img src={randomUser.backgroundPic} alt="starry" />
                                 </div>
-                                <div className='pic follow-card-profile' onClick={() => history.push(`/${randomUser._id}`)}>
-                                    <img src={randomUser.profilePic} alt='pikachu' />
+                                <div onClick={() => history.push(`/${randomUser._id}`)} className="pic follow-card-profile">
+                                    <img src={randomUser.profilePic} alt="pikachu" />
                                 </div>
                             </div>
-                            <div className='user-info' id='follow-card-info'>
-                                <p id='follow-card-username'>{randomUser.username}</p>
+                            <div id="follow-card-info" className="user-info">
+                                <p id="follow-card-username">{randomUser.username}</p>
                             </div>
                         </div>
                     ))}
@@ -194,6 +200,6 @@ const ProfilePage = () => {
             </div>
         </div>
     );
-}
+};
 
 export default ProfilePage;

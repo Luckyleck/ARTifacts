@@ -3,7 +3,7 @@ import mg from '../MainPage/assets/mg.jpeg';
 import kc from './assets/kc.jpeg';
 import al from './assets/al.jpeg';
 import sn from './assets/sn.jpeg';
-import nighthawks from './assets/Nighthawks.jpeg'
+import nighthawks from './assets/Nighthawks.jpeg';
 
 export const developers = [
     {
@@ -11,11 +11,11 @@ export const developers = [
         title: 'Team Lead - Flex Developer',
         backgroundpic: 'https://picsum.photos/seed/4/400/400',
         profile: al,
-        bio: "Hi, my name is Alex Lecky and I am the team lead for this project. I'm a charismatic and intelligent person who believes in the power of creativity and persistence to drive innovation. My passion for technology stems from my desire to make the world a better place, and I'm always full of ideas on how to achieve this goal. I enjoy exploring new technologies and coming up with creative solutions to new problems. Above all, I'm persistent, never giving up until I've found the right solution. I'm excited to continue making the world a better place, one project at a time.",
+        bio: 'Hi, my name is Alex Lecky and I am the team lead for this project. I\'m a charismatic and intelligent person who believes in the power of creativity and persistence to drive innovation. My passion for technology stems from my desire to make the world a better place, and I\'m always full of ideas on how to achieve this goal. I enjoy exploring new technologies and coming up with creative solutions to new problems. Above all, I\'m persistent, never giving up until I\'ve found the right solution. I\'m excited to continue making the world a better place, one project at a time.',
         github: 'https://github.com/Luckyleck',
         linkedin: '',
         javascript: 'https://luckyleck.github.io/JS-Project/',
-        fullstack: '',
+        fullstack: ''
     },
     {
         name: 'Kevin Chan',
@@ -26,7 +26,7 @@ export const developers = [
         github: 'https://github.com/kchannn13',
         linkedin: 'https://www.linkedin.com/in/kevin-chan-426203158/',
         javascript: 'https://kchannn13.github.io/The-Adventures-of-Gary-the-Snail/',
-        fullstack: 'https://linkedup-ptj7.onrender.com/',
+        fullstack: 'https://linkedup-ptj7.onrender.com/'
     },
     {
         name: 'Michael Gastello',
@@ -37,7 +37,7 @@ export const developers = [
         github: 'https://github.com/mgastello',
         linkedin: 'https://www.linkedin.com/in/michael-gastello-168822260/',
         javascript: 'https://mgastello.github.io/xChngd/',
-        fullstack: 'https://arrow-8xvn.onrender.com/',
+        fullstack: 'https://arrow-8xvn.onrender.com/'
     },
     {
         name: 'Steven Notovitz',
@@ -48,6 +48,6 @@ export const developers = [
         github: 'https://github.com/StevenNotovitz',
         linkedin: '',
         javascript: 'https://stevennotovitz.github.io/aA-JS-project-Labyrinth/',
-        fullstack: '',
+        fullstack: ''
     }
-]
+];

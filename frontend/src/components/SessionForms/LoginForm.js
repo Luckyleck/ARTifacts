@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
-import logo from '../MainPage/assets/ART_white.png'
+import logo from '../MainPage/assets/ART_white.png';
 
 import { login, clearSessionErrors } from '../../store/session';
 
@@ -13,81 +13,74 @@ const LoginForm = ({onClose}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (sessionUser) {
-        onClose();
-    }
-    return () => {
-      dispatch(clearSessionErrors());
-    };
+    if (sessionUser) onClose();
+    return () => dispatch(clearSessionErrors());
   }, [onClose, dispatch]);
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
     return e => setState(e.currentTarget.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })); 
     if (!sessionUser) onClose();
-  }
+  };
 
   return (
-    <div className='session-modal'>
-    <div className='welcome'>
-        <img src={logo} alt='logo' />
-        <p>Welcome to ARTifacts!</p>
+    <div className="session-modal">
+    <div className="welcome">
+      <img src={logo} alt="logo" />
+      <p>Welcome to ARTifacts!</p>
     </div>
-        <form className="session-form" onSubmit={handleSubmit}>
-        <button className='close-form' onClick={onClose}>
-            <i className="fa-solid fa-xmark"></i>
-        </button>
-        
-        <label>
-            Email
-        </label>
-
-            <input type="text"
-            value={email}
-            onChange={update('email')}
-            placeholder="Email"
-            className='session-input'
-            autoComplete='false'
-            />
-
+      <form onSubmit={handleSubmit} className="session-form">
+      <button onClick={onClose} className="close-form">
+        <i className="fa-solid fa-xmark"></i>
+      </button>
+      <label>
+        Email
+      </label>
+        <input
+          type="text"
+          value={email}
+          onChange={update('email')}
+          placeholder="Email"
+          className="session-input"
+          autoComplete="false"
+        />
         <div className="errors">{errors?.email}</div>
-        
         <label>
-            Password
+          Password
         </label>
-            <input type="password"
-            value={password}
-            onChange={update('password')}
-            placeholder="Password"
-            className='session-input'
-            autoComplete='false'
-            />
-        
+        <input
+          type="password"
+          value={password}
+          onChange={update('password')}
+          placeholder="Password"
+          className="session-input"
+          autoComplete="false"
+        />
         <div className="errors">{errors?.password}</div>
-
-        { !email || !password ?
-        <input
+        {!email || !password ? (
+          <input
             type="submit"
             value="Log In"
-            className='submit-form'
-            autoComplete='false'
-        /> : 
-        <input
+            className="submit-form"
+            autoComplete="false"
+          />
+        ) : (
+          <input
             type="submit"
             value="Log In"
-            className='submit-form'
-            id='allow-submit'
-            autoComplete='false'
-        />}
-
-        </form>
+            id="allow-submit"
+            className="submit-form"
+            autoComplete="false"
+          />
+        )}
+      </form>
     </div>
   );
-}
+};
 
 export default LoginForm;

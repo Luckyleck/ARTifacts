@@ -14,16 +14,16 @@ export default function FollowButton() {
     <button
       type="button"
       onClick={() => dispatch(unfollow(currentUser, user))}
-      id='follow-button'
-      className='submit-form allow-submit'
+      id="follow-button"
+      className="submit-form allow-submit"
     ><i className="fa-solid fa-user-slash"></i>Unfollow</button>
   );
   return (
     <button
       type="button"
       onClick={() => dispatch(follow(currentUser, user))}
-      id='follow-button'
-      className='submit-form allow-submit'
+      id="follow-button"
+      className="submit-form allow-submit"
     ><i className="fa-solid fa-user-plus"></i>Follow</button>
   );
 }
