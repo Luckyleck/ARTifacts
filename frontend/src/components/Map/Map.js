@@ -92,6 +92,7 @@ function Map() {
     setParams({
       ...params
     });
+    setShowArt(false);
   }
 
   useEffect(() => {
