@@ -5,7 +5,7 @@
     /* min-height: 93vh; */
     /* overflow: auto; */
     /* width: 100%; */
-    background-color: rgb(0, 157, 255);
+    background-color: skyblue;
 }
 
 .art-display-container {
@@ -33,6 +33,14 @@
     gap: 5px;
     top: 20px;
     font-size: 25px;
+}
+
+.next-button {
+  position: fixed;
+  left: 35.5%;
+  top: 80.5%;
+  z-index: 1099;
+  width: 50px;
 }
 
 .MuiSlider-markLabel.makeStyles-markLabel-5 {

@@ -17,7 +17,7 @@ export function geoJsonStyle() {
 }
 
 export function randomColor() {
-    const colors = ["green", "yellow", "red", "orange", "purple"];
+    const colors = ["pink", "coral", "peachpuff", "lightyellow", "palegoldenrod", "palegreen", "seagreen", "mediumslateblue", "thistle"];
     const randomColorIndex = Math.floor(Math.random() * colors.length);
 
     return colors[randomColorIndex];
@@ -49,7 +49,7 @@ export const sliderStyles = makeStyles({
     markLabel: {
         // fontSize: '20px',
         fontWeight: 'bold',
-        color: 'grey',
+        color: 'grey'
         // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
     }
 });

@@ -52,6 +52,7 @@ const LoginForm = ({onClose}) => {
             onChange={update('email')}
             placeholder="Email"
             className='session-input'
+            autoComplete='false'
             />
 
         <div className="errors">{errors?.email}</div>
@@ -64,6 +65,7 @@ const LoginForm = ({onClose}) => {
             onChange={update('password')}
             placeholder="Password"
             className='session-input'
+            autoComplete='false'
             />
         
         <div className="errors">{errors?.password}</div>
@@ -73,12 +75,14 @@ const LoginForm = ({onClose}) => {
             type="submit"
             value="Log In"
             className='submit-form'
+            autoComplete='false'
         /> : 
         <input
             type="submit"
             value="Log In"
             className='submit-form'
             id='allow-submit'
+            autoComplete='false'
         />}
 
         </form>

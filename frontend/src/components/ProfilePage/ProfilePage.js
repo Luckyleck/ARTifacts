@@ -145,7 +145,7 @@ const ProfilePage = () => {
             )}
             <div className='follow-container'>
                 <div className='follow-tag'>
-                    <p>Followers / Following</p>
+                    <p className='tab-text'>Followers / Following</p>
                 </div>
                 <div className='follow-title'>
                     <div className='follow-followers' onClick={viewFollowers}><p>Followers</p></div>
@@ -192,7 +192,7 @@ const ProfilePage = () => {
             </div>
             <div className='explore-container'>
                 <div className='follow-tag'>
-                    <p>Explore Users</p>
+                    <p className='tab-text'>Explore Users</p>
                 </div>
                 <div className='follow-detail explore-detail'>
                     {randomUsers && randomUsers?.map((randomUser, index) => (
