@@ -16,7 +16,7 @@ function Map() {
   const [params, setParams] = useState({ // needed for component 
     skip: 0,
     limit: 300,
-    has_image: 1,
+    has_image: 1
   });
 
   function doFetch(countryName) {
@@ -42,11 +42,13 @@ function Map() {
     const paramsString = formatParams(tempParams);
 
     fetch(`${url}?${paramsString}`)
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          if (artwork.culture[0]?.toLowerCase().includes(countryName.toLowerCase())) {
+          if (artwork.culture[0].toLowerCase().includes(countryName.toLowerCase())) {
             filtered.push(artwork);
           }
         });
@@ -60,7 +62,7 @@ function Map() {
   }
 
   function handleCountryClick (countryName) {
-    setCountryName(countryName)
+    setCountryName(countryName);
     doFetch(countryName);
   }
 

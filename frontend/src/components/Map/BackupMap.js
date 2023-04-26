@@ -5,8 +5,8 @@ import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
 import "./Map.css";
 import countries from '../../data/countries.geo.json';
-// import ArtworkDisplayModal from '../ArtworkDisplay/Modal';
 import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
+// import ArtworkDisplayModal from '../ArtworkDisplay/Modal';
 
 export default function BackupMap() {
   const [artworks, setArtworks] = useState([]);
@@ -28,7 +28,7 @@ export default function BackupMap() {
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          if (artwork?.culture[0]?.toLowerCase().includes(country?.toLowerCase())) {
+          if (artwork.culture[0].toLowerCase().includes(country.toLowerCase())) {
             filtered.push(artwork);
           }
         });
