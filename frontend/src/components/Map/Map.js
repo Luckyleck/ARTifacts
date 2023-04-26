@@ -97,7 +97,7 @@ function Map() {
 
   useEffect(() => {
     setArtworks([]);
-  }, [dateAfter.current]);
+  }, [dateAfter]);
 
   return (
     <>
@@ -119,12 +119,15 @@ function Map() {
           onEachFeature={onEachCountry}
         />
       </MapContainer>
-      {showArt && (
+      {showArt && artworks.length && (
         <>
-          <DisplayArtwork artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]} setShowArt={setShowArt} />
-          <button onClick={() => {
-            setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)]);
-          }} className="next-button">?</button>
+          <DisplayArtwork
+            artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
+            setShowArt={setShowArt}
+          />
+          <button onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])} className="next-button">
+            ?
+          </button>
         </>
       )}
       <Slider

@@ -7,7 +7,6 @@ function DisplayArtwork({ artwork, setShowArt }) {
     setShowArt(false)
   }
 
-  if (!artwork) return;
   return (
     <>
       <div className="art-display-container">
@@ -22,7 +21,9 @@ function DisplayArtwork({ artwork, setShowArt }) {
           <h3>{artwork.tombstone}</h3>
         </div>
         <div className="art-display-buttons">
-            <button onClick={() => setShowArt(false)} className='close-form close-display'><i className="fa-solid fa-xmark"></i></button>
+            <button onClick={() => setShowArt(false)} className='close-form close-display'>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
             <FavoriteButton artwork={artwork} />
         </div>
       </div>
