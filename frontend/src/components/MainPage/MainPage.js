@@ -53,6 +53,7 @@ const MainPage = () => {
         <img src={sn} alt="sn" className="animated-image" />
         <img src={kc} alt="kc" className="animated-image" />
       </div>
+
       <div onClick={() => history.push('/explore')} className="explore">
         <img src={logo} alt="logo" />
         <p>CLICK HERE TO ENTER</p>

@@ -42,9 +42,23 @@ const ProfilePage = () => {
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
+        const fav = document.querySelector('.favorite');
         card.classList.add('move-left');
+        fav.classList.add('slide-in-favorites');
+        card.classList.remove('move-right');
+        fav.classList.remove('slide-out-favorites');
         setOpenFavorite(true);
     };
+
+    const moveRight = () => {
+        const card = document.querySelector('.profile-card');
+        const fav = document.querySelector('.favorite');
+        card.classList.add('move-right');
+        fav.classList.add('slide-out-favorites');
+        card.classList.remove('move-left');
+        fav.classList.remove('slide-in-favorites');
+        setOpenFavorite(false);
+    }
 
     const viewFollowers = () => {
         setFollowing(false);
@@ -120,15 +134,22 @@ const ProfilePage = () => {
                                 <p>Expand Favorites</p>
                             </div>
                         )}
+                        {openFavorite && (
+                            <div className='expand-favorite'>
+                                <i className="fa-solid fa-angles-down" id='profile-collapse' onClick={moveRight}></i>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
-            {openFavorite && (
+            {/* {openFavorite && ( */}
                 <div id="favorite" className="favorite">
-                    <div className="favorite-header">Favorites:</div>
+                    <div className="favorite-header">
+                        Favorites:
+                    </div>
                     <FavoritesIndex />
                 </div>
-            )}
+            {/* )} */}
             <div className="follow-container">
                 <div className="follow-tag">
                     <p className="tab-text">Followers / Following</p>
