@@ -30,4 +30,5 @@
     height: 415px;
     border-radius: 8px;
     top: 32px;
+    z-index: 1100;
 }

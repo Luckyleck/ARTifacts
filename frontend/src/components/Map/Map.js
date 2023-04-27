@@ -16,7 +16,7 @@ function Map() {
   const [countryName, setCountryName] = useState('');
   const [params, setParams] = useState({
     skip: 0,
-    limit: 300,
+    // limit: 300,
     has_image: 1
   });
 
@@ -99,10 +99,12 @@ function Map() {
       ...params
     });
     setShowArt(false);
+    setRandomArtwork('');
   }
 
   useEffect(() => {
     setArtworks([]);
+    setRandomArtwork('');
   }, [dateAfter]);
 
   return (
@@ -130,6 +132,7 @@ function Map() {
           <DisplayArtwork
             artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
             setShowArt={setShowArt}
+            setRandomArtwork={setRandomArtwork}
           />
           <button
             onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}

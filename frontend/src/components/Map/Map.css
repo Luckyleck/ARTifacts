@@ -36,11 +36,11 @@
 }
 
 .next-button {
-  position: fixed;
-  left: 35.5%;
-  top: 80.5%;
-  z-index: 1099;
-  width: 50px;
+    position: fixed;
+    left: 35.5%;
+    top: 80.5%;
+    z-index: 1000;
+    width: 50px;
 }
 
 .MuiSlider-markLabel.makeStyles-markLabel-5 {
