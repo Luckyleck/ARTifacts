@@ -29,53 +29,53 @@ const LoginForm = ({onClose}) => {
   };
 
   return (
-    <div className="session-modal">
-    <div className="welcome">
-      <img src={logo} alt="logo" />
+    <div className='session-modal'>
+    <div className='welcome'>
+      <img src={logo} alt='logo' />
       <p>Welcome to ARTifacts!</p>
     </div>
-      <form onSubmit={handleSubmit} className="session-form">
-      <button onClick={onClose} className="close-form">
-        <i className="fa-solid fa-xmark"></i>
+      <form onSubmit={handleSubmit} className='session-form'>
+      <button onClick={onClose} className='close-form'>
+        <i className='fa-solid fa-xmark'></i>
       </button>
       <label>
         Email
       </label>
         <input
-          type="text"
+          type='text'
           value={email}
           onChange={update('email')}
-          placeholder="Email"
-          className="session-input"
-          autoComplete="false"
+          placeholder='Email'
+          className='session-input'
+          autoComplete='false'
         />
-        <div className="errors">{errors?.email}</div>
+        <div className='errors'>{errors?.email}</div>
         <label>
           Password
         </label>
         <input
-          type="password"
+          type='password'
           value={password}
           onChange={update('password')}
-          placeholder="Password"
-          className="session-input"
-          autoComplete="false"
+          placeholder='Password'
+          className='session-input'
+          autoComplete='false'
         />
-        <div className="errors">{errors?.password}</div>
+        <div className='errors'>{errors?.password}</div>
         {!email || !password ? (
           <input
-            type="submit"
-            value="Log In"
-            className="submit-form"
-            autoComplete="false"
+            type='submit'
+            value='Log In'
+            className='submit-form'
+            autoComplete='false'
           />
         ) : (
           <input
-            type="submit"
-            value="Log In"
-            id="allow-submit"
-            className="submit-form"
-            autoComplete="false"
+            type='submit'
+            value='Log In'
+            id='allow-submit'
+            className='submit-form'
+            autoComplete='false'
           />
         )}
       </form>

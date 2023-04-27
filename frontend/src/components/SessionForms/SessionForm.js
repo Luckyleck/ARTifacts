@@ -105,47 +105,47 @@ const SessionForm = ({onClose, formType}) => {
   };
 
   return (
-    <div className="session-modal">
-      <div className="welcome">
-        <img src={logo} alt="logo" />
+    <div className='session-modal'>
+      <div className='welcome'>
+        <img src={logo} alt='logo' />
         <p>Welcome to ARTifacts!</p>
         {form === 'signup' ? (
-          <h3 className="switch">Already have an account?<button onClick={switchSignInForm}>Log in</button></h3>
+          <h3 className='switch'>Already have an account?<button onClick={switchSignInForm}>Log in</button></h3>
         ) : (
-          <h3 className="switch">Don"t have an account yet?<button onClick={switchSignUpForm}>Sign up</button></h3>
+          <h3 className='switch'>Don't have an account yet?<button onClick={switchSignUpForm}>Sign up</button></h3>
         )}
       </div>
 
       {form === 'signup' ? (
-        <form className="session-form">
-          <button type="button" onClick={onClose} className="close-form">
-            <i className="fa-solid fa-xmark"></i>
+        <form className='session-form'>
+          <button type='button' onClick={onClose} className='close-form'>
+            <i className='fa-solid fa-xmark'></i>
           </button>
           <label>
             Email
           </label>
           <input
-            type="text"
+            type='text'
             value={email}
             onChange={update('email')}
-            placeholder="example@user.io"
-            className="session-input"
-            autoComplete="false"
+            placeholder='example@user.io'
+            className='session-input'
+            autoComplete='false'
           />
-          <div className="errors">{errors?.email}</div>
+          <div className='errors'>{errors?.email}</div>
           <label>
             Username
           </label>
           <input
-            type="text"
+            type='text'
             value={username}
             onChange={update('username')}
-            placeholder="example"
-            className="session-input"
-            autoComplete="false"
+            placeholder='example'
+            className='session-input'
+            autoComplete='false'
           />
-          <div className="errors">{errors?.username}</div>
-          <div className="input">
+          <div className='errors'>{errors?.username}</div>
+          <div className='input'>
             <label>
               Password
             </label>
@@ -153,18 +153,18 @@ const SessionForm = ({onClose, formType}) => {
               type={passwordType}
               value={password}
               onChange={update('password')}
-              placeholder="******"
-              className="session-input"
-              autoComplete="false"
+              placeholder='******'
+              className='session-input'
+              autoComplete='false'
             />
             {passwordType === 'password' ? (
-              <i onClick={changePasswordType} className="fa-solid fa-eye"></i>
+              <i onClick={changePasswordType} className='fa-solid fa-eye'></i>
             ) : (
-              <i onClick={changePasswordType} className="fa-solid fa-eye-slash"></i>
+              <i onClick={changePasswordType} className='fa-solid fa-eye-slash'></i>
             )}
           </div>
-          <div className="errors">{errors?.password}</div>
-          <div className="input">
+          <div className='errors'>{errors?.password}</div>
+          <div className='input'>
             <label>
               Confirm Password
             </label>
@@ -172,85 +172,85 @@ const SessionForm = ({onClose, formType}) => {
               type={confirmType}
               value={password2}
               onChange={update('password2')}
-              placeholder="******"
-              className="session-input"
-              autoComplete="false"
+              placeholder='******'
+              className='session-input'
+              autoComplete='false'
             />
             {confirmType === 'password' ? (
-              <i onClick={changeConfirmType} className="fa-solid fa-eye"></i>
+              <i onClick={changeConfirmType} className='fa-solid fa-eye'></i>
             ) : (
-              <i onClick={changeConfirmType} className="fa-solid fa-eye-slash"></i>
+              <i onClick={changeConfirmType} className='fa-solid fa-eye-slash'></i>
             )}
           </div>
-          <div id="confirm-error" className="errors">
+          <div id='confirm-error' className='errors'>
             {password !== password2 && (
-              "Confirm Password field must match"
+              'Confirm Password field must match'
             )}
           </div>
           {!username || !email || !password || password !== password2 ? (
             <button
-              type="submit"
+              type='submit'
               onClick={handleSignupSubmit}
-              className="submit-form"
+              className='submit-form'
             >Sign Up</button>
           ) : (
             <button
-              type="submit"
+              type='submit'
               onClick={handleSignupSubmit}
-              id="allow-submit"
-              className="submit-form"
+              id='allow-submit'
+              className='submit-form'
             >Sign Up</button>
           )}
         </form>
       ) : (
-        <form className="session-form">
-          <button type="button" onClick={onClose} className="close-form">
-            <i className="fa-solid fa-xmark"></i>
+        <form className='session-form'>
+          <button type='button' onClick={onClose} className='close-form'>
+            <i className='fa-solid fa-xmark'></i>
           </button>
           <label>
             Email
           </label>
           <input
-            type="text"
+            type='text'
             value={email}
             onChange={update('email')}
-            placeholder="Email"
-            className="session-input"
-            autoComplete="false"
+            placeholder='Email'
+            className='session-input'
+            autoComplete='false'
           />
-          <div className="errors">{errors?.email}</div>
+          <div className='errors'>{errors?.email}</div>
           <label>
             Password
           </label>
           <input
-            type="password"
+            type='password'
             value={password}
             onChange={update('password')}
-            placeholder="Password"
-            className="session-input"
-            autoComplete="false"
+            placeholder='Password'
+            className='session-input'
+            autoComplete='false'
           />
-          <div className="errors">{errors?.password}</div>
+          <div className='errors'>{errors?.password}</div>
           {!email || !password ? (
             <button
-                type="submit"
-                value="Log In"
-                className="submit-form"
+                type='submit'
+                value='Log In'
+                className='submit-form'
                 onClick={handleLoginSubmit}
                 disabled
               >Log In</button>
           ) : ( 
             <button
-              type="submit"
+              type='submit'
               onClick={handleLoginSubmit}
-              className="submit-form allow-submit"
+              className='submit-form allow-submit'
             >Log In</button>
           )}
           <button
-            type="submit"
+            type='submit'
             onClick={demoLogin}
-            id="demo-login"
-            className="submit-form allow-submit"
+            id='demo-login'
+            className='submit-form allow-submit'
           >Demo Login</button>
         </form>
       )}

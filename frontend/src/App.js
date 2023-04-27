@@ -25,27 +25,27 @@ export default function App() {
 
   return loaded && (
     <Switch>
-      <Route exact path="/">
+      <Route exact path='/'>
         <NavBar />
         <MainPage />
       </Route>
 
-      <Route exact path="/contact">
+      <Route exact path='/contact'>
         <NavBar />
         <ContactPage />
       </Route>
 
-      <Route exact path="/about">
+      <Route exact path='/about'>
         <NavBar />
         <AboutPage />
       </Route>
       
-      <Route exact path="/explore">
+      <Route exact path='/explore'>
         <NavBar />
         <Map />
       </Route>
 
-      <Route exact path="/:userId">
+      <Route exact path='/:userId'>
         <NavBar />
         <ProfilePage />
       </Route>

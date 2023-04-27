@@ -14,7 +14,7 @@
 .image-container img:nth-child(1) {
     animation: slide 20s linear infinite;
     top: 30%;
-    transform: translateY(-60%) translateX(140%);
+    transform: translateY(-60%) translateX(170%);
     height: 50%;
 }
 
@@ -22,36 +22,38 @@
     animation: slide 20s linear infinite;
     transform: translateX(10%) translateY(85%);
     height: 55%;
+    z-index: 4;
 }
 
 .image-container img:nth-child(3) {
     animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(50%);
+    transform: translateY(80%) translateX(10%);
     height: 40%;
 }
 
 .image-container img:nth-child(4) {
     animation: slide 20s linear infinite;
-    transform: translateY(70%) translateX(250%);
-    height: 50%;
+    transform: translateY(90%) translateX(183%);
+    height: 55%;
     z-index: 1;
 }
 
 .image-container img:nth-child(5) {
     animation: slide 20s linear infinite;
-    transform: translateY(-5%) translateX(-10%);
+    transform: translateY(0%) translateX(-30%);
     height: 50%;
+    z-index: 2;
 }
 
 .image-container img:nth-child(6) {
     animation: slide 20s linear infinite;
-    transform: translateY(170%) translateX(50%);
-    height: 40%;
+    transform: translateY(130%) translateX(50%);
+    height: 45%;
 }
 
 .image-container img:nth-child(7) {
     animation: slide 20s linear infinite;
-    transform: translateY(0) translateX(120%);
+    transform: translateY(0) translateX(15%);
     height: 40%;
 }
 
@@ -63,15 +65,15 @@
 
 .image-container img:nth-child(9) {
     animation: slide 20s linear infinite;
-    transform: translateY(70%) translateX(-85%);
+    transform: translateY(70%) translateX(-145%);
     height: 60%;
 }
 
 .image-container img:nth-child(10) {
     animation: slide 20s linear infinite;
-    transform: translateY(30%) translateX(-170%);
+    transform: translateY(30%) translateX(-110%);
     height: 58%;
-    z-index: 2;
+    z-index: 3;
 }
 
 .image-container img:nth-child(11) {
@@ -84,11 +86,12 @@
     animation: slide 20s linear infinite;
     transform: translateY(100%) translateX(-380%);
     height: 50%;
+    z-index: 2;
 }
 
 .image-container img:nth-child(13) {
     animation: slide 20s linear infinite;
-    transform: translateY(00%) translateX(-270%);
+    transform: translateY(0%) translateX(-410%);
     height: 58%;
     z-index: 3;
 }
@@ -102,14 +105,14 @@
 
 .image-container img:nth-child(15) {
     animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(-200%);
+    transform: translateY(80%) translateX(-50%);
     height: 56%;
     z-index: 2;
 }
 
 .image-container img:nth-child(16) {
     animation: slide 20s linear infinite;
-    transform: translateY(120%) translateX(140%);
+    transform: translateY(0%) translateX(140%);
     height: 50%;
 }
 
@@ -121,8 +124,9 @@
 
 .image-container img:nth-child(18) {
     animation: slide 20s linear infinite;
-    transform: translateY(85%) translateX(-280%);
+    transform: translateY(90%) translateX(-130%);
     height: 53%;
+    z-index: -1;
 }
 
 .image-container img:nth-child(19) {
@@ -134,14 +138,13 @@
 
 .image-container img:nth-child(20) {
     animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-420%);
+    transform: translateY(0%) translateX(-45%);
     height: 45%;
-    z-index: 3;
 }
 
 .image-container img:nth-child(21) {
     animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-620%);
+    transform: translateY(0%) translateX(-65%);
     height: 45%;
     z-index: 3;
 }
@@ -166,13 +169,13 @@
 
 @keyframes slide {
     0% {
-        left: 10%;
+        left: 16%;
     }
     50% {
-        left: 110%;
+        left: 115%;
     }
     100% {
-        left: 10%;
+        left: 16%;
     }
 }
 
