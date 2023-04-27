@@ -112,7 +112,8 @@ export function unfollow(currentUser, targetUser) {
     if (response.ok) {
       const data = await response.json();
       dispatch(receiveCurrentUser(data.currentUser));
-      dispatch(receiveUser(data.targetUser));    }
+      dispatch(receiveUser(data.targetUser));    
+    }
   });
 }
 
