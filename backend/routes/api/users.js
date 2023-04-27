@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
@@ -22,7 +22,7 @@ router.get('/current', restoreUser, (req, res) => {
     // whenever the current user information is first loaded into the
     // React application
     const csrfToken = req.csrfToken();
-    res.cookie("CSRF-TOKEN", csrfToken);
+    res.cookie('CSRF-TOKEN', csrfToken);
   }
   if (!req.user) return res.json(null);
   // res.json({
@@ -43,14 +43,14 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   
   if (user) {
     // Throw a 400 error if the email address or username already exists
-    const err = new Error("Validation Error");
+    const err = new Error('Validation Error');
     err.statusCode = 400;
     const errors = {};
     if (user.email === req.body.email) {
-      errors.email = "A user has already registered with this email";
+      errors.email = 'A user has already registered with this email';
     }
     if (user.username === req.body.username) {
-      errors.username = "A user has already registered with this username";
+      errors.username = 'A user has already registered with this username';
     }
     err.errors = errors;
     return next(err);
@@ -90,7 +90,7 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
     if (!user) {
       const err = new Error('Invalid credentials');
       err.statusCode = 400;
-      err.errors = { email: "Invalid credentials" };
+      err.errors = { email: 'Invalid credentials' };
       return next(err);
     }
     // Generate the JWT

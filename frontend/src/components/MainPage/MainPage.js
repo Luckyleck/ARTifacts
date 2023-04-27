@@ -54,12 +54,12 @@ const MainPage = () => {
           <img src={kc} alt='kc' className='animated-image' /> */}
         </div>
 
-        <div className='explore' onClick={() => history.push('/explore')}>
-          <img src={logo} alt='logo' />
-          <p>CLICK HERE TO ENTER</p>
-        </div>
-      </>
-    );
-}
+      <div onClick={() => history.push('/explore')} className="explore">
+        <img src={logo} alt="logo" />
+        <p>CLICK HERE TO ENTER</p>
+      </div>
+    </>
+  );
+};
   
 export default MainPage;

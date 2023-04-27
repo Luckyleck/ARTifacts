@@ -1,4 +1,4 @@
-const { validationResult } = require("express-validator");
+const { validationResult } = require('express-validator');
 
 function handleValidationErrors(req, res, next) {
   const validationErrors = validationResult(req);
@@ -7,10 +7,10 @@ function handleValidationErrors(req, res, next) {
     const errorFormatter = ({ msg }) => msg;
     const errors = validationErrors.formatWith(errorFormatter).mapped();
 
-    const err = Error("Validation Error");
+    const err = Error('Validation Error');
     err.errors = errors;
     err.statusCode = 400;
-    err.title = "Validation Error";
+    err.title = 'Validation Error';
     next(err);
   }
   next();

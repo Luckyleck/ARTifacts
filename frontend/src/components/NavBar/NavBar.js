@@ -1,7 +1,7 @@
 import { NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import './NavBar.css';
 import { useState } from 'react';
-import logo from './assets/ART.png'
+import logo from './assets/ART.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
@@ -28,41 +28,41 @@ const NavBar = () => {
 
     const onClose = () => {
         setSessionForm(false);
-    }
+    };
 
     const logoutUser = () => {
         dispatch(logout());
-        history.push('/')
-    }
+        history.push('/');
+    };
 
     const toProfile = () => {
-        history.push(`/${sessionUser._id}`)
-    }
+        history.push(`/${sessionUser._id}`);
+    };
 
     return (
         <header id='navbar'>
             <div id='nav-container'>
-                <div className='nav-buttons' id='logo-button'>
-                    <NavLink exact to="/">
-                        <img src={logo} alt='logo'/>
+                <div id='logo-button' className='nav-buttons'>
+                    <NavLink exact to='/'>
+                        <img src={logo} alt='logo' />
                     </NavLink>
                 </div>
-                <div className='nav-buttons' id='profile-drop' onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
+                <div onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose} id='profile-drop' className='nav-buttons'>
                     {location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>
-                            <button className='about' onClick={() => history.push('/about')}>About Artifacts</button>
-                            <button className='about' onClick={() => history.push('/contact')}>Contact Us</button>
+                            <button onClick={() => history.push('/about')} className='about'>About Artifacts</button>
+                            <button onClick={() => history.push('/contact')} className='about'>Contact Us</button>
                         </div>
                     )}
                     {sessionUser && (
-                        <div className='profile-drop-button' id='profile-pic-button'>
+                        <div id='profile-pic-button' className='profile-drop-button'>
                             <div className='pic'>
                                 <img
                                     src={sessionUser?.profilePic}
                                     alt='profile'
                                 />
                             </div>
-                            <p>me <i className="fa-solid fa-caret-down"></i></p>
+                            <p>me <i className='fa-solid fa-caret-down'></i></p>
                         </div>
                     )}
                     {showMenu && sessionUser && (
@@ -75,11 +75,11 @@ const NavBar = () => {
                     )}
                     {!sessionUser && location.pathname !== '/' && (
                         <div className='profile-drop-button' id='session-buttons'>
-                            <button className='about' onClick={() => setSessionForm('signup')}>
+                            <button onClick={() => setSessionForm('signup')} className='about'>
                                 Sign up
                             </button>
 
-                            <button className='about' onClick={() => setSessionForm('signin')}>
+                            <button onClick={() => setSessionForm('signin')} className='about'>
                                 Sign in
                             </button>
                         </div>
@@ -91,13 +91,13 @@ const NavBar = () => {
                     )}
                 </div>
                 {sessionUser && (
-                    <button className='map-button' onClick={() => history.push('/explore')}>
-                        <i className="fa-solid fa-map"></i>
+                    <button onClick={() => history.push('/explore')} className='map-button'>
+                        <i className='fa-solid fa-map'></i>
                         <p>Map</p>
                     </button>
                 )}
             </div>
-            <div className='nav-buttons' id='test'>
+            <div id='test' className='nav-buttons'>
                 {location.pathname === '/' && (
                     <div>ARTifacts</div>
                 )}
@@ -111,6 +111,6 @@ const NavBar = () => {
             </div>
         </header>
     );
-}
+};
 
 export default NavBar;

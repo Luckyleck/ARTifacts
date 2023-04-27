@@ -17,12 +17,8 @@ const SessionForm = ({onClose, formType}) => {
   const [form, setForm] = useState(formType);
 
   useEffect(() => {
-    if (sessionUser) {
-      onClose();
-    }
-    return () => {
-      dispatch(clearSessionErrors());
-    };
+    if (sessionUser) onClose();
+    return () => dispatch(clearSessionErrors());
   }, [dispatch, sessionUser, form, onClose]);
 
   const update = field => {
@@ -46,9 +42,9 @@ const SessionForm = ({onClose, formType}) => {
     }
 
     return e => setState(e.currentTarget.value);
-  }
+  };
 
-  const handleSignupSubmit = e => {
+  const handleSignupSubmit = (e) => {
     e.preventDefault();
     
     const user = {
@@ -59,34 +55,34 @@ const SessionForm = ({onClose, formType}) => {
 
     dispatch(signup(user)); 
     if (sessionUser) onClose();
-  }
+  };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })); 
     if (sessionUser) onClose();
-  }
+  };
 
   const demoLogin = (e) => {
     e.preventDefault();
-    dispatch(login({email: 'demo-user@appacademy.io', password: 'starwars'}))
-  }
+    dispatch(login({ email: 'demo-user@appacademy.io', password: 'starwars' }));
+  };
 
   const changePasswordType = () => {
     if (passwordType === 'password') {
       setPasswordType('text');
-      return
+      return;
     }
     setPasswordType('password');
-  }
+  };
 
   const changeConfirmType = () => {
     if (confirmType === 'password') {
       setConfirmType('text');
-      return
+      return;
     }
     setConfirmType('password');
-  }
+  };
 
   const switchSignInForm = () => {
     setForm('signin');
@@ -96,7 +92,7 @@ const SessionForm = ({onClose, formType}) => {
     setPassword2('');
     setPasswordType('password');
     setConfirmType('password');
-  }
+  };
 
   const switchSignUpForm = () => {
     setForm('signup');
@@ -106,165 +102,160 @@ const SessionForm = ({onClose, formType}) => {
     setPassword2('');
     setPasswordType('password');
     setConfirmType('password');
-  }
+  };
 
   return (
     <div className='session-modal'>
       <div className='welcome'>
-          <img src={logo} alt='logo' />
-          <p>Welcome to ARTifacts!</p>
-          { form === 'signup' ? (
-          <h3 className='switch'>Already have an account? <button onClick={switchSignInForm}>Log in</button></h3>):
-          <h3 className='switch'>Don't have an account yet? <button onClick={switchSignUpForm}>Sign up</button></h3>}
+        <img src={logo} alt='logo' />
+        <p>Welcome to ARTifacts!</p>
+        {form === 'signup' ? (
+          <h3 className='switch'>Already have an account?<button onClick={switchSignInForm}>Log in</button></h3>
+        ) : (
+          <h3 className='switch'>Don't have an account yet?<button onClick={switchSignUpForm}>Sign up</button></h3>
+        )}
       </div>
 
       {form === 'signup' ? (
-      <form className="session-form">
-      <button type='button' className='close-form' onClick={onClose}>
-        <i className="fa-solid fa-xmark"></i>
-      </button>
-
-        
-        <label>
-          Email
-        </label>
-          <input type="text"
+        <form className='session-form'>
+          <button type='button' onClick={onClose} className='close-form'>
+            <i className='fa-solid fa-xmark'></i>
+          </button>
+          <label>
+            Email
+          </label>
+          <input
+            type='text'
             value={email}
             onChange={update('email')}
-            placeholder="example@user.io"
+            placeholder='example@user.io'
             className='session-input'
             autoComplete='false'
           />
-
-        <div className="errors">{errors?.email}</div>
-        
-        <label>
-          Username
-        </label>
-          <input type="text"
+          <div className='errors'>{errors?.email}</div>
+          <label>
+            Username
+          </label>
+          <input
+            type='text'
             value={username}
             onChange={update('username')}
-            placeholder="example"
+            placeholder='example'
             className='session-input'
             autoComplete='false'
           />
-        <div className="errors">{errors?.username}</div>
-        
-        <div className='input'>
-        <label>
-          Password
-        </label>
-          <input type={passwordType}
+          <div className='errors'>{errors?.username}</div>
+          <div className='input'>
+            <label>
+              Password
+            </label>
+            <input
+              type={passwordType}
+              value={password}
+              onChange={update('password')}
+              placeholder='******'
+              className='session-input'
+              autoComplete='false'
+            />
+            {passwordType === 'password' ? (
+              <i onClick={changePasswordType} className='fa-solid fa-eye'></i>
+            ) : (
+              <i onClick={changePasswordType} className='fa-solid fa-eye-slash'></i>
+            )}
+          </div>
+          <div className='errors'>{errors?.password}</div>
+          <div className='input'>
+            <label>
+              Confirm Password
+            </label>
+            <input
+              type={confirmType}
+              value={password2}
+              onChange={update('password2')}
+              placeholder='******'
+              className='session-input'
+              autoComplete='false'
+            />
+            {confirmType === 'password' ? (
+              <i onClick={changeConfirmType} className='fa-solid fa-eye'></i>
+            ) : (
+              <i onClick={changeConfirmType} className='fa-solid fa-eye-slash'></i>
+            )}
+          </div>
+          <div id='confirm-error' className='errors'>
+            {password !== password2 && (
+              'Confirm Password field must match'
+            )}
+          </div>
+          {!username || !email || !password || password !== password2 ? (
+            <button
+              type='submit'
+              onClick={handleSignupSubmit}
+              className='submit-form'
+            >Sign Up</button>
+          ) : (
+            <button
+              type='submit'
+              onClick={handleSignupSubmit}
+              id='allow-submit'
+              className='submit-form'
+            >Sign Up</button>
+          )}
+        </form>
+      ) : (
+        <form className='session-form'>
+          <button type='button' onClick={onClose} className='close-form'>
+            <i className='fa-solid fa-xmark'></i>
+          </button>
+          <label>
+            Email
+          </label>
+          <input
+            type='text'
+            value={email}
+            onChange={update('email')}
+            placeholder='Email'
+            className='session-input'
+            autoComplete='false'
+          />
+          <div className='errors'>{errors?.email}</div>
+          <label>
+            Password
+          </label>
+          <input
+            type='password'
             value={password}
             onChange={update('password')}
-            placeholder="******"
+            placeholder='Password'
             className='session-input'
             autoComplete='false'
           />
-          {passwordType === 'password' ?
-          <i className="fa-solid fa-eye" onClick={changePasswordType}></i> :
-          <i className="fa-solid fa-eye-slash" onClick={changePasswordType}></i>}
-        </div>
-        <div className="errors">{errors?.password}</div>
-        
-        <div className='input'>
-        <label>
-          Confirm Password
-        </label>
-          <input type={confirmType}
-            value={password2}
-            onChange={update('password2')}
-            placeholder="******"
-            className='session-input'
-            autoComplete='false'
-          />
-        {confirmType === 'password' ?
-        <i className="fa-solid fa-eye" onClick={changeConfirmType}></i> :
-        <i className="fa-solid fa-eye-slash" onClick={changeConfirmType}></i>}
-        </div>
-        <div className="errors" id='confirm-error'>
-          {password !== password2 && 'Confirm Password field must match'}
-        </div>
-        
-        {/* <input
-          type="submit"
-          value="Sign Up"
-          className='submit-form'
-          disabled={!email || !username || !password || password !== password2}
-          autoComplete='false'
-        /> */}
-
-        { !email || !username || !password || password !== password2 ?
-        <button
-        type="submit"
-        className='submit-form'
-        onClick={handleSignupSubmit}
-        // disabled
-        >Sign Up</button> :
-        <button
-        type="submit"
-        className='submit-form'
-        id='allow-submit'
-        onClick={handleSignupSubmit}
-        >Sign Up</button>
-        }
-      </form>) : (
-               <form className="session-form">
-               <button type='button' className='close-form' onClick={onClose}>
-                   <i className="fa-solid fa-xmark"></i>
-               </button>
-               
-               <label>
-                   Email
-               </label>
-       
-                   <input type="text"
-                   value={email}
-                   onChange={update('email')}
-                   placeholder="Email"
-                   className='session-input'
-                   autoComplete='false'
-                   />
-       
-               <div className="errors">{errors?.email}</div>
-               
-               <label>
-                   Password
-               </label>
-                   <input type="password"
-                   value={password}
-                   onChange={update('password')}
-                   placeholder="Password"
-                   className='session-input'
-                   autoComplete='false'
-                   />
-               
-               <div className="errors">{errors?.password}</div>
-       
-               { !email || !password ?
-               <button
-                   type="submit"
-                   value="Log In"
-                   className='submit-form'
-                   onClick={handleLoginSubmit}
-                   disabled
-                >Log In</button> : 
-               <button
-                   type="submit"
-                   className='submit-form allow-submit'
-                   onClick={handleLoginSubmit}
-               >Log In</button>}
-              
-              <button
-                    type="submit"
-                    className='submit-form allow-submit'
-                    id='demo-login'
-                    onClick={demoLogin}
-               >Demo Login</button>
-               </form>
+          <div className='errors'>{errors?.password}</div>
+          {!email || !password ? (
+            <button
+                type='submit'
+                value='Log In'
+                className='submit-form'
+                onClick={handleLoginSubmit}
+                disabled
+              >Log In</button>
+          ) : ( 
+            <button
+              type='submit'
+              onClick={handleLoginSubmit}
+              className='submit-form allow-submit'
+            >Log In</button>
+          )}
+          <button
+            type='submit'
+            onClick={demoLogin}
+            id='demo-login'
+            className='submit-form allow-submit'
+          >Demo Login</button>
+        </form>
       )}
     </div>
   );
-}
+};
 
 export default SessionForm;
