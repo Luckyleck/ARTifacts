@@ -76,7 +76,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
         // Generate the JWT
         return res.json(await loginUser(user));
       }
-      catch(err) {
+      catch (err) {
         next(err);
       }
     })

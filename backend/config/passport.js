@@ -66,7 +66,7 @@ passport.use(
       }
       // return false since there is no user
       return done(null, false);
-    } catch(err) {
+    } catch (err) {
       done(err);
     }
   })
