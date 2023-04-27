@@ -94,7 +94,7 @@ A big component behind our concept was the idea of allowing a user to have a pag
 
 
 ## Favorites
-We took much enjoyment in allowing a user to favorite their artwork and store it on their profile for all to see. Because of the randomness of the art, it creates a 'treasure hunt' effect.  
+We took much pleasure in allowing a user to favorite their artwork and store it on their profile for all to see. Because of the randomness of the art, it creates a 'treasure hunt' effect.  
 
 <img src="https://gcdnb.pbrd.co/images/x17OCGkrMNPr.png?o=1" alt="map" height="400">
 
