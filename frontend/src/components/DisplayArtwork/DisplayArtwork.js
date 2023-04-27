@@ -20,9 +20,9 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
         <h2>{artwork.wall_description}</h2>
         <h3>{artwork.tombstone}</h3>
       </div>
-      <div className="art-display-buttons">
-          <button onClick={handleClick} className="close-form close-display">
-            <i className="fa-solid fa-xmark"></i>
+      <div className='art-display-buttons'>
+          <button onClick={handleClick} className='close-form close-display'>
+            <i className='fa-solid fa-xmark'></i>
           </button>
           <FavoriteButton artwork={artwork} />
       </div>
