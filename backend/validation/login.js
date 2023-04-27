@@ -1,4 +1,4 @@
-const { check } = require("express-validator");
+const { check } = require('express-validator');
 const handleValidationErrors = require('./handleValidationErrors');
 
 // validateLoginInput is a combination Express middleware that uses the check
