@@ -118,6 +118,7 @@
     box-shadow: 5px 5px 5px #434445;
     /* transform: translateX(-1050px); */
     /* transition: transform 0.5s; */
+    opacity: 0;
     z-index: 1;
 }
 
