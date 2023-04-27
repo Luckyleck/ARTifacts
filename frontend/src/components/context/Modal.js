@@ -10,14 +10,14 @@ export function ModalProvider({ children }) {
 
   useEffect(() => {
     setValue(modalRef.current);
-  }, [])
+  }, []);
 
   return (
     <>
       <ModalContext.Provider value={value}>
         {children}
       </ModalContext.Provider>
-      <div ref={modalRef} />
+      <div ref={modalRef}></div>
     </>
   );
 }
@@ -28,8 +28,8 @@ export function Modal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div className="modal">
-      <div className="modal-background" onClick={onClose} />
-      <div className="modal-content" >
+      <div onClick={onClose} className="modal-background"></div>
+      <div className="modal-content">
         {children}
       </div>
     </div>,

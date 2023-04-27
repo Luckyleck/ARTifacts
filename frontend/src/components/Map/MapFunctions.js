@@ -1,4 +1,5 @@
 // Functions that are called in 'Map.js'
+
 import { makeStyles } from '@material-ui/core/styles';
 
 export function maxBounds() {
@@ -9,21 +10,21 @@ export function maxBounds() {
 }
 
 export function geoJsonStyle() {
-  return {
-      fillOpacity: 0.8,
-      color: "black",
-      weight: 2
-  };
+    return {
+        fillOpacity: 0.8,
+        color: "black",
+        weight: 2
+    };
 }
 
 // export function randomColor() {
 //     const colors = ["pink", "coral", "peachpuff", "lightyellow", "palegoldenrod", "palegreen", "seagreen", "mediumslateblue", "thistle"];
 //     const randomColorIndex = Math.floor(Math.random() * colors.length);
-
+// 
 //     return colors[randomColorIndex];
 // }
 
-export const colors = ["pink", "coral", "palegreen", "seagreen", "mediumslateblue", "thistle"]
+export const colors = ["cornflowerblue", "cornsilk", "aquamarine", "bisque", "plum", "powderblue", "lightpink", "lightgreen", "pink", "lightsalmon", "lightcoral", "palegreen", "lightsteelblue", "khaki", "mediumslateblue", "mediumseagreen", "thistle"];
 
 // Slider Styling
 
@@ -49,10 +50,10 @@ export const sliderStyles = makeStyles({
         borderRadius: 40
     },
     markLabel: {
+        // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
         // fontSize: '20px',
         fontWeight: 'bold',
         color: 'grey'
-        // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
     }
 });
 

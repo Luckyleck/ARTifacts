@@ -1,30 +1,31 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 import { Slider } from '@material-ui/core';
 import { MapContainer, GeoJSON } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css'
-import "./Map.css";
+import 'leaflet/dist/leaflet.css';
+import './Map.css';
 import countries from '../../data/countries.geo.json';
-import DisplayArtwork from "../DisplayArtwork/DisplayArtwork";
-import { geoJsonStyle, maxBounds, /*randomColor,*/ sliderMarks, sliderStyles, colors } from "./MapFunctions";
+import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
+import { colors, geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from './MapFunctions';
 
 
 function Map() {
-  const [showArt, setShowArt] = useState(false); // Boolean // Replace later with modal
+  const [showArt, setShowArt] = useState(false);
   const [artworks, setArtworks] = useState([]);
   const [randomArtwork, setRandomArtwork] = useState();
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
-  const [params, setParams] = useState({ // needed for component 
+  const [params, setParams] = useState({
     skip: 0,
     limit: 300,
     has_image: 1
   });
 
   function doFetch(countryName) {
-    const url = "https://openaccess-api.clevelandart.org/api/artworks";
+    const url = 'https://openaccess-api.clevelandart.org/api/artworks';
 
     const tempParams = {
-      q: countryName.toLowerCase(), ...params
+      ...params,
+      q: countryName.toLowerCase()
     };
 
     function formatParams(params) {
@@ -57,9 +58,9 @@ function Map() {
         setShowArt(true);
       })
       .catch((error) => {
-        console.error("ERROR getting artwork data", error);
+        console.error('ERROR getting artwork data', error);
       })
-      ;
+    ;
   }
 
   function handleCountryClick (countryName) {
@@ -68,13 +69,12 @@ function Map() {
   }
 
   function onEachCountry(country, layer) {
-    // layer.bindPopup(country.properties.ADMIN);
-    const colorIndex = countries.features.findIndex(
-      (feature) => feature.properties.ADMIN === country.properties.ADMIN
-    );
+    const colorIndex = countries.features.findIndex(feature => feature.properties.ADMIN === country.properties.ADMIN);
+    
     layer.setStyle({
       fillColor: colors[colorIndex % colors.length]
     });
+    
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN);
@@ -112,12 +112,12 @@ function Map() {
         <h1>{dateAfter.current}s</h1>
       </div>
       <MapContainer
-        className="our-map"
         zoom={2.25}
         center={[45, 0]}
         minZoom={2.25}
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
+        className="our-map"
       >
         <GeoJSON
           data={countries.features}
@@ -131,9 +131,10 @@ function Map() {
             artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
             setShowArt={setShowArt}
           />
-          <button onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])} className="next-button">
-            ?
-          </button>
+          <button
+            onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
+            className="next-button"
+          >?</button>
         </>
       )}
       <Slider
