@@ -38,7 +38,7 @@ async function follow(req, res) {
       case 'follow':
         [updatedCurrentUser, updatedTargetUser] = await Promise.all([ 
           User.findByIdAndUpdate(currentUser, { $addToSet: { follows: targetUser } }, { new: true }),
-          User.findByIdAndUpdate(targetUser, { $addToSet: { followers: currentUser } }, { new: true })
+          User.findByIdAndUpdate(targetUser, { $addToSet: { followers: currentUser } }, { new: true }).populate('followers')
         ]);
         break;
       case 'unfollow':
@@ -51,7 +51,7 @@ async function follow(req, res) {
         break;
     }
     res.status(200).json({ currentUser: updatedCurrentUser, targetUser: updatedTargetUser });
-  } catch(err) {
+  } catch (err) {
     res.json({ done: false });
   }
 }
@@ -71,7 +71,7 @@ async function favorite(req, res) {
         break;
     }
     res.status(200).json(updatedCurrentUser);
-  } catch(err) {
+  } catch (err) {
     res.json({ done: false });
   }
 }
