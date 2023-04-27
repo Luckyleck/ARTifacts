@@ -1,5 +1,5 @@
 .about-us-wrapper {
-    width: 75%;
+    width: 20%;
     margin: 0 auto;
     margin-top: 50px;
     background-color: white;
@@ -9,14 +9,15 @@
 
 .about-us-title {
     font-size: 29px;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid #939598;
 }
 
 .about-us-description {
-    line-height: 1.4285;
-    font-size: 18px;
-    padding: 30px;
+    text-align: center;
+    line-height: 1.4825;
+    font-size: 19px;
+    padding: 30px 50px;
 }

@@ -16,8 +16,12 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
         <h2>{artwork.title}</h2>
         <h1>Technique</h1>
         <h2>{artwork.technique}</h2>
-        <h1>Description</h1>
-        <h2>{artwork.wall_description}</h2>
+        {artwork.wall_description && (
+          <>
+            <h1>Description</h1>
+            <h2>{artwork.wall_description}</h2>
+          </>
+        )}
         <h3>{artwork.tombstone}</h3>
       </div>
       <div className='art-display-buttons'>
