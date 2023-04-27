@@ -12,7 +12,7 @@ export function AuthRoute({ component: Component, path, exact }) {
         !loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/" />
+          <Redirect to='/' />
         )
       )}
     />
@@ -29,7 +29,7 @@ export function ProtectedRoute({ component: Component, ...rest }) {
         loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect to='/login' />
         )
       )}
     />

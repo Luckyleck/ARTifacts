@@ -14,14 +14,14 @@ export default function FavoriteButton({ artwork }) {
   if (objectExistsWithKey(currentUser.favorites, 'id', artwork.id)) return (
     <button
       onClick={() => dispatch(unfavorite(currentUser, artwork))}
-      id="favorited"
-      className="close-form fav-buttons"
-    ><i className="fa-solid fa-heart"></i></button>
+      id='favorited'
+      className='close-form fav-buttons'
+    ><i className='fa-solid fa-heart'></i></button>
   );
   return (
     <button
       onClick={() => dispatch(favorite(currentUser, artwork))}
-      className="close-form fav-buttons"
-    ><i className="fa-regular fa-heart"></i></button>
+      className='close-form fav-buttons'
+    ><i className='fa-regular fa-heart'></i></button>
   );
 }

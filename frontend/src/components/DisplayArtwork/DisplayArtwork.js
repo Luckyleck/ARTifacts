@@ -9,9 +9,9 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
   }
 
   return (
-    <div className="art-display-container">
-      <img src={artwork?.images.web.url} alt={artwork?.title} onClick={handleClick} id="fetched-image" />
-      <div className="art-info">
+    <div className='art-display-container'>
+      <img src={artwork?.images.web.url} alt={artwork?.title} onClick={handleClick} id='fetched-image' />
+      <div className='art-info'>
         <h1>Title</h1>
         <h2>{artwork.title}</h2>
         <h1>Technique</h1>

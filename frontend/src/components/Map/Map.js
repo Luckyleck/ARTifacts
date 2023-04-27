@@ -109,7 +109,7 @@ function Map() {
 
   return (
     <>
-      <div className="filter-info">
+      <div className='filter-info'>
         <h1>{countryName}{countryName && ' ,'}</h1>
         <h1>{dateAfter.current}s</h1>
       </div>
@@ -119,7 +119,7 @@ function Map() {
         minZoom={2.25}
         maxBounds={maxBounds}
         maxBoundsViscosity={1}
-        className="our-map"
+        className='our-map'
       >
         <GeoJSON
           data={countries.features}
@@ -136,7 +136,7 @@ function Map() {
           />
           <button
             onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
-            className="next-button"
+            className='next-button'
           >?</button>
         </>
       )}
@@ -146,7 +146,7 @@ function Map() {
         step={100}
         marks={sliderMarks}
         classes={sliderStyles()}
-        valueLabelDisplay="auto"
+        valueLabelDisplay='auto'
         value={dateAfter.current}
         onChange={handleSliderChange}
       />

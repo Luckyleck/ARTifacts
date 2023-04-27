@@ -1,4 +1,4 @@
-import jwtFetch from "./jwt";
+import jwtFetch from './jwt';
 
 export const RECEIVE_ARTWORKS = 'artworks/RECEIVE_ARTWORKS';
 export const RECEIVE_ARTWORK = 'artworks/RECEIVE_ARTWORK';
