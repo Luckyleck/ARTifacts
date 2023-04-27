@@ -1,10 +1,11 @@
 import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 import './DisplayArtwork.css';
 
-function DisplayArtwork({ artwork, setShowArt }) {
+function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
 
   function handleClick() {
     setShowArt(false);
+    setRandomArtwork('');
   }
 
   return (
@@ -19,9 +20,9 @@ function DisplayArtwork({ artwork, setShowArt }) {
         <h2>{artwork.wall_description}</h2>
         <h3>{artwork.tombstone}</h3>
       </div>
-      <div className='art-display-buttons'>
-          <button onClick={() => setShowArt(false)} className='close-form close-display'>
-            <i className='fa-solid fa-xmark'></i>
+      <div className="art-display-buttons">
+          <button onClick={handleClick} className="close-form close-display">
+            <i className="fa-solid fa-xmark"></i>
           </button>
           <FavoriteButton artwork={artwork} />
       </div>
