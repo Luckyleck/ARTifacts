@@ -48,10 +48,10 @@ const MainPage = () => {
           <img src={wave} alt='wave' className='animated-image' />
           <img src={bedroom} alt='bedroom' className='animated-image' />
           <img src={nighthawks} alt='nighthawks' className='animated-image' />
-          <img src={mg} alt='mg' className='animated-image' />
+          {/* <img src={mg} alt='mg' className='animated-image' />
           <img src={al} alt='al' className='animated-image' />
           <img src={sn} alt='sn' className='animated-image' />
-          <img src={kc} alt='kc' className='animated-image' />
+          <img src={kc} alt='kc' className='animated-image' /> */}
         </div>
 
         <div className='explore' onClick={() => history.push('/explore')}>
