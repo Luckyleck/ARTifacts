@@ -160,13 +160,13 @@ const ProfilePage = () => {
                 </div>
                 {following && (
                     <div className='follow-detail'>
-                        {user && user.follows.map((follow, index) => (
+                        {user && user.follows?.map((follow, index) => (
                             <div key={index} onClick={() => history.push(`/${follow._id}`)} className='follow-card'>
                                 <div className='profile-card-top follow-card-top'>
                                     <div className='profile-card-background follow-card-background'>
                                         <img src={follow.backgroundPic} alt='background-pic' />
                                     </div>
-                                    <div onClick={() => history.push(`/${follow?._id}`)} className='pic follow-card-profile'>
+                                    <div onClick={() => history.push(`/${follow._id}`)} className='pic follow-card-profile'>
                                         <img src={follow.profilePic} alt='profile-pic' />
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@ const ProfilePage = () => {
                 )}
                 {follower && (
                     <div className='follow-detail'>
-                        {user && user.followers.map((follower, index) => (
+                        {user && user.followers?.map((follower, index) => (
                             <div key={index} onClick={() => history.push(`/${follower._id}`)} className='follow-card'>
                                 <div className='profile-card-top follow-card-top'>
                                     <div className='profile-card-background follow-card-background'>
