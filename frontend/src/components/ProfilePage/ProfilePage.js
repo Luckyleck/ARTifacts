@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRandomUsers, fetchUser, getRandomUsers, getUser, updateUser } from '../../store/users';
-import { Modal } from '../context/Modal'
 
 import FollowButton from './Buttons/FollowButton';
 
