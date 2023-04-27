@@ -29,29 +29,29 @@ const MainPage = () => {
 
     return (
       <>
-        <div className="image-container">
-          <img src={cafe} alt="cafe" className="animated-image" />
-          <img src={girl} alt="girl" className="animated-image" />
-          <img src={guernica} alt="guernica" className="animated-image" />
-          <img src={mona} alt="mona" className="animated-image" />
-          <img src={starry} alt="starry" className="animated-image" />
-          <img src={adam} alt="adam" className="animated-image" />
-          <img src={supper} alt="supper" className="animated-image" />
-          <img src={memory} alt="memory" className="animated-image" />
-          <img src={scream} alt="scream" className="animated-image" />
-          <img src={self} alt="self" className="animated-image" />
-          <img src={monkey} alt="monkey" className="animated-image" />
-          <img src={flower} alt="flower" className="animated-image" />
-          <img src={sunflowers} alt="sunflowers" className="animated-image" />
-          <img src={poodle} alt="poodle" className="animated-image" />
-          <img src={gothic} alt="gothic" className="animated-image" />
-          <img src={wave} alt="wave" className="animated-image" />
-          <img src={bedroom} alt="bedroom" className="animated-image" />
-          <img src={nighthawks} alt="nighthawks" className="animated-image" />
-          <img src={mg} alt="mg" className="animated-image" />
-          <img src={al} alt="al" className="animated-image" />
-          <img src={sn} alt="sn" className="animated-image" />
-          <img src={kc} alt="kc" className="animated-image" />
+        <div className='image-container'>
+          <img src={cafe} alt='cafe' className='animated-image' />
+          <img src={girl} alt='girl' className='animated-image' />
+          <img src={guernica} alt='guernica' className='animated-image' />
+          <img src={mona} alt='mona' className='animated-image' />
+          <img src={starry} alt='starry' className='animated-image' />
+          <img src={adam} alt='adam' className='animated-image' />
+          <img src={supper} alt='supper' className='animated-image' />
+          <img src={memory} alt='memory' className='animated-image' />
+          <img src={scream} alt='scream' className='animated-image' />
+          <img src={self} alt='self' className='animated-image' />
+          <img src={monkey} alt='monkey' className='animated-image' />
+          <img src={flower} alt='flower' className='animated-image' />
+          <img src={sunflowers} alt='sunflowers' className='animated-image' />
+          <img src={poodle} alt='poodle' className='animated-image' />
+          <img src={gothic} alt='gothic' className='animated-image' />
+          <img src={wave} alt='wave' className='animated-image' />
+          <img src={bedroom} alt='bedroom' className='animated-image' />
+          <img src={nighthawks} alt='nighthawks' className='animated-image' />
+          <img src={mg} alt='mg' className='animated-image' />
+          <img src={al} alt='al' className='animated-image' />
+          <img src={sn} alt='sn' className='animated-image' />
+          <img src={kc} alt='kc' className='animated-image' />
         </div>
 
         <div className='explore' onClick={() => history.push('/explore')}>

@@ -19,7 +19,7 @@ export default function FavoritesIndex() {
   return (
     <div className="grid-container">
         {user?.favorites.map((favorite) => (
-          <button
+          <div
             key={favorite.id}
             onClick={() => {
               setFavorite(favorite);
@@ -28,7 +28,7 @@ export default function FavoritesIndex() {
             className="grid-item"
           >
             <img src={favorite?.images.web.url} alt={favorite?.title} className="favorite-thumbnail" />
-          </button>
+          </div>
         ))}
       {artworkViewModalIsOpen && (
         <DisplayArtwork artwork={favorite} setShowArt={toggleArtworkViewModal} />

@@ -42,8 +42,22 @@ const ProfilePage = () => {
 
     const moveLeft = () => {
         const card = document.querySelector('.profile-card');
+        const fav = document.querySelector('.favorite');
         card.classList.add('move-left');
+        fav.classList.add('slide-in-favorites');
+        card.classList.remove('move-right');
+        fav.classList.remove('slide-out-favorites');
         setOpenFavorite(true);
+    }
+
+    const moveRight = () => {
+        const card = document.querySelector('.profile-card');
+        const fav = document.querySelector('.favorite');
+        card.classList.add('move-right');
+        fav.classList.add('slide-out-favorites');
+        card.classList.remove('move-left');
+        fav.classList.remove('slide-in-favorites');
+        setOpenFavorite(false);
     }
 
     const viewFollowers = () => {
@@ -106,7 +120,7 @@ const ProfilePage = () => {
                         <ul>
                             <li>Followers: <p>&nbsp;{user.followers?.length}</p></li>
                             <li>Following: <p>&nbsp; {user.follows?.length}</p></li>
-                            <li>Favorite arts: <p>&nbsp; {user.favorites?.length}</p></li>
+                            <li>Favorites: <p>&nbsp; {user.favorites?.length}</p></li>
                         </ul>
                         {!openFavorite && (
                             <div className='expand-favorite'>
@@ -114,10 +128,15 @@ const ProfilePage = () => {
                                 <p>Expand Favorites</p>
                             </div>
                         )}
+                        {openFavorite && (
+                            <div className='expand-favorite'>
+                                <i className="fa-solid fa-angles-down" id='profile-collapse' onClick={moveRight}></i>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
-            {openFavorite && (
+            {/* {openFavorite && ( */}
                 <div className='favorite' id='favorite'>
                     <div className='favorite-header'>
                         Favorites:
@@ -131,7 +150,7 @@ const ProfilePage = () => {
                         ))}
                     </div> */}
                 </div>
-            )}
+            {/* )} */}
             <div className='follow-container'>
                 <div className='follow-tag'>
                     <p className='tab-text'>Followers / Following</p>

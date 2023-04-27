@@ -72,6 +72,21 @@
     }
 }
 
+.move-right {
+    animation: move-right 2s;
+    /* transform: translateX(0); */
+}
+
+@keyframes move-right {
+    from {
+        transform: translateX(-520px);
+    }
+    to {
+        /* left:0; */
+        transform: translateX(0);
+    }
+}
+
 .profile-card-bottom {
     display: flex;
     /* align-items: center; */
@@ -90,23 +105,51 @@
 
 .favorite {
     position: absolute;
+    /* left: -1200px; */
+    transform: translateX(-1200px);
     background-color:#F7F7F7;
     width: 1050px;
     height: 600px;
     /* max-height: 600px; */
     overflow-y: scroll;
     border-radius: 8px;
-    animation: slide-in 3s;
-    animation-fill-mode: forwards;
+    /* animation: slide-in 3s;
+    animation-fill-mode: forwards; */
     box-shadow: 5px 5px 5px #434445;
     /* transform: translateX(-1050px); */
     /* transition: transform 0.5s; */
+    opacity: 0;
     z-index: 1;
+}
+
+.slide-in-favorites {
+    animation: slide-in 3s;
+    animation-fill-mode: forwards;
+}
+
+.slide-out-favorites {
+    animation: slide-out 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-out {
+    0% {
+      /* transform: translateX(-1050px); */
+      /* transform: translateX(0); */
+      transform: translateX(220px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-1200px);
+      opacity: 0;
+    }
 }
 
 @keyframes slide-in {
     0% {
-      transform: translateX(-1050px);
+      /* transform: translateX(-1050px); */
+      /* transform: translateX(0); */
+      transform: translateX(-1200px);
       opacity: 0;
     }
     100% {
@@ -124,12 +167,12 @@
 
 .grid-item {
     padding: 20px;
-    font-size: 30px;
+    /* font-size: 30px; */
     text-align: center;
 }
 
 .grid-item img {
-    height: 100px;
+    height: 120px;
     cursor: pointer;
 }
 
@@ -141,9 +184,21 @@
 }
 
 #profile-expand {
-    /* position: absolute; */
+    position: absolute;
     transform: rotate(-90deg);
-    /* right: -10px; */
+    top: -10px;
+    right: 155px;
+    color: #4c4e51;
+    font-size: 30px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+#profile-collapse {
+    position: absolute;
+    transform: rotate(90deg);
+    /* top: -5px; */
+    right: 155px;
     color: #4c4e51;
     font-size: 30px;
     padding-right: 10px;
@@ -207,7 +262,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27vw;
+    right: -27.2vw;
+    top: 13vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
@@ -306,6 +362,8 @@
 #follow-card-username {
     font-size: 15px;
     color: #F7F7F7;
+    display: flex;
+    margin: 0 auto;
 }
 
 #follow-card-info {
@@ -329,8 +387,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    right: -27vw;
-    top: 38.5vh;
+    right: -27.2vw;
+    top: 33.3vh;
     box-shadow: -5px 5px 5px #434445;
     z-index: 3;
     transition: right 0.5s ease-in-out;
