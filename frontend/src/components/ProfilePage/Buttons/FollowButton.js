@@ -12,18 +12,18 @@ export default function FollowButton() {
   if (currentUser._id === user._id) return;
   if (currentUser?.follows?.includes(user._id)) return (
     <button
-      type="button"
+      type='button'
       onClick={() => dispatch(unfollow(currentUser, user))}
-      id="follow-button"
-      className="submit-form allow-submit"
-    ><i className="fa-solid fa-user-slash"></i>Unfollow</button>
+      id='follow-button'
+      className='submit-form allow-submit'
+    ><i className='fa-solid fa-user-slash'></i>Unfollow</button>
   );
   return (
     <button
-      type="button"
+      type='button'
       onClick={() => dispatch(follow(currentUser, user))}
-      id="follow-button"
-      className="submit-form allow-submit"
-    ><i className="fa-solid fa-user-plus"></i>Follow</button>
+      id='follow-button'
+      className='submit-form allow-submit'
+    ><i className='fa-solid fa-user-plus'></i>Follow</button>
   );
 }

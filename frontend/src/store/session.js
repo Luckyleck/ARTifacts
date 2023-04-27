@@ -1,9 +1,9 @@
 import jwtFetch from './jwt';
 
-const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
-const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
-const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
-const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
+const RECEIVE_CURRENT_USER = 'session/RECEIVE_CURRENT_USER';
+const RECEIVE_USER_LOGOUT = 'session/RECEIVE_USER_LOGOUT';
+const RECEIVE_SESSION_ERRORS = 'session/RECEIVE_SESSION_ERRORS';
+const CLEAR_SESSION_ERRORS = 'session/CLEAR_SESSION_ERRORS';
 
 // Dispatch receiveCurrentUser when a user logs in.
 export function receiveCurrentUser(currentUser) {
@@ -50,7 +50,7 @@ function startSession(userInfo, route) {
   return (async (dispatch) => {
     try {  
       const res = await jwtFetch(route, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(userInfo)
       });
       const { user, token } = await res.json();

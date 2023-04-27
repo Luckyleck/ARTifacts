@@ -16,7 +16,7 @@ function Map() {
   const [countryName, setCountryName] = useState('');
   const [params, setParams] = useState({
     skip: 0,
-    limit: 300,
+    limit: 600,
     has_image: 1
   });
 
@@ -50,7 +50,7 @@ function Map() {
       .then((data) => {
         const filtered = [];
         data.data.forEach((artwork) => {
-          if (artwork.culture[0].toLowerCase().includes(countryName.toLowerCase())) {
+          if (artwork?.culture[0]?.toLowerCase().includes(countryName.toLowerCase())) {
             filtered.push(artwork);
           }
         });
@@ -99,16 +99,18 @@ function Map() {
       ...params
     });
     setShowArt(false);
+    setRandomArtwork('');
   }
 
   useEffect(() => {
     setArtworks([]);
+    setRandomArtwork('');
   }, [dateAfter]);
 
   return (
     <>
       <div className="filter-info">
-        <h1>{countryName}{countryName && ' ,'}</h1>
+        <h1>{countryName}{countryName && ","}</h1>
         <h1>{dateAfter.current}s</h1>
       </div>
       <MapContainer
@@ -130,6 +132,7 @@ function Map() {
           <DisplayArtwork
             artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
             setShowArt={setShowArt}
+            setRandomArtwork={setRandomArtwork}
           />
           <button
             onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
