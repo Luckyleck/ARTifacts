@@ -21,12 +21,46 @@
 
 .next-button {
     position: fixed;
-    left: 35.5%;
-    top: 80.5%;
+    left: 38.5%;
+    top: 81.5%;
     z-index: 1000;
-    width: 50px;
+    font-size: 18px;
+    padding-left: 50px;
+    padding-right: 50px;
+    cursor: pointer;
+    /* width: 50px; */
+}
+
+#next-artwork-left {
+    animation: click-here-left 1.5s infinite;
+}
+
+#next-artwork-right {
+    animation: click-here-right 1.5s infinite;
 }
 
 .MuiSlider-markLabel.makeStyles-markLabel-5 {
     font-size: 1.3vw;
+}
+
+@keyframes click-here-left {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes click-here-right {
+    0% {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

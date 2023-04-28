@@ -134,10 +134,15 @@ function Map() {
             setShowArt={setShowArt}
             setRandomArtwork={setRandomArtwork}
           />
+          {artworks.length > 1 &&
           <button
             onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
             className='next-button'
-          >?</button>
+          >
+          <i className="fa-solid fa-angles-right" id='next-artwork-left'></i>
+          CLICK HERE FOR NEXT ARTWORK
+          <i className="fa-solid fa-angles-left" id='next-artwork-right'></i>
+          </button>}
         </>
       )}
       <Slider

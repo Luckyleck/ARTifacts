@@ -10,7 +10,7 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
 
   return (
     <div className='art-display-container'>
-      <img src={artwork?.images.web.url} alt={artwork?.title} onClick={handleClick} id='fetched-image' />
+      <img src={artwork?.images.web.url} alt={artwork?.title} id='fetched-image' />
       <div className='art-info'>
         <h1>Title</h1>
         <h2>{artwork.title}</h2>
