@@ -35,6 +35,14 @@
     animation: click-here-left 1.5s infinite;
 }
 
+#next-artwork-right {
+    animation: click-here-right 1.5s infinite;
+}
+
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}
+
 @keyframes click-here-left {
     0% {
         transform: translateX(-50px);
@@ -46,10 +54,6 @@
     }
 }
 
-#next-artwork-right {
-    animation: click-here-right 1.5s infinite;
-}
-
 @keyframes click-here-right {
     0% {
         transform: translateX(50px);
@@ -59,8 +63,4 @@
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-.MuiSlider-markLabel.makeStyles-markLabel-5 {
-    font-size: 1.3vw;
 }
