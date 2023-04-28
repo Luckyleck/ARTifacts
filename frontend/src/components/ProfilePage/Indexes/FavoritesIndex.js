@@ -8,6 +8,7 @@ export default function FavoritesIndex() {
   const { userId } = useParams();
   const user = useSelector(getUser(userId));
 
+  const [randomArtwork, setRandomArtwork] = useState('');
   const [artworkViewModalIsOpen, setArtworkViewModalIsOpen] = useState(false);
   const [favorite, setFavorite] = useState();
 
@@ -30,7 +31,7 @@ export default function FavoritesIndex() {
           </div>
         ))}
       {artworkViewModalIsOpen && (
-        <DisplayArtwork artwork={favorite} setShowArt={toggleArtworkViewModal} />
+        <DisplayArtwork artwork={favorite} setShowArt={toggleArtworkViewModal} setRandomArtwork={setRandomArtwork}/>
       )}
     </div>
   );
