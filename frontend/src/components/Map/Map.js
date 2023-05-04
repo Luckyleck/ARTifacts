@@ -58,7 +58,7 @@ function Map() {
         setShowArt(true);
 
         if (filtered.length === 0) {
-          layer.bindPopup('Sorry no artwork was found').openPopup();
+          layer.bindPopup('No artwork found');
         }
       })
       .catch((error) => {
