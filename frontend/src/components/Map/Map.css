@@ -88,11 +88,19 @@
 }
 
 a.leaflet-popup-close-button {
+    margin: 1.5px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
     color: #939598;
-    margin: 2px;
+    font: 18px/22px Tahoma, Verdana, sans-serif;
 }
 
 a.leaflet-popup-close-button:hover {
     border-radius: 100%;
     background-color: #dbdee3;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+    color: #939598;
 }
