@@ -1,11 +1,12 @@
 import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 import './DisplayArtwork.css';
 
-function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
+function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, setCountryName }) {
 
   function handleClick() {
     setShowArt(false);
     setRandomArtwork('');
+    setCountryName('')
   }
 
   return (

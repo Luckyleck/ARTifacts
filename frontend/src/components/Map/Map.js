@@ -137,6 +137,7 @@ function Map() {
             artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
             setShowArt={setShowArt}
             setRandomArtwork={setRandomArtwork}
+            setCountryName={setCountryName}
           />
           {artworks.length > 1 &&
           <button
