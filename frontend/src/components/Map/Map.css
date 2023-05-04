@@ -8,6 +8,10 @@
     background-color: skyblue;
 }
 
+/* .leaflet-popup-content-wrapper {
+    scale: calc(1.2);
+} */
+
 .filter-info {
     position: absolute;
     left: 50%;
