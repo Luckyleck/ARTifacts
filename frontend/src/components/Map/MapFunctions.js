@@ -17,12 +17,6 @@ export function geoJsonStyle() {
     };
 }
 
-// export function randomColor() {
-//     const colors = ['pink', 'coral', 'peachpuff', 'lightyellow', 'palegoldenrod', 'palegreen', 'seagreen', 'mediumslateblue', 'thistle'];
-//     const randomColorIndex = Math.floor(Math.random() * colors.length);
-// 
-//     return colors[randomColorIndex];
-// }
 
 export const colors = ['cornflowerblue', 'cornsilk', 'aquamarine', 'bisque', 'plum', 'powderblue', 'lightpink', 'lightgreen', 'pink', 'lightsalmon', 'lightcoral', 'palegreen', 'lightsteelblue', 'khaki', 'mediumslateblue', 'mediumseagreen', 'thistle'];
 
