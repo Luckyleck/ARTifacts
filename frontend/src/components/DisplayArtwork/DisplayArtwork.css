@@ -105,18 +105,12 @@
 .next-button {
     position: absolute;
     top: 50%;
-    right: -9%;
+    right: -2.5%;
     display: flex;
     background-color: transparent;
     border: none;
     color: #707275;
     cursor: pointer;
-}
-
-.next-button p {
-    margin-top: 5px;
-    margin-left: 5px;
-    font-size: 25px;
 }
 
 .next-button i {
@@ -129,7 +123,7 @@
 
 @keyframes click-here-left {
     0% {
-        transform: translateX(-50px);
+        transform: translateX(-20px);
         opacity: 0;
     }
     100% {

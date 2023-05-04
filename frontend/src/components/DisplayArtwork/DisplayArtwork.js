@@ -37,7 +37,6 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, artworks }) {
         className='next-button'
       >
       <i className="fa-solid fa-angles-right" id='next-artwork-left'></i>
-      <p>Next</p>
       </button>}
 
     </div>
