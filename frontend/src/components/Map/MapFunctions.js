@@ -39,25 +39,31 @@ export const sliderStyles = makeStyles({
     },
     rail: {
         height: 20, // increase the height of the rail
-        width: '100%'
+        width: '100.5%'
     },
     track: {
-        height: 20
+        height: 0
     },
     mark: { // The tick on the rail
+        // position: 'relative',
+        // right: '2px',
         width: '4px',
         height: '600%',
-        borderRadius: 40
+        borderRadius: 40,
     },
     markLabel: {
         // textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
         // fontSize: '20px',
         fontWeight: 'bold',
         color: 'grey'
-    }
+    },
+    // valueLabel: {
+    //     fontSize: 'xxx-large'
+    // }
 });
 
 export const sliderMarks = [
+    { value: 0, label: 'All'},
     { value: 100, label: '100s' },
     { value: 200, label: '200s' },
     { value: 300, label: '300s' },
