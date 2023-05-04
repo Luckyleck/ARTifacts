@@ -19,7 +19,11 @@
     font-size: 25px;
 }
 
-.next-button {
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}
+
+/* .next-button {
     position: fixed;
     left: 38.5%;
     top: 81.5%;
@@ -28,7 +32,6 @@
     padding-left: 50px;
     padding-right: 50px;
     cursor: pointer;
-    /* width: 50px; */
 }
 
 #next-artwork-left {
@@ -63,4 +66,4 @@
         transform: translateX(0);
         opacity: 1;
     }
-}
+} */
