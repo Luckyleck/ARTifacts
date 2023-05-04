@@ -1,0 +1,12 @@
+.search-bar {
+    background-color: grey;
+}
+
+.nav-buttons input {
+    width: 70%;
+    height: 50%;
+    border-radius: 6px;
+    border-color: antiquewhite;
+    font-size: large;
+    border: 5px groove;
+}

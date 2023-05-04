@@ -7,6 +7,7 @@ import { Modal } from '../context/Modal';
 import SessionForm from '../SessionForms/SessionForm';
 import { logout } from '../../store/session';
 import { getUser } from '../../store/users';
+import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -17,6 +18,8 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId));
+
+    const showSearchBar = location.pathname === `/${userId}`;
 
     const handleMenuOpen = () => {
         setShowMenu(true);
@@ -46,7 +49,9 @@ const NavBar = () => {
                     <NavLink exact to='/'>
                         <img src={logo} alt='logo' />
                     </NavLink>
+                    {showSearchBar && <SearchBar />}
                 </div>
+                
                 <div onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose} id='profile-drop' className='nav-buttons'>
                     {location.pathname === '/' &&  !sessionUser && (
                         <div className='about-us'>

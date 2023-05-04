@@ -162,3 +162,11 @@ body {
     color: #F7F7F7;
     background-color:#939598;
 }
+
+.nav-buttons:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: grey; */
+    width: 35%;        
+}
