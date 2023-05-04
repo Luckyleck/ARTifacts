@@ -20,7 +20,7 @@ function Map() {
     has_image: 1
   });
 
-  function doFetch(countryName) {
+  function doFetch(countryName, layer) {
     const url = 'https://openaccess-api.clevelandart.org/api/artworks';
 
     const tempParams = {
@@ -56,6 +56,10 @@ function Map() {
         });
         setArtworks(filtered);
         setShowArt(true);
+
+        if (filtered.length === 0) {
+          layer.bindPopup('Sorry no artwork was found').openPopup();
+        }
       })
       .catch((error) => {
         console.error('ERROR getting artwork data', error);
@@ -63,9 +67,9 @@ function Map() {
     ;
   }
 
-  function handleCountryClick (countryName) {
+  function handleCountryClick (countryName, layer) {
     setCountryName(countryName);
-    doFetch(countryName);
+    doFetch(countryName, layer);
   }
 
   function onEachCountry(country, layer) {
@@ -77,7 +81,7 @@ function Map() {
     
     layer.on({
       click: () => {
-        handleCountryClick(country.properties.ADMIN);
+        handleCountryClick(country.properties.ADMIN, layer);
       },
       mouseover: (e) => {
         e.target.setStyle({
