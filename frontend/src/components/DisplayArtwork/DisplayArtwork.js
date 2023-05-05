@@ -1,7 +1,7 @@
 import FavoriteButton from '../ProfilePage/Buttons/FavoriteButton';
 import './DisplayArtwork.css';
 
-function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
+function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, artworks }) {
 
   function handleClick() {
     setShowArt(false);
@@ -30,6 +30,15 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork }) {
           </button>
           <FavoriteButton artwork={artwork} />
       </div>
+
+      {artworks.length > 1 &&
+      <button
+        onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
+        className='next-button'
+      >
+      <i className="fa-solid fa-angles-right" id='next-artwork-left'></i>
+      </button>}
+
     </div>
   );
 }
