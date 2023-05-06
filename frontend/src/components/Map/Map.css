@@ -1,12 +1,16 @@
 .our-map {
     position: relative;
-    height: 86vh;
+    height: 88vh;
     /* max-height: 90vh; */
     /* min-height: 93vh; */
     /* overflow: auto; */
     /* width: 100%; */
     background-color: skyblue;
 }
+
+/* .leaflet-popup-content-wrapper {
+    scale: calc(1.2);
+} */
 
 .filter-info {
     position: absolute;
@@ -19,7 +23,11 @@
     font-size: 25px;
 }
 
-.next-button {
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}
+
+/* .next-button {
     position: fixed;
     left: 38.5%;
     top: 81.5%;
@@ -28,7 +36,6 @@
     padding-left: 50px;
     padding-right: 50px;
     cursor: pointer;
-    /* width: 50px; */
 }
 
 #next-artwork-left {
@@ -63,4 +70,40 @@
         transform: translateX(0);
         opacity: 1;
     }
+} */
+
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: rgb(209, 209, 209);
+}
+
+.leaflet-popup-content {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: ui-sans-serif;
+    font-size: 16px;
+}
+
+a.leaflet-popup-close-button {
+    margin: 1.5px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #939598;
+    font: 18px/22px Tahoma, Verdana, sans-serif;
+}
+
+a.leaflet-popup-close-button:hover {
+    border-radius: 100%;
+    background-color: #dbdee3;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+    color: #939598;
 }
