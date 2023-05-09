@@ -49,7 +49,7 @@ const NavBar = () => {
                     <NavLink exact to='/'>
                         <img src={logo} alt='logo' />
                     </NavLink>
-                    {showSearchBar && <SearchBar />}
+                    {/* {showSearchBar && <SearchBar />} */}
                 </div>
                 
                 <div onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose} id='profile-drop' className='nav-buttons'>
