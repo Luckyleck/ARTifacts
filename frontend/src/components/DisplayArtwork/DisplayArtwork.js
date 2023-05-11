@@ -37,9 +37,6 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, artworks }) {
         </button>
         <FavoriteButton artwork={artwork} />
       </div>
-
-
-
     </div>
   );
 }

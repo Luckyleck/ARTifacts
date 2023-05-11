@@ -57,7 +57,7 @@ function Map() {
         setArtworks(filtered);
         setShowArt(true);
 
-        if (filtered.length === 0) {
+        if (!filtered.length) {
           layer.bindPopup('No artwork found');
         }
       })
