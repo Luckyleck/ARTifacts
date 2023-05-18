@@ -3,6 +3,7 @@ const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
+const { getRandomUsers } = require("../controllers/api/usersController.js");
 
 const NUM_SEED_USERS = 1000;
 
@@ -28,7 +29,6 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   const randomSeed2 = faker.random.alphaNumeric(5);
   users.push(
     new User({
-      // username: faker.internet.userName(firstName, lastName),
       username: `${firstName} ${lastName}`,
       email: faker.internet.email(firstName, lastName),
       hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
@@ -36,6 +36,19 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
       backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
     })
   );
+}
+
+// Generate random followings
+for (const user of users) {
+  const randomFollows = await User.aggregate([{ $sample: { size: Math.floor(Math.random() * 10) + 1 } }]).exec();
+  for (let i = 0; i < randomFollows.length; i++) {
+    user.follows.push(randomFollows[i]._id);
+  }
+  const randomFollowers = await User.aggregate([{ $sample: { size: Math.floor(Math.random() * 10) + 1 } }]).exec();
+  for (let i = 0; i < randomFollowers.length; i++) {
+    user.followers.push(randomFollowers[i]._id);
+  }
+  user.save();
 }
 
 // Connect to database
