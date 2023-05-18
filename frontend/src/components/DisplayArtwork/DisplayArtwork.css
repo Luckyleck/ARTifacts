@@ -104,8 +104,8 @@
 
 .next-button {
     position: absolute;
-    top: 50%;
-    right: -2.5%;
+    top: 3%;
+    right: 5.5%;
     display: flex;
     background-color: transparent;
     border: none;
@@ -114,7 +114,7 @@
 }
 
 .next-button i {
-    font-size: 35px;
+    font-size: 27px;
 }
 
 #next-artwork-left {

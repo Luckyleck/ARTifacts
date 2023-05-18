@@ -14,6 +14,7 @@ function Map() {
   const [randomArtwork, setRandomArtwork] = useState();
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
+  const [noArt, setNoArt] = useState(false)
   const [params, setParams] = useState({
     skip: 0,
     limit: 600,
@@ -57,8 +58,8 @@ function Map() {
         setArtworks(filtered);
         setShowArt(true);
 
-        if (filtered.length === 0) {
-          layer.bindPopup('No artwork found');
+        if (!filtered.length) {
+          setNoArt(true)
         }
       })
       .catch((error) => {
@@ -67,7 +68,9 @@ function Map() {
     ;
   }
 
+
   function handleCountryClick (countryName, layer) {
+    setNoArt(false)
     setCountryName(countryName);
     doFetch(countryName, layer);
   }
@@ -131,6 +134,11 @@ function Map() {
           onEachFeature={onEachCountry}
         />
       </MapContainer>
+      {noArt && (
+        <div className="no-art show">
+          <h1>Sorry, we could not find any artwork from this time.</h1>
+        </div>
+      )}
       {showArt && artworks.length && (
         <>
           <DisplayArtwork
@@ -140,15 +148,6 @@ function Map() {
             randomArtwork={randomArtwork}
             artworks={artworks}
           />
-          {/* {artworks.length > 1 &&
-          <button
-            onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
-            className='next-button'
-          >
-          <i className="fa-solid fa-angles-right" id='next-artwork-left'></i>
-          CLICK HERE FOR NEXT ARTWORK
-          <i className="fa-solid fa-angles-left" id='next-artwork-right'></i>
-          </button>} */}
         </>
       )}
       <Slider
