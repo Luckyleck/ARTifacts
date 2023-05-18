@@ -43,11 +43,13 @@ for (const user of users) {
   const randomFollows = await User.aggregate([{ $sample: { size: Math.floor(Math.random() * 10) + 1 } }]).exec();
   for (let i = 0; i < randomFollows.length; i++) {
     user.follows.push(randomFollows[i]._id);
+    randomFollows[i].followers.push(user._id);
+    randomFollows[i].save();
   }
-  const randomFollowers = await User.aggregate([{ $sample: { size: Math.floor(Math.random() * 10) + 1 } }]).exec();
-  for (let i = 0; i < randomFollowers.length; i++) {
-    user.followers.push(randomFollowers[i]._id);
-  }
+  // const randomFollowers = await User.aggregate([{ $sample: { size: Math.floor(Math.random() * 10) + 1 } }]).exec();
+  // for (let i = 0; i < randomFollowers.length; i++) {
+  //   user.followers.push(randomFollowers[i]._id);
+  // }
   user.save();
 }
 
