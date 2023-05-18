@@ -6,8 +6,6 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, artworks }) {
   const location = useLocation();
   const { pathname } = location;
   const shouldDisplayNextButton = (pathname === '/explore');
-  console.log(pathname);
-  console.log(shouldDisplayNextButton);
 
   function handleClick() {
     setShowArt(false);
@@ -20,7 +18,9 @@ function DisplayArtwork({ artwork, setShowArt, setRandomArtwork, artworks }) {
 
   return (
     <div className='art-display-container'>
-      <img src={artwork?.images.web.url} alt={artwork?.title} id='fetched-image' />
+      <div className='s-image-container'>
+        <img src={artwork?.images.web.url} alt={artwork?.title} id='fetched-image' />
+      </div>
       <div className='art-info'>
         <h1>Title</h1>
         <h2>{artwork.title}</h2>
