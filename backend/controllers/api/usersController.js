@@ -15,7 +15,7 @@ async function getUsers(req, res) {
   res.status(200).json(users);
 }
 
-async function getRandomUsers(req, res) {
+export async function getRandomUsers(req, res) {
   const { num } = req.params;
   const users = await User.aggregate([{ $sample: { size: parseInt(num) } }]).exec();
   for (const user of users) {

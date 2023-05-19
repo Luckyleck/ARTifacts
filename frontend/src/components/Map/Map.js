@@ -7,7 +7,6 @@ import countries from '../../data/countries.geo.json';
 import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
 import { colors, geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from './MapFunctions';
 
-
 function Map() {
   const [showArt, setShowArt] = useState(false);
   const [artworks, setArtworks] = useState([]);
@@ -20,6 +19,8 @@ function Map() {
     limit: 600,
     has_image: 1
   });
+
+  console.log(artworks);
 
   function doFetch(countryName, layer) {
     const url = 'https://openaccess-api.clevelandart.org/api/artworks';
@@ -46,6 +47,7 @@ function Map() {
 
     fetch(`${url}?${paramsString}`)
       .then((response) => {
+        console.log(response);
         return response.json();
       })
       .then((data) => {
@@ -57,17 +59,13 @@ function Map() {
         });
         setArtworks(filtered);
         setShowArt(true);
-
-        if (!filtered.length) {
-          setNoArt(true)
-        }
+        if (!filtered.length) setNoArt(true);
       })
       .catch((error) => {
         console.error('ERROR getting artwork data', error);
       })
     ;
   }
-
 
   function handleCountryClick (countryName, layer) {
     setNoArt(false)
