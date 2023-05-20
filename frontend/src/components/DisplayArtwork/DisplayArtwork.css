@@ -7,7 +7,6 @@
     display: flex;
     border-radius: 10px;
     max-height: 500px;
-    border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     background-color: rgb(209, 209, 209);
 }

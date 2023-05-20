@@ -64,10 +64,10 @@ function Map() {
       .catch((error) => {
         console.error('ERROR getting artwork data', error);
       })
-    ;
+      ;
   }
 
-  function handleCountryClick (countryName, layer) {
+  function handleCountryClick(countryName, layer) {
     setNoArt(false)
     setCountryName(countryName);
     doFetch(countryName, layer);
@@ -75,11 +75,11 @@ function Map() {
 
   function onEachCountry(country, layer) {
     const colorIndex = countries.features.findIndex(feature => feature.properties.ADMIN === country.properties.ADMIN);
-    
+
     layer.setStyle({
       fillColor: colors[colorIndex % colors.length]
     });
-    
+
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN, layer);
@@ -99,6 +99,7 @@ function Map() {
 
   function handleSliderChange(event, value) {
     event.preventDefault();
+    setNoArt(false)
     dateAfter.current = value;
     setParams({
       ...params
@@ -145,15 +146,13 @@ function Map() {
         </div>
       )}
       {showArt && artworks.length && (
-        <>
-          <DisplayArtwork
-            artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
-            setShowArt={setShowArt}
-            setRandomArtwork={setRandomArtwork}
-            randomArtwork={randomArtwork}
-            artworks={artworks}
-          />
-        </>
+        <DisplayArtwork
+          artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
+          setShowArt={setShowArt}
+          setRandomArtwork={setRandomArtwork}
+          randomArtwork={randomArtwork}
+          artworks={artworks}
+        />
       )}
       <Slider
         min={0}
