@@ -152,7 +152,7 @@ function Map() {
         </div>
       )}
       {fetchingStatus && (
-        <div className="no-art show">
+        <div className="fetching-art-message">
           <h1>Fetching artwork!</h1>
         </div>
       )}
