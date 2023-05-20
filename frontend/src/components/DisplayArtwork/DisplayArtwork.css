@@ -10,6 +10,10 @@
     background-color: rgb(209, 209, 209);
 }
 
+.art-display-container.user {
+    width: 95%;
+}
+
 .s-image-container {
   background-color: rgb(209, 209, 209);
   height: 500px;
