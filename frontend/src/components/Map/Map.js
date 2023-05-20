@@ -14,6 +14,7 @@ function Map() {
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
   const [noArt, setNoArt] = useState(false)
+  const [fetchingStatus, setFetchingStatus] = useState(false)
   const [params, setParams] = useState({
     limit: 200,
     has_image: 1
@@ -23,6 +24,7 @@ function Map() {
 
   function doFetch(countryName, layer) {
     const url = 'https://openaccess-api.clevelandart.org/api/artworks';
+    setFetchingStatus(true)
 
     const tempParams = {
       ...params,
@@ -59,7 +61,11 @@ function Map() {
         });
         setArtworks(filtered);
         setShowArt(true);
-        if (!filtered.length) setNoArt(true);
+        setFetchingStatus(false)
+        if (!filtered.length) {
+          setNoArt(true);
+          setFetchingStatus(false)
+        }
       })
       .catch((error) => {
         console.error('ERROR getting artwork data', error);
@@ -143,6 +149,11 @@ function Map() {
       {noArt && (
         <div className="no-art show">
           <h1>Sorry, we could not find any artwork from this time.</h1>
+        </div>
+      )}
+      {fetchingStatus && (
+        <div className="no-art show">
+          <h1>Fetching artwork!</h1>
         </div>
       )}
       {showArt && artworks.length && (
