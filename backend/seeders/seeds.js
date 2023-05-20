@@ -41,11 +41,13 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 for (const user of users) {
   const randomIndexes = [];
   for (let i = 0; i < Math.floor(Math.random() * 10) + 1; i++) {
-    randomIndexes.push(i);
+    randomIndexes.push(Math.floor(Math.random() * 1000));
   }
   for (let i of randomIndexes) {
-    user.follows.push(users[i]._id);
-    users[i].followers.push(user._id);
+    if (users[i]._id !== user._id && !user.follows.includes(users[i]._id)) {
+      user.follows.push(users[i]._id);
+      users[i].followers.push(user._id);
+    }
   }
 }
 
@@ -64,7 +66,7 @@ mongoose
 
 // Reset and seed db
 function insertSeeds() {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting db and seeding users...");
 
   User.collection
     .drop()

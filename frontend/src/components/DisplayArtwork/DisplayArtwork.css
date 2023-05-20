@@ -5,7 +5,6 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
     display: flex;
-    border-radius: 10px;
     max-height: 500px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     background-color: rgb(209, 209, 209);
@@ -29,10 +28,6 @@
   max-height: 90%;
   width: auto;
   max-width: 90%;
-  /* border: 20px solid rgb(209, 209, 209); */
-  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
-  /* border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px; */
   pointer-events: none;
 }
 
@@ -49,8 +44,6 @@
     width: 50vh;
     align-items: space-between;
     text-align: center;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
 }
 
 .art-info h1 {
