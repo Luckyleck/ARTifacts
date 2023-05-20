@@ -15,19 +15,18 @@ function Map() {
   const [countryName, setCountryName] = useState('');
   const [noArt, setNoArt] = useState(false)
   const [params, setParams] = useState({
-    skip: 0,
-    limit: 600,
+    limit: 200,
     has_image: 1
   });
 
-  console.log(artworks);
+  // console.log(artworks);
 
   function doFetch(countryName, layer) {
     const url = 'https://openaccess-api.clevelandart.org/api/artworks';
 
     const tempParams = {
       ...params,
-      q: countryName.toLowerCase()
+      q: countryName.toLowerCase(),
     };
 
     function formatParams(params) {
@@ -37,8 +36,10 @@ function Map() {
         searchString += `${key}=${value}&`;
       }
 
-      searchString += `created_after=${dateAfter.current}&`;
-      searchString += `created_before=${dateAfter.current + 99}`;
+      if (dateAfter.current) {
+        searchString += `created_after=${dateAfter.current}&`;
+        searchString += `created_before=${dateAfter.current + 99}`;
+      }
 
       return searchString;
     }
@@ -47,7 +48,6 @@ function Map() {
 
     fetch(`${url}?${paramsString}`)
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((data) => {
@@ -115,8 +115,15 @@ function Map() {
   return (
     <>
       <div className='filter-info'>
-        <h1>{countryName}{countryName && ','}</h1>
-        <h1>{dateAfter.current}s</h1>
+        {(dateAfter.current > 0) && (
+          <>
+            <h1>{countryName}{countryName && ','}</h1>
+            <h1>{dateAfter.current}s</h1>
+          </>
+        )}
+        {(dateAfter.current === 0) && (
+          <h1>{countryName}</h1>
+        )}
       </div>
       <MapContainer
         zoom={2.25}
