@@ -156,7 +156,7 @@ function Map() {
           <h1>Fetching artwork!</h1>
         </div>
       )}
-      {showArt && artworks.length && (
+      {showArt && (artworks.length !== 0) && (
         <DisplayArtwork
           artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
           setShowArt={setShowArt}
