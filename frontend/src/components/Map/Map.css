@@ -1,6 +1,6 @@
 .our-map {
     position: relative;
-    height: 88vh;
+    height: 87vh;
     /* max-height: 90vh; */
     /* min-height: 93vh; */
     /* overflow: auto; */
@@ -23,7 +23,11 @@
     font-size: 25px;
 }
 
-.next-button {
+.MuiSlider-markLabel.makeStyles-markLabel-5 {
+    font-size: 1.3vw;
+}
+
+/* .next-button {
     position: fixed;
     left: 38.5%;
     top: 81.5%;
@@ -32,7 +36,6 @@
     padding-left: 50px;
     padding-right: 50px;
     cursor: pointer;
-    /* width: 50px; */
 }
 
 #next-artwork-left {
@@ -67,7 +70,7 @@
         transform: translateX(0);
         opacity: 1;
     }
-}
+} */
 
 .leaflet-popup-content-wrapper {
     border-radius: 8px;
@@ -75,7 +78,8 @@
     height: 50px;
 }
 
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
     background: rgb(209, 209, 209);
 }
 
@@ -103,4 +107,40 @@ a.leaflet-popup-close-button:hover {
 
 .leaflet-container a.leaflet-popup-close-button:hover {
     color: #939598;
+}
+
+.no-art {
+    background-color: #e8e8e8;
+    position: fixed;
+    width: 15%;
+    left: 2%;
+    bottom: 13%;
+    z-index: 9999;
+    padding: 10px;
+    border: 3px ridge red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.no-art h1 {
+    font-size: x-large;
+    text-align: center;
+}
+
+.fetching-art-message {
+    background-color: #e8e8e8;
+    position: fixed;
+    width: 15%;
+    left: 2%;
+    bottom: 13%;
+    z-index: 9999;
+    padding: 10px;
+    border: 3px ridge blue;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fetching-art-message h1 {
+    font-size: x-large;
+    text-align: center;
+    font-weight: bold;
 }

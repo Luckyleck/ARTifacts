@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
@@ -28,7 +28,6 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   const randomSeed2 = faker.random.alphaNumeric(5);
   users.push(
     new User({
-      // username: faker.internet.userName(firstName, lastName),
       username: `${firstName} ${lastName}`,
       email: faker.internet.email(firstName, lastName),
       hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
@@ -36,6 +35,20 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
       backgroundPic: `https://picsum.photos/seed/${randomSeed2}/400/400`
     })
   );
+}
+
+// Generate random followings
+for (const user of users) {
+  const randomIndexes = [];
+  for (let i = 0; i < Math.floor(Math.random() * 10) + 1; i++) {
+    randomIndexes.push(Math.floor(Math.random() * 1000));
+  }
+  for (let i of randomIndexes) {
+    if (users[i]._id !== user._id && !user.follows.includes(users[i]._id)) {
+      user.follows.push(users[i]._id);
+      users[i].followers.push(user._id);
+    }
+  }
 }
 
 // Connect to database
@@ -53,7 +66,7 @@ mongoose
 
 // Reset and seed db
 function insertSeeds() {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting db and seeding users...");
 
   User.collection
     .drop()

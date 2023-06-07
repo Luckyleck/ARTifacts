@@ -1,12 +1,32 @@
 .search-bar {
-    background-color: grey;
+    width: 130%;
+    line-height: 1.75;
+    font-weight: 400;
+    font-size: 14px;
+    height: 34px;
+    background-color: #eaeaeb;
+    border-radius: 4px;
+    padding: 0 8px 0 40px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    box-sizing: border-box;
+    outline: none;
 }
 
-.nav-buttons input {
-    width: 70%;
-    height: 50%;
-    border-radius: 6px;
-    border-color: antiquewhite;
-    font-size: large;
-    border: 5px groove;
+.search-bar:focus {
+    border: 2px solid #939598;
+    width: 200%;
+}
+
+.searchbar-container {
+    position: absolute;
+    left: 9%;
+    color: rgba(0,0,0,0.6);
+}
+
+.search-icon {
+    position: absolute;
+    font-size: 14px;
+    z-index: 1;
+    padding: 10px 8px 10px 16px;
 }

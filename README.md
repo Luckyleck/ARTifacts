@@ -1,6 +1,6 @@
 # ARTifacts  
 
-<img src="https://gcdnb.pbrd.co/images/JoLUTcEUdxOx.png?o=1" alt="homepage" height="400"> 
+<img src="./assets/readme_main.png" alt="homepage" height="400"> 
 
 ### Created by
 - Alex Lecky (Team Lead)

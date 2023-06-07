@@ -324,7 +324,7 @@
 }
 
 .follow-detail {
-    max-height: 73vh;
+    max-height: 72.8vh;
     overflow-y: scroll;
     padding-top: 4%;
     padding-left: 20%;
@@ -399,7 +399,7 @@
 }
 
 .explore-detail {
-    max-height: 58vh;
+    max-height: 56.55vh;
 }
 
 .edit-user-info {

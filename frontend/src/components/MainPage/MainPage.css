@@ -1,7 +1,7 @@
 .image-container {
     background: #939598;
     position: relative;
-    height: 93vh;
+    height: 91vh;
     max-width: 100vw;
     filter: brightness(70%);
     overflow: hidden;
@@ -40,7 +40,7 @@
 
 .image-container img:nth-child(5) {
     animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-30%);
+    transform: translateY(-2%) translateX(-30%);
     height: 50%;
     z-index: 2;
 }
@@ -78,7 +78,7 @@
 
 .image-container img:nth-child(11) {
     animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-190%);
+    transform: translateY(-2%) translateX(-190%);
     height: 58%;
 }
 

@@ -7,25 +7,28 @@ import countries from '../../data/countries.geo.json';
 import DisplayArtwork from '../DisplayArtwork/DisplayArtwork';
 import { colors, geoJsonStyle, maxBounds, sliderMarks, sliderStyles } from './MapFunctions';
 
-
 function Map() {
   const [showArt, setShowArt] = useState(false);
   const [artworks, setArtworks] = useState([]);
   const [randomArtwork, setRandomArtwork] = useState();
   const dateAfter = useRef(1500);
   const [countryName, setCountryName] = useState('');
+  const [noArt, setNoArt] = useState(false)
+  const [fetchingStatus, setFetchingStatus] = useState(false)
   const [params, setParams] = useState({
-    skip: 0,
-    limit: 600,
+    limit: 200,
     has_image: 1
   });
 
+  // console.log(artworks);
+
   function doFetch(countryName, layer) {
     const url = 'https://openaccess-api.clevelandart.org/api/artworks';
+    setFetchingStatus(true)
 
     const tempParams = {
       ...params,
-      q: countryName.toLowerCase()
+      q: countryName.toLowerCase(),
     };
 
     function formatParams(params) {
@@ -35,8 +38,10 @@ function Map() {
         searchString += `${key}=${value}&`;
       }
 
-      searchString += `created_after=${dateAfter.current}&`;
-      searchString += `created_before=${dateAfter.current + 99}`;
+      if (dateAfter.current) {
+        searchString += `created_after=${dateAfter.current}&`;
+        searchString += `created_before=${dateAfter.current + 99}`;
+      }
 
       return searchString;
     }
@@ -56,29 +61,31 @@ function Map() {
         });
         setArtworks(filtered);
         setShowArt(true);
-
-        if (filtered.length === 0) {
-          layer.bindPopup('No artwork found');
+        setFetchingStatus(false)
+        if (!filtered.length) {
+          setNoArt(true);
+          setFetchingStatus(false)
         }
       })
       .catch((error) => {
         console.error('ERROR getting artwork data', error);
       })
-    ;
+      ;
   }
 
-  function handleCountryClick (countryName, layer) {
+  function handleCountryClick(countryName, layer) {
+    setNoArt(false)
     setCountryName(countryName);
     doFetch(countryName, layer);
   }
 
   function onEachCountry(country, layer) {
     const colorIndex = countries.features.findIndex(feature => feature.properties.ADMIN === country.properties.ADMIN);
-    
+
     layer.setStyle({
       fillColor: colors[colorIndex % colors.length]
     });
-    
+
     layer.on({
       click: () => {
         handleCountryClick(country.properties.ADMIN, layer);
@@ -98,6 +105,7 @@ function Map() {
 
   function handleSliderChange(event, value) {
     event.preventDefault();
+    setNoArt(false)
     dateAfter.current = value;
     setParams({
       ...params
@@ -114,8 +122,15 @@ function Map() {
   return (
     <>
       <div className='filter-info'>
-        <h1>{countryName}{countryName && ','}</h1>
-        <h1>{dateAfter.current}s</h1>
+        {(dateAfter.current > 0) && (
+          <>
+            <h1>{countryName}{countryName && ','}</h1>
+            <h1>{dateAfter.current}s</h1>
+          </>
+        )}
+        {(dateAfter.current === 0) && (
+          <h1>{countryName}</h1>
+        )}
       </div>
       <MapContainer
         zoom={2.25}
@@ -131,24 +146,24 @@ function Map() {
           onEachFeature={onEachCountry}
         />
       </MapContainer>
-      {showArt && artworks.length && (
-        <>
-          <DisplayArtwork
-            artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
-            setShowArt={setShowArt}
-            setRandomArtwork={setRandomArtwork}
-            setCountryName={setCountryName}
-          />
-          {artworks.length > 1 &&
-          <button
-            onClick={() => setRandomArtwork(artworks[Math.floor(Math.random() * artworks.length)])}
-            className='next-button'
-          >
-          <i className="fa-solid fa-angles-right" id='next-artwork-left'></i>
-          CLICK HERE FOR NEXT ARTWORK
-          <i className="fa-solid fa-angles-left" id='next-artwork-right'></i>
-          </button>}
-        </>
+      {noArt && (
+        <div className="no-art show">
+          <h1>Sorry, we could not find any artwork from this time.</h1>
+        </div>
+      )}
+      {fetchingStatus && (
+        <div className="fetching-art-message">
+          <h1>Fetching artwork!</h1>
+        </div>
+      )}
+      {showArt && (artworks.length !== 0) && (
+        <DisplayArtwork
+          artwork={randomArtwork || artworks[Math.floor(Math.random() * artworks.length)]}
+          setShowArt={setShowArt}
+          setRandomArtwork={setRandomArtwork}
+          randomArtwork={randomArtwork}
+          artworks={artworks}
+        />
       )}
       <Slider
         min={0}

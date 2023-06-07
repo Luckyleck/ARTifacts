@@ -3,9 +3,10 @@ import './SearchBar.css'
 
 function SearchBar() {
     return (
-        // <div className="search-bar">
-            <input type="text" placeholder="Search for users..."/>
-        // </div>
+    <div className='searchbar-container'>
+        <i className="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" placeholder='Search' className='search-bar'/>
+    </div>
     )
 }
 
