@@ -11,7 +11,7 @@ function Map() {
   const [showArt, setShowArt] = useState(false);
   const [artworks, setArtworks] = useState([]);
   const [randomArtwork, setRandomArtwork] = useState();
-  const dateAfter = useRef(1500);
+  const dateAfter = useRef(0);
   const [countryName, setCountryName] = useState('');
   const [noArt, setNoArt] = useState(false)
   const [fetchingStatus, setFetchingStatus] = useState(false)
