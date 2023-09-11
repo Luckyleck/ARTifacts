@@ -31,7 +31,7 @@ We decided to use Leaflet to create our map. We found this library very beginner
 
 A user is able to click on any country of the map and slide the timeline to specific century. Then the fetch is made and the artwork is shown.
 
-<img src="./assets/ArifactsMap.png" alt="map" height="400">
+<img src="./assets/ArtifactsMap.png" alt="map" height="400">
 
 ```
 <MapContainer
@@ -102,7 +102,7 @@ We took much enjoyment in allowing a user to favorite their artwork and store it
 ## Conclusion
 This project was so fun to work on. Everyone on our team brought a unique skill or talent to the table. We faced challenges, many pertaining to bugs in the map feature, but ultimately we prevailed. We all look forward to taking on bigger projects and expanding our knowledge of coding. Thank you for your time.
 
-<img src="./assets/team.png" alt="team" height="400">  
+<img src="./assets/Team.png" alt="team" height="400">  
 
 From left to right  
 Alex Lecky(Team Lead), Michael Gastello(Flex Dev), Kevin Chan(Frontend), Steven Notovitz(Backend)
