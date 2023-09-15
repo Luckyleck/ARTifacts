@@ -14,7 +14,7 @@
 A MERN stack web application that offers a unique way for users to explore artwork from throughout history. By interacting with an interactive 2D world map and timeline slider, users can discover and appreciate a wide range of art. The app also allows users to save their favorite works and create custom collections, which can be showcased on their profile page.
 
 ## Built with
-- Javasript
+- JavaScript
 - React
 - Redux
 - Leaflet-React (Map)
