@@ -39,9 +39,9 @@ const ContactPage = () => {
         backgroundpic: starry,
         profile: kc,
         bio: 'My name is Kevin Chan and I headed the front-end development of the UI/UX of ARTifacts via React, and heavily contributed styling the front-end via HTML/CSS. I hope you enjoy you experience in ARTifacts and feel free to reach out with any questions!. ',
-        github: 'https://github.com/kchannn13',
+        github: 'https://github.com/chan-kevin',
         linkedin: 'https://www.linkedin.com/in/kevin-chan-426203158/',
-        javascript: 'https://kchannn13.github.io/The-Adventures-of-Gary-the-Snail/',
+        javascript: 'https://chan-kevin.github.io/The-Adventures-of-Gary-the-Snail/',
         fullstack: 'https://linkedup-ptj7.onrender.com/',
     },
     {
