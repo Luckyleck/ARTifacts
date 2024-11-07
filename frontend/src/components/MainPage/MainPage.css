@@ -1,159 +1,159 @@
 .image-container {
-    background: #939598;
-    position: relative;
-    height: 91vh;
-    max-width: 100vw;
-    filter: brightness(70%);
-    overflow: hidden;
+  background: #939598;
+  position: relative;
+  height: 91vh;
+  max-width: 100vw;
+  filter: brightness(70%);
+  overflow: hidden;
 }
 
 .image-container img {
-    position: absolute;
+  position: absolute;
 }
 
 .image-container img:nth-child(1) {
-    animation: slide 20s linear infinite;
-    top: 30%;
-    transform: translateY(-60%) translateX(170%);
-    height: 50%;
+  animation: slide 20s linear infinite;
+  top: 30%;
+  transform: translateY(-60%) translateX(170%);
+  height: 50%;
 }
 
 .image-container img:nth-child(2) {
-    animation: slide 20s linear infinite;
-    transform: translateX(10%) translateY(85%);
-    height: 55%;
-    z-index: 4;
+  animation: slide 20s linear infinite;
+  transform: translateX(10%) translateY(85%);
+  height: 55%;
+  z-index: 4;
 }
 
 .image-container img:nth-child(3) {
-    animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(10%);
-    height: 40%;
+  animation: slide 20s linear infinite;
+  transform: translateY(80%) translateX(10%);
+  height: 40%;
 }
 
 .image-container img:nth-child(4) {
-    animation: slide 20s linear infinite;
-    transform: translateY(90%) translateX(183%);
-    height: 55%;
-    z-index: 1;
+  animation: slide 20s linear infinite;
+  transform: translateY(90%) translateX(183%);
+  height: 55%;
+  z-index: 1;
 }
 
 .image-container img:nth-child(5) {
-    animation: slide 20s linear infinite;
-    transform: translateY(-2%) translateX(-30%);
-    height: 50%;
-    z-index: 2;
+  animation: slide 20s linear infinite;
+  transform: translateY(-2%) translateX(-30%);
+  height: 50%;
+  z-index: 2;
 }
 
 .image-container img:nth-child(6) {
-    animation: slide 20s linear infinite;
-    transform: translateY(130%) translateX(50%);
-    height: 45%;
+  animation: slide 20s linear infinite;
+  transform: translateY(130%) translateX(50%);
+  height: 45%;
 }
 
 .image-container img:nth-child(7) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0) translateX(15%);
-    height: 40%;
+  animation: slide 20s linear infinite;
+  transform: translateY(0) translateX(15%);
+  height: 40%;
 }
 
 .image-container img:nth-child(8) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-100%);
-    height: 50%;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(-100%);
+  height: 50%;
 }
 
 .image-container img:nth-child(9) {
-    animation: slide 20s linear infinite;
-    transform: translateY(70%) translateX(-145%);
-    height: 60%;
+  animation: slide 20s linear infinite;
+  transform: translateY(70%) translateX(-145%);
+  height: 60%;
 }
 
 .image-container img:nth-child(10) {
-    animation: slide 20s linear infinite;
-    transform: translateY(30%) translateX(-110%);
-    height: 58%;
-    z-index: 3;
+  animation: slide 20s linear infinite;
+  transform: translateY(30%) translateX(-110%);
+  height: 58%;
+  z-index: 3;
 }
 
 .image-container img:nth-child(11) {
-    animation: slide 20s linear infinite;
-    transform: translateY(-2%) translateX(-190%);
-    height: 58%;
+  animation: slide 20s linear infinite;
+  transform: translateY(-2%) translateX(-190%);
+  height: 58%;
 }
 
 .image-container img:nth-child(12) {
-    animation: slide 20s linear infinite;
-    transform: translateY(100%) translateX(-380%);
-    height: 50%;
-    z-index: 2;
+  animation: slide 20s linear infinite;
+  transform: translateY(100%) translateX(-380%);
+  height: 50%;
+  z-index: 2;
 }
 
 .image-container img:nth-child(13) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-410%);
-    height: 58%;
-    z-index: 3;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(-410%);
+  height: 58%;
+  z-index: 3;
 }
 
 .image-container img:nth-child(14) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-505%);
-    height: 53%;
-    z-index: 2;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(-505%);
+  height: 53%;
+  z-index: 2;
 }
 
 .image-container img:nth-child(15) {
-    animation: slide 20s linear infinite;
-    transform: translateY(80%) translateX(-50%);
-    height: 56%;
-    z-index: 2;
+  animation: slide 20s linear infinite;
+  transform: translateY(80%) translateX(-50%);
+  height: 56%;
+  z-index: 2;
 }
 
 .image-container img:nth-child(16) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(140%);
-    height: 50%;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(140%);
+  height: 50%;
 }
 
 .image-container img:nth-child(17) {
-    animation: slide 20s linear infinite;
-    transform: translateY(67%) translateX(-280%);
-    height: 60%;
+  animation: slide 20s linear infinite;
+  transform: translateY(67%) translateX(-280%);
+  height: 60%;
 }
 
 .image-container img:nth-child(18) {
-    animation: slide 20s linear infinite;
-    transform: translateY(90%) translateX(-130%);
-    height: 53%;
-    z-index: -1;
+  animation: slide 20s linear infinite;
+  transform: translateY(90%) translateX(-130%);
+  height: 53%;
+  z-index: -1;
 }
 
 .image-container img:nth-child(19) {
-    animation: slide 20s linear infinite;
-    transform: translateY(115%) translateX(-155%);
-    height: 47%;
-    z-index: 3;
+  animation: slide 20s linear infinite;
+  transform: translateY(115%) translateX(-155%);
+  height: 47%;
+  z-index: 3;
 }
 
 .image-container img:nth-child(20) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-45%);
-    height: 45%;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(-45%);
+  height: 45%;
 }
 
 .image-container img:nth-child(21) {
-    animation: slide 20s linear infinite;
-    transform: translateY(0%) translateX(-65%);
-    height: 45%;
-    z-index: 3;
+  animation: slide 20s linear infinite;
+  transform: translateY(0%) translateX(-65%);
+  height: 45%;
+  z-index: 3;
 }
 
 .image-container img:nth-child(22) {
-    animation: slide 20s linear infinite;
-    transform: translateY(75%) translateX(-340%);
-    height: 57%;
-    z-index: 3;
+  animation: slide 20s linear infinite;
+  transform: translateY(75%) translateX(-340%);
+  height: 57%;
+  z-index: 3;
 }
 
 /* @keyframes slide {
@@ -168,51 +168,103 @@
 } */
 
 @keyframes slide {
-    0% {
-        left: 16%;
-    }
-    50% {
-        left: 115%;
-    }
-    100% {
-        left: 16%;
-    }
+  0% {
+    left: 16%;
+  }
+  50% {
+    left: 115%;
+  }
+  100% {
+    left: 16%;
+  }
+}
+
+.explore,
+.preloader,
+.reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reveal {
+  height: 250px;
+  width: 100%;
+  z-index: 501;
+  background-color: #f4eee0;
+  animation: moveUp 5s ease-in-out forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 15%;
+    height: 150px;
+    display: none;
+  }
 }
 
 .explore {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 500;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+  cursor: pointer;
 }
-.explore p{
-    color: #F7F7F7;
-    opacity: 0;
-    animation: blink 2s linear infinite;
+
+.explore p {
+  color: #f7f7f7;
+  opacity: 0;
+  animation: blink 2s linear infinite;
 }
 
 @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.explore img,
+.preloader img {
+  height: 280px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .explore img {
-    height: 280px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: blink 2s linear infinite;
+  animation: blink 2s linear infinite;
+}
+
+.main-content {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animated-image {
+  transition: opacity 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+.animated-image.loaded {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
