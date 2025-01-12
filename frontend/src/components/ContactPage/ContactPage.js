@@ -29,9 +29,9 @@ const ContactPage = () => {
         profile: al,
         bio: "Hi, my name is Alex Lecky and I am the team lead for this project. I'm a charismatic and intelligent person who believes in the power of creativity and persistence to drive innovation. My passion for technology stems from my desire to make the world a better place, and I'm always full of ideas on how to achieve this goal. I enjoy exploring new technologies and coming up with creative solutions to new problems. Above all, I'm persistent, never giving up until I've found the right solution. I'm excited to continue making the world a better place, one project at a time.",
         github: 'https://github.com/Luckyleck',
-        linkedin: '',
-        javascript: 'https://luckyleck.github.io/JS-Project/',
-        fullstack: '',
+        linkedin: 'https://www.linkedin.com/in/alexthelecky1875273/',
+        javascript: 'https://luckyleck.github.io/BlockOut/',
+        fullstack: 'https://artifacts-rp87.onrender.com/',
     },
     {
         name: 'Kevin Chan',
